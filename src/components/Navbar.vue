@@ -1,7 +1,8 @@
 <template>
     <nav class="header">
-        <a v-bind:style="{height: logoWrapperHeight + 'px' }" class="navbar-brand" href="/"><img
-                class="navbar-brand-img" ref="logoImg" src="../assets/navbar/logo.svg" alt="Logo icon"></a>
+        <a v-bind:style="{height: logoWrapperHeight + 'px' }" class="navbar-brand" href="/">
+            <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/logo.svg" alt="Logo icon">
+        </a>
 
         <ul v-if="!mobile" class="navbar-nav">
             <li class="nav-item">
@@ -23,15 +24,20 @@
                 <a class="nav-link" href="#">Team<span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <ul v-if="mobile" class="tesst">
+        <!-- <ul v-if="mobile" class="tesst">
             <li class="nav-item">
                 <a class="nav-link" href="#">BURGER</a>
             </li>
-        </ul>
+        </ul> -->
+        <div v-if="mobile" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
+            <button type="button" class="burger">
+                <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/burger.svg" alt="Burger icon">
+            </button>
+        </div>
 
 
         <div v-click-outside="hideDropDowmMenu" class="dropdown">
-            <button @click="dropdowmToggle" v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
+            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px' }" v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
                 {{localization}}
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -136,6 +142,7 @@
     .navbar-brand-img {
         width: 23px;
         height: 30px;
+        margin: 0 0.5rem;
     }
 
     .dropdown {
@@ -220,5 +227,21 @@
             order: 1;
         }
 
+    }
+    .wrapper-burger{
+        /* padding: 0.4rem 0.5rem; */
+        border-radius: 5px;
+        margin: 0 0.5rem 0 0;
+    }
+    .burger {
+        border: none;
+        outline: none;
+        background: transparent;
+        max-height: 100%;
+    }
+    @media (min-width: 768px) {
+        .wrapper-burger:hover {
+            background: #151515;
+        }
     }
 </style>
