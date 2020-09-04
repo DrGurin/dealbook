@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar/>
-    <About />
+    <!-- <About /> -->
     <Problem />
     <Team />
     <Subscribe />
@@ -10,7 +10,7 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
-import About from './components/About.vue'
+// import About from './components/About.vue'
 import Problem from './components/Problem.vue'
 import Team from './components/Team.vue'
 import Subscribe from './components/Subscribe.vue'
@@ -18,7 +18,7 @@ import Subscribe from './components/Subscribe.vue'
 export default {
   name: 'App',
   components: {
-    About,
+    // About,
     Problem,
     Team,
     Subscribe,
@@ -28,6 +28,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/common/styles/main.css';
+
 body{
   background: #000000;
 }

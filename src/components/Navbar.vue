@@ -6,38 +6,54 @@
 
         <ul v-if="!mobile" class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Problem<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Problem</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Roadmap<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Roadmap</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Donate<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Donate</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Team<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
-        <!-- <ul v-if="mobile" class="tesst">
-            <li class="nav-item">
-                <a class="nav-link" href="#">BURGER</a>
-            </li>
-        </ul> -->
         <div v-if="mobile" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
             <button type="button" class="burger">
                 <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/burger.svg" alt="Burger icon">
             </button>
         </div>
+        <ul v-if="mobile" class="mobile-navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Problem</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Roadmap</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Donate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Team</a>
+            </li>
+        </ul>
 
 
         <div v-click-outside="hideDropDowmMenu" class="dropdown">
-            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px' }" v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
+            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px' }"
+                v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
                 {{localization}}
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -117,6 +133,7 @@
     .header * {
         font-size: 14px;
         color: #FFFFFF;
+        font-family: Roboto;
         padding: 0;
         margin: 0;
         text-decoration: none;
@@ -176,11 +193,15 @@
         background-color: #f9f9f9;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
+        right: 10vw;
+        margin-top: 11px;
+        background: #303030;
+        box-shadow: 2px 1px 5px #000000;
+        border-radius: 5px;
     }
 
     .dropdown-content .dropdown-content-button {
-        color: black;
+        color: #FFFFFF;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
@@ -189,10 +210,19 @@
         background: transparent;
         border: none;
         outline: none;
+        text-align: center;
     }
 
     .dropdown-content .dropdown-content-button:hover {
-        background-color: #ddd;
+        background-color: #151515;
+    }
+
+    .dropdown-content .dropdown-content-button:nth-child(1):hover {
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .dropdown-content .dropdown-content-button:nth-child(2):hover {
+        border-radius: 0px 0px 5px 5px;
     }
 
     .dropdown .dropdown-content.show {
@@ -212,6 +242,13 @@
 
     .nav-item {
         margin: 0 2vw;
+        padding: 0.4rem 0.5rem;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .nav-item:hover {
+        background: #151515;
     }
 
     @media (max-width: 991px) {
@@ -228,20 +265,55 @@
         }
 
     }
-    .wrapper-burger{
+
+    .wrapper-burger {
         /* padding: 0.4rem 0.5rem; */
         border-radius: 5px;
         margin: 0 0.5rem 0 0;
     }
+
     .burger {
         border: none;
         outline: none;
         background: transparent;
         max-height: 100%;
     }
+
     @media (min-width: 768px) {
         .wrapper-burger:hover {
             background: #151515;
         }
     }
+
+    /* mobile dropdown menu from burger  */
+    .mobile-navbar-nav {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        height: 300px;
+        width: 100vw;
+        background: #000000;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-content: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0 10vw;
+    }
+
+    .mobile-navbar-nav .nav-item {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        border-radius: 0;
+        width: 100%;
+        line-height: 2.0;
+    }
+
+    @media (min-width: 768px) {
+       
+    }
+
+    /* mobile dropdown menu from burger  */
 </style>
