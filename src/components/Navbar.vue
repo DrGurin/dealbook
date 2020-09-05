@@ -1,6 +1,6 @@
 <template>
     <nav class="header">
-        <a v-bind:style="{height: logoWrapperHeight + 'px' }" class="navbar-brand" href="/">
+        <a id="logoDB" v-bind:style="{height: logoWrapperHeight + 'px' }" class="navbar-brand" href="/">
             <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/logo.svg" alt="Logo icon">
         </a>
 
@@ -24,12 +24,24 @@
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
-        <div v-if="mobile" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
+        <div id="burgerImg" v-if="mobile" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
             <button type="button" class="burger">
                 <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/burger.svg" alt="Burger icon">
             </button>
         </div>
-        <ul v-if="mobile" class="mobile-navbar-nav">
+        <div id="dropdown" v-click-outside="hideDropDowmMenu" class="dropdown">
+            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px' }"
+                v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
+                {{localization}}
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div v-bind:class="[isDropDowmMenuOpened ? 'show' : '', 'dropdown-content']">
+                <button @click="changeLocalization('EN')" class="dropdown-content-button" type="button">English</button>
+                <button @click="changeLocalization('РУ')" class="dropdown-content-button" type="button">Русский</button>
+            </div>
+        </div>
+        <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight + 'px' }"
+            class="mobile-navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
             </li>
@@ -49,27 +61,22 @@
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
-
-
-        <div v-click-outside="hideDropDowmMenu" class="dropdown">
-            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px' }"
-                v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
-                {{localization}}
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div v-bind:class="[isDropDowmMenuOpened ? 'show' : '', 'dropdown-content']">
-                <button @click="changeLocalization('EN')" class="dropdown-content-button" type="button">English</button>
-                <button @click="changeLocalization('РУ')" class="dropdown-content-button" type="button">Русский</button>
-            </div>
+        <div v-if="mobile" ref="footerWrapper" class="footer-wrapper">
+            <Footer />
         </div>
     </nav>
 </template>
 
 <script>
-    import ClickOutside from 'vue-click-outside'
+    import ClickOutside from 'vue-click-outside';
+    import Footer from './Footer.vue'
+
     export default {
         directives: {
             ClickOutside
+        },
+        components: {
+            Footer
         },
         data() {
             return {
@@ -77,6 +84,11 @@
                 isDropDowmMenuOpened: false,
                 isBurgerMenuOpened: false,
                 logoWrapperHeight: 30,
+                headerDeafultHeight: 47,
+                footerWrapper: null,
+                mobileNavBar: null,
+                clientHeight: Number,
+                burgerMenuHeight: Number,
                 mobile: Boolean,
             }
         },
@@ -101,26 +113,27 @@
             matchSizes() {
                 this.mobile = (window.innerWidth < 991) ? true : false;
                 this.logoWrapperHeight = this.$refs.logoImg.clientHeight + 'px';
+                this.footerWrappertoTop = this.$refs.footerWrapper.getBoundingClientRect().top;
+                this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
+                this.clientHeight = window.screen.height;
+                this.burgerMenuHeight = this.footerWrappertoTop - this.mobileNavBarToTop - 27;
+                console.log('this is footer', this.footerWrappertoTop);
+                console.log('this is mobilenavbar', this.mobileNavBarToTop);
+                // console.log(`${this.burgerMenuHeight} = ${this.clientHeight} - ${this.footerWrapper} - ${this.headerDeafultHeight}`);
             },
             onResize() {
                 this.mobile = (window.innerWidth < 991) ? true : false;
+                this.matchSizes();
             },
             onScroll() {
                 let el = document.getElementById('blockSubscribe');
-                var result = el.getBoundingClientRect();
-                console.log(result.top);
+                return el.getBoundingClientRect();
             }
         },
         mounted() {
             this.matchSizes();
             window.addEventListener('resize', this.onResize)
             window.addEventListener('scroll', this.onScroll)
-        },
-        computed: {
-            isMobileWidth: function () {
-                console.log(window.innerWidth < 991);
-                return window.innerWidth < 991
-            }
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.onResize);
@@ -129,18 +142,18 @@
     }
 </script>
 
-<style>
+<style scoped>
     .header * {
         font-size: 14px;
         color: #FFFFFF;
         font-family: Roboto;
         padding: 0;
         margin: 0;
-        text-decoration: none;
+        /* text-decoration: none; */
         line-height: 1.3;
         letter-spacing: 0.05em;
-        white-space: nowrap;
-        z-index: 999;
+        /* white-space: nowrap; */
+        z-index: 100;
     }
 
     .header {
@@ -156,6 +169,14 @@
         justify-content: space-between;
     }
 
+    @media (max-width: 991px) {
+        .header {
+            align-items: flex-start;
+            height: 100vh;
+            border-radius: 5px;
+        }
+    }
+
     .navbar-brand-img {
         width: 23px;
         height: 30px;
@@ -164,6 +185,7 @@
 
     .dropdown {
         overflow: hidden;
+        z-index: 101;
     }
 
     .dropdown .dropbtn {
@@ -173,13 +195,6 @@
         background-color: inherit;
         font-family: inherit;
         margin: 0;
-    }
-
-    @media (min-width: 768px) {
-        .dropdown:hover .dropbtn {
-            background: #151515;
-            border-radius: 5px;
-        }
     }
 
     .dropdown .dropbtn.clicked {
@@ -200,6 +215,12 @@
         border-radius: 5px;
     }
 
+    @media (max-width: 991px) {
+        .dropdown-content {
+            right: 1vw;
+        }
+    }
+
     .dropdown-content .dropdown-content-button {
         color: #FFFFFF;
         padding: 12px 16px;
@@ -211,18 +232,6 @@
         border: none;
         outline: none;
         text-align: center;
-    }
-
-    .dropdown-content .dropdown-content-button:hover {
-        background-color: #151515;
-    }
-
-    .dropdown-content .dropdown-content-button:nth-child(1):hover {
-        border-radius: 5px 5px 0px 0px;
-    }
-
-    .dropdown-content .dropdown-content-button:nth-child(2):hover {
-        border-radius: 0px 0px 5px 5px;
     }
 
     .dropdown .dropdown-content.show {
@@ -242,25 +251,27 @@
 
     .nav-item {
         margin: 0 2vw;
-        padding: 0.4rem 0.5rem;
         text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .header .nav-item .nav-link {
+        padding: 0.4rem 0.5rem;
+        text-decoration: none;
         border-radius: 5px;
     }
 
-    .nav-item:hover {
-        background: #151515;
-    }
-
     @media (max-width: 991px) {
-        .header :nth-child(1) {
+        .header #logoDB {
             order: 0;
         }
 
-        .header :nth-child(2) {
+        .header #burgerImg {
             order: -1;
         }
 
-        .header :nth-child(3) {
+        .header #dropdown {
             order: 1;
         }
 
@@ -270,6 +281,7 @@
         /* padding: 0.4rem 0.5rem; */
         border-radius: 5px;
         margin: 0 0.5rem 0 0;
+        height: 30px;
     }
 
     .burger {
@@ -279,27 +291,22 @@
         max-height: 100%;
     }
 
-    @media (min-width: 768px) {
-        .wrapper-burger:hover {
-            background: #151515;
-        }
-    }
 
     /* mobile dropdown menu from burger  */
     .mobile-navbar-nav {
         position: absolute;
-        top: 100px;
+        top: 46px;
         left: 0;
         height: 300px;
         width: 100vw;
-        background: #000000;
+        background: #252525;
         display: flex;
         flex-direction: column;
-        justify-items: center;
-        align-content: center;
+        justify-content: space-between;
         list-style-type: none;
         margin: 0;
-        padding: 0 10vw;
+        padding: 4vh 10vw;
+        border-top: 1px solid #151515;
     }
 
     .mobile-navbar-nav .nav-item {
@@ -311,9 +318,46 @@
         line-height: 2.0;
     }
 
-    @media (min-width: 768px) {
-       
+    /* mobile dropdown menu from burger  */
+
+    .footer-wrapper {
+        max-height: fit-content;
+        max-width: fit-content;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        overflow: hidden;
+        border: 1px solid #000000;
     }
 
-    /* mobile dropdown menu from burger  */
+    /* hover effects  */
+    @media (min-width: 991px) {
+        .header .nav-item .nav-link:hover {
+            background: #151515;
+        }
+
+        .wrapper-burger:hover {
+            background: #151515;
+        }
+
+        .dropdown:hover .dropbtn {
+            background: #151515;
+            border-radius: 5px;
+        }
+
+        .dropdown-content .dropdown-content-button:hover {
+            background-color: #151515;
+        }
+
+        .dropdown-content .dropdown-content-button:nth-child(1):hover {
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .dropdown-content .dropdown-content-button:nth-child(2):hover {
+            border-radius: 0px 0px 5px 5px;
+        }
+    }
+
+    /* hover effects  */
 </style>
