@@ -1,5 +1,6 @@
 <template>
-    <nav class="header">
+    <nav class="header" 
+        v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'header']">
         <a id="logoDB" v-bind:style="{height: logoWrapperHeight + 'px' }" class="navbar-brand" href="/">
             <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/logo.svg" alt="Logo icon">
         </a>
@@ -121,7 +122,7 @@
                 console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
-                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 46;
+                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 150;
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
@@ -174,8 +175,15 @@
     @media (max-width: 991px) {
         .header {
             align-items: flex-start;
-            height: 100vh;
+            height: 46px;
             border-radius: 5px;
+            transition: height .3s ease-in-out;
+            transition-delay: 0.3s;
+        }
+        .header.opened{
+            height: 100vh;
+            transition: height .3s ease-in-out;
+            transition-delay: 0.3s;
         }
     }
 
@@ -349,7 +357,7 @@
         z-index: 90;
     }
     .footer-wrapper.opened{
-        transition: all .3s linear;
+        transition: right .3s linear;
         right: 0;
         z-index: 90;
     }
