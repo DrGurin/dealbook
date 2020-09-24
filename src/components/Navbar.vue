@@ -182,8 +182,8 @@
         }
         .header.opened{
             height: 100vh;
-            transition: height .3s ease-in-out;
-            transition-delay: 0.3s;
+            transition: height .05s ease-in-out;
+            transition-delay: 0;
         }
     }
 
@@ -349,7 +349,7 @@
         position: absolute;
         bottom: 0;
         left: auto;
-        right: -100vw;;
+        right: -100vw;
         top: auto;
         overflow: hidden;
         border-top: 1px solid #000000;
