@@ -24,8 +24,9 @@
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
-        <div v-if="mobile" id="burgerImg" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
-            <button type="button" class="burger">
+        <div v-if="mobile" id="burgerImg" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger"
+            v-bind:class="[isBurgerMenuOpened ? 'clicked' : '', 'dropbtn']">
+            <button @click="openBurgerMenu()" type="button" class="burger">
                 <img class="navbar-brand-img" src="../assets/navbar/burger.svg" alt="Burger icon">
             </button>
         </div>
@@ -40,8 +41,8 @@
                 <button @click="changeLocalization('РУ')" class="dropdown-content-button" type="button">Русский</button>
             </div>
         </div>
-        <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight + 'px' }"
-            class="mobile-navbar-nav">
+        <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
+            v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'mobile-navbar-nav']">
             <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
             </li>
@@ -61,7 +62,8 @@
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
-        <div v-if="mobile" ref="footerWrapper" class="footer-wrapper">
+        <div v-if="mobile" ref="footerWrapper" class="footer-wrapper"
+         v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'footer-wrapper']">
             <Footer />
         </div>
     </nav>
@@ -90,6 +92,8 @@
                 clientHeight: Number,
                 burgerMenuHeight: Number,
                 mobile: Boolean,
+                heightOfFooter: Number, 
+                heightOfHeader: Number
             }
         },
         methods: {
@@ -113,10 +117,11 @@
             matchSizes() {
                 this.mobile = window.innerWidth < 991;
                 this.logoWrapperHeight = this.$refs.logoImg.clientHeight + 'px';
-                this.footerWrappertoTop = this.$refs.footerWrapper.getBoundingClientRect().top;
+                this.heightOfFooter = this.$refs.footerWrapper.getBoundingClientRect().height; 
+                console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
-                this.burgerMenuHeight = this.footerWrappertoTop - this.mobileNavBarToTop - 27;
+                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 46;
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
@@ -128,7 +133,9 @@
             }
         },
         mounted() {
-            this.matchSizes();
+            setTimeout(() => {
+                this.matchSizes();
+            }, 1009);
             window.addEventListener('resize', this.onResize)
             window.addEventListener('scroll', this.onScroll)
         },
@@ -148,7 +155,6 @@
         margin: 0;
         line-height: 1.3;
         letter-spacing: 0.05em;
-        z-index: 100;
     }
 
     .header {
@@ -162,6 +168,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        z-index: 100;
     }
 
     @media (max-width: 991px) {
@@ -279,6 +286,11 @@
         height: 30px;
     }
 
+    .wrapper-burger.clicked {
+        background: #151515;
+        border-radius: 5px;
+    }
+
     .burger {
         border: none;
         outline: none;
@@ -291,7 +303,8 @@
     .mobile-navbar-nav {
         position: absolute;
         top: 46px;
-        left: 0;
+        left: -100vw;
+        right: auto;
         height: 300px;
         width: 100vw;
         background: #252525;
@@ -302,6 +315,13 @@
         margin: 0;
         padding: 4vh 10vw;
         border-top: 1px solid #151515;
+        transition: all .3s linear;
+        z-index: 90;
+    }
+    .mobile-navbar-nav.opened {
+        left: 0;
+        transition: all .3s linear;
+        z-index: 90;
     }
 
     .mobile-navbar-nav .nav-item {
@@ -320,10 +340,18 @@
         max-width: fit-content;
         position: absolute;
         bottom: 0;
-        left: 0;
+        left: auto;
+        right: -100vw;;
         top: auto;
         overflow: hidden;
         border-top: 1px solid #000000;
+        transition: all .3s linear;
+        z-index: 90;
+    }
+    .footer-wrapper.opened{
+        transition: all .3s linear;
+        right: 0;
+        z-index: 90;
     }
 
     /* hover effects  */
