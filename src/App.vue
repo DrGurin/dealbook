@@ -1,34 +1,34 @@
 <template>
   <div id="app">
-    <!-- <Navbar/> -->
-    <!-- <About /> -->
-    <!-- <Problem /> -->
-    <Donate />
+    <Navbar/>
+    <About />
+    <Problem />
+    <!-- <Donate /> -->
     <Team />
     <Subscribe />
-    <!-- <Footer/> -->
+    <Footer/>
   </div>
 </template>
 
 <script>
-// import Navbar from './components/Navbar.vue'
-// import Footer from './components/Footer.vue'
-// import About from './components/About.vue'
-// import Problem from './components/Problem.vue'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+import About from './components/About.vue'
+import Problem from './components/Problem.vue'
 import Team from './components/Team.vue'
 import Subscribe from './components/Subscribe.vue'
-import Donate from './components/Donate.vue'
+// import Donate from './components/Donate.vue'
 
 export default {
   name: 'App',
   components: {
-    // About,
-    // Problem,
+    About,
+    Problem,
     Team,
     Subscribe,
-    Donate,
-    // Navbar,
-    // Footer
+    // Donate,
+    Navbar,
+    Footer
   }
 }
 </script>
