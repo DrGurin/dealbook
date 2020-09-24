@@ -3,7 +3,7 @@
     <Navbar/>
     <!-- <About /> -->
     <!-- <Problem /> -->
-    <!-- <Team /> -->
+    <Team />
     <!-- <Subscribe /> -->
     <!-- <Footer/> -->
   </div>
@@ -14,7 +14,7 @@ import Navbar from './components/Navbar.vue'
 // import Footer from './components/Footer.vue'
 // import About from './components/About.vue'
 // import Problem from './components/Problem.vue'
-// import Team from './components/Team.vue'
+import Team from './components/Team.vue'
 // import Subscribe from './components/Subscribe.vue'
 
 export default {
@@ -22,7 +22,7 @@ export default {
   components: {
     // About,
     // Problem,
-    // Team,
+    Team,
     // Subscribe,
     Navbar,
     // Footer

@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* start bulding footer by mobile-first */
 
 #app .footer{

@@ -24,9 +24,9 @@
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
-        <div id="burgerImg" v-if="mobile" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
+        <div v-if="mobile" id="burgerImg" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger">
             <button type="button" class="burger">
-                <img class="navbar-brand-img" ref="logoImg" src="../assets/navbar/burger.svg" alt="Burger icon">
+                <img class="navbar-brand-img" src="../assets/navbar/burger.svg" alt="Burger icon">
             </button>
         </div>
         <div id="dropdown" v-click-outside="hideDropDowmMenu" class="dropdown">
@@ -111,18 +111,15 @@
                 this.isDropDowmMenuOpened = false;
             },
             matchSizes() {
-                this.mobile = (window.innerWidth < 991) ? true : false;
+                this.mobile = window.innerWidth < 991;
                 this.logoWrapperHeight = this.$refs.logoImg.clientHeight + 'px';
                 this.footerWrappertoTop = this.$refs.footerWrapper.getBoundingClientRect().top;
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
                 this.burgerMenuHeight = this.footerWrappertoTop - this.mobileNavBarToTop - 27;
-                console.log('this is footer', this.footerWrappertoTop);
-                console.log('this is mobilenavbar', this.mobileNavBarToTop);
-                // console.log(`${this.burgerMenuHeight} = ${this.clientHeight} - ${this.footerWrapper} - ${this.headerDeafultHeight}`);
             },
             onResize() {
-                this.mobile = (window.innerWidth < 991) ? true : false;
+                this.mobile = window.innerWidth < 991;
                 this.matchSizes();
             },
             onScroll() {
@@ -149,10 +146,8 @@
         font-family: Roboto;
         padding: 0;
         margin: 0;
-        /* text-decoration: none; */
         line-height: 1.3;
         letter-spacing: 0.05em;
-        /* white-space: nowrap; */
         z-index: 100;
     }
 
@@ -328,7 +323,7 @@
         left: 0;
         top: auto;
         overflow: hidden;
-        border: 1px solid #000000;
+        border-top: 1px solid #000000;
     }
 
     /* hover effects  */
