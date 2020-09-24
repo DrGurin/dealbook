@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <Navbar/>
+    <!-- <Navbar/> -->
     <!-- <About /> -->
     <!-- <Problem /> -->
+    <Donate />
     <Team />
-    <!-- <Subscribe /> -->
+    <Subscribe />
     <!-- <Footer/> -->
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+// import Navbar from './components/Navbar.vue'
 // import Footer from './components/Footer.vue'
 // import About from './components/About.vue'
 // import Problem from './components/Problem.vue'
 import Team from './components/Team.vue'
-// import Subscribe from './components/Subscribe.vue'
+import Subscribe from './components/Subscribe.vue'
+import Donate from './components/Donate.vue'
 
 export default {
   name: 'App',
@@ -23,8 +25,9 @@ export default {
     // About,
     // Problem,
     Team,
-    // Subscribe,
-    Navbar,
+    Subscribe,
+    Donate,
+    // Navbar,
     // Footer
   }
 }
