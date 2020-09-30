@@ -32,10 +32,11 @@
             </button>
         </div>
         <div id="dropdown" v-click-outside="hideDropDowmMenu" class="dropdown">
-            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px' }"
+            <button @click="dropdowmToggle" v-bind:style="{height: logoWrapperHeight + 'px'}"
                 v-bind:class="[isDropDowmMenuOpened ? 'clicked' : '', 'dropbtn']">
-                {{localization}}
-                <i class="fa fa-caret-down"></i>
+                <p>{{localization}}</p>
+                <!-- <i class="fa fa-caret-down"></i> -->
+                <img class="navbar-icon" src="../assets/navbar/caret-down-solid.svg" alt="icon">
             </button>
             <div v-bind:class="[isDropDowmMenuOpened ? 'show' : '', 'dropdown-content']">
                 <button @click="changeLocalization('EN')" class="dropdown-content-button" type="button">English</button>
@@ -122,7 +123,7 @@
                 console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
-                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 150;
+                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 46;
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
@@ -205,8 +206,14 @@
         background-color: inherit;
         font-family: inherit;
         margin: 0;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
     }
-
+    .navbar-icon{
+        width: 18px;
+        height: 16px;
+    }
     .dropdown .dropbtn.clicked {
         background: #151515;
         border-radius: 5px;
