@@ -7,7 +7,7 @@
 
         <ul v-if="!mobile" class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">{{$t('home')}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -39,14 +39,14 @@
                 <img class="navbar-icon" src="../assets/navbar/caret-down-solid.svg" alt="icon">
             </button>
             <div v-bind:class="[isDropDowmMenuOpened ? 'show' : '', 'dropdown-content']">
-                <button @click="changeLocalization('EN')" class="dropdown-content-button" type="button">English</button>
-                <button @click="changeLocalization('РУ')" class="dropdown-content-button" type="button">Русский</button>
+                <button @click="changeLocalization('en')" class="dropdown-content-button" type="button">English</button>
+                <button @click="changeLocalization('ru')" class="dropdown-content-button" type="button">Русский</button>
             </div>
         </div>
         <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
             v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'mobile-navbar-nav']">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">{{$t("home")}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -113,6 +113,8 @@
                 }
             },
             changeLocalization(ctx) {
+                this.$i18n.locale = ctx;
+                // console.log(this.$i18n.locale); 
                 this.localization = ctx;
                 this.isDropDowmMenuOpened = false;
             },
@@ -123,27 +125,28 @@
                 console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
+                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - this.heightOfFooter/2;
                 this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 46;
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
                 this.matchSizes();
             },
-            onScroll() {
-                let el = document.getElementById('blockSubscribe');
-                return el.getBoundingClientRect();
-            }
+            // onScroll() {
+            //     let el = document.getElementById('blockSubscribe');
+            //     return el.getBoundingClientRect();
+            // }
         },
         mounted() {
             setTimeout(() => {
                 this.matchSizes();
-            }, 1009);
+            }, 10);
             window.addEventListener('resize', this.onResize)
-            window.addEventListener('scroll', this.onScroll)
+            // window.addEventListener('scroll', this.onScroll)
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.onResize);
-            window.removeEventListener('scroll', this.onScroll);
+            // window.removeEventListener('scroll', this.onScroll);
         }
     }
 </script>
@@ -328,7 +331,7 @@
         justify-content: space-between;
         list-style-type: none;
         margin: 0;
-        padding: 4vh 10vw;
+        padding: 4vh 0vw;
         border-top: 1px solid #151515;
         transition: all .3s linear;
         z-index: 90;

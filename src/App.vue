@@ -6,13 +6,13 @@
     <Donate />
     <Team />
     <Subscribe />
-    <Footer/>
+    <!-- <Footer/> -->
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
+// import Footer from './components/Footer.vue'
 import About from './components/About.vue'
 import Problem from './components/Problem.vue'
 import Team from './components/Team.vue'
@@ -28,7 +28,7 @@ export default {
     Subscribe,
     Donate,
     Navbar,
-    Footer
+    // Footer
   }
 }
 </script>
@@ -39,14 +39,7 @@ export default {
 body{
   background: #000000;
 }
-#app .container{
-  background: #000;
-  width: 100%;
-  height: 10000vh;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
+
 #app .header__wrapper{
   width: 100vw;
   height: fit-content;
@@ -112,8 +105,10 @@ body{
 
 }
 
-@media (min-width: 992px) {
-
+@media (max-width: 990px) {
+#app{
+  padding: 0 10px;
+}
 }
 
 @media (min-width: 1200px) {
