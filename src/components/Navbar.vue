@@ -122,7 +122,7 @@
                 this.mobile = window.innerWidth < 991;
                 this.logoWrapperHeight = this.$refs.logoImg.clientHeight + 'px';
                 this.heightOfFooter = this.$refs.footerWrapper.getBoundingClientRect().height; 
-                console.log(this.heightOfFooter);
+                // console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
                 this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - this.heightOfFooter/2;

@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     test() {
-      console.log('ochko arangutanga')
+      // console.log('ochko arangutanga')
     }
   }
 };

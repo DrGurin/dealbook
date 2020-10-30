@@ -1,33 +1,37 @@
 <template>
   <div id="app">
     <Navbar/>
-    <About />
+    <br><br><br><br>
+    <Home/>
+    <!-- <About />
     <Problem />
     <Donate />
     <Team />
-    <Subscribe />
+    <Subscribe /> -->
     <!-- <Footer/> -->
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar.vue';
+import Home from './components/Home.vue'
 // import Footer from './components/Footer.vue'
-import About from './components/About.vue'
-import Problem from './components/Problem.vue'
-import Team from './components/Team.vue'
-import Subscribe from './components/Subscribe.vue'
-import Donate from './components/Donate.vue'
+// import About from './components/About.vue'
+// import Problem from './components/Problem.vue'
+// import Team from './components/Team.vue'
+// import Subscribe from './components/Subscribe.vue'
+// import Donate from './components/Donate.vue'
 
 export default {
   name: 'App',
   components: {
-    About,
-    Problem,
-    Team,
-    Subscribe,
-    Donate,
+    // About,
+    // Problem,
+    // Team,
+    // Subscribe,
+    // Donate,
     Navbar,
+    Home,
     // Footer
   }
 }
