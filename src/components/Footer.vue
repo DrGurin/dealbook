@@ -15,7 +15,7 @@
           </a>
       </div>
       <div class="footer-item warning-block">
-          <img src="../assets/footer/warning.svg" class="warning-item warning-icon" alt="Warning icon">
+          <img src="../assets/common/warning.svg" class="warning-item warning-icon" alt="Warning icon">
           <p class="warning-item warning-text">Donations are completely free-will and are non-obligatory, but they will help us to develop further and  faster. <u>The team consists of volunteers and fans of the idea</u></p>
       </div>
   </div>

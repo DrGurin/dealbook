@@ -6,7 +6,6 @@ import '@fortawesome/fontawesome-free/js/all.js'
 import {i18n} from "./plugins/i18n.js"
 import Chart from 'chart.js'
 // 2. Импортируйте метод `generateChart()` для создания компонента vue
-import { generateChart } from 'vue-chartjs'
 
 // 3. Расширьте один из графиков по умолчанию
 // http://www.chartjs.org/docs/latest/developers/charts.html
@@ -20,7 +19,5 @@ Vue.component('VueSlickCarousel', VueSlickCarousel)
 
 new Vue({
   i18n,
-  Chart,
-  generateChart,
   render: h => h(App),
 }).$mount('#app')

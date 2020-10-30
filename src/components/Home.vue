@@ -4,7 +4,7 @@
         <div class="canvas-wrapper">
             <canvas ref="canvas"></canvas>
         </div>
-        <p class="solution">{{$t("home_solution")}}</p>
+        <p class="solution">{{$t("homeSolution")}}</p>
         <button class="arrowButton" @click="test()">
             <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
         </button>
@@ -212,7 +212,7 @@ export default {
         padding: 80% 5% 45% 5%;
     }
 }
-@media (orientation: landscape) {
+@media (orientation: landscape ) and (max-width: 700px) {
   #app .block.block-home{
         padding: 55px 5% 5% 5%;
         height: auto;

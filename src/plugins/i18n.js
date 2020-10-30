@@ -9,11 +9,22 @@ export const i18n = new VueI18n({
     messages: {
         EN: {
             home: "Home", 
-            home_solution: "Trader's personal diary",
+            homeSolution: "Trader's personal diary",
+            roadmap: "Roadmap", 
+            creation: "Creation of the idea", 
+            gatheringTeam: "Gathering of the volunteer team of developers", 
+            estimatedProject: "Estimated launch of Product MVP", 
+            integrationOfExchanhe: "Integration of exchnage API", 
+            commingSoon: "Coming soon",
+            updatingSectionOfRoadMap: "Updating the platform with constant adding new features",
+            quater3: "Q3 2020", 
+            quater4: "Q4 2020", 
+            quater14: "Q1-Q4 2021", 
+            quater214: "Q1-Q4 2022"
         }, 
         РУ: {
             home: "Главная",
-            home_solution: "Дневник трейдера",
+            homeSolution: "Дневник трейдера",
         }
     }
 })
