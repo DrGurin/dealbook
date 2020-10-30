@@ -39,8 +39,8 @@
                 <img class="navbar-icon" src="../assets/navbar/caret-down-solid.svg" alt="icon">
             </button>
             <div v-bind:class="[isDropDowmMenuOpened ? 'show' : '', 'dropdown-content']">
-                <button @click="changeLocalization('en')" class="dropdown-content-button" type="button">English</button>
-                <button @click="changeLocalization('ru')" class="dropdown-content-button" type="button">Русский</button>
+                <button @click="changeLocalization('EN')" class="dropdown-content-button" type="button">English</button>
+                <button @click="changeLocalization('РУ')" class="dropdown-content-button" type="button">Русский</button>
             </div>
         </div>
         <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
@@ -88,14 +88,12 @@
                 isDropDowmMenuOpened: false,
                 isBurgerMenuOpened: false,
                 logoWrapperHeight: 30,
-                headerDeafultHeight: 47,
                 footerWrapper: null,
                 mobileNavBar: null,
                 clientHeight: Number,
                 burgerMenuHeight: Number,
                 mobile: Boolean,
                 heightOfFooter: Number, 
-                heightOfHeader: Number
             }
         },
         methods: {

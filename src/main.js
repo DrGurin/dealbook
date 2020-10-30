@@ -10,10 +10,9 @@ import { generateChart } from 'vue-chartjs'
 
 // 3. Расширьте один из графиков по умолчанию
 // http://www.chartjs.org/docs/latest/developers/charts.html
-Chart.defaults.global.defaultFontColor = 'red';
+Chart.defaults.global.defaultFontColor = 'transparent';
 Chart.defaults.global.legend.display = false;
 Chart.defaults.global.elements.line.tension = 0;
-
 
 
 Vue.config.productionTip = false

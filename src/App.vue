@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Navbar/>
-    <br><br><br><br>
     <Home/>
     <!-- <About />
     <Problem />

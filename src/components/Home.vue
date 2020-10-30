@@ -1,6 +1,13 @@
 <template>
-    <div class="canvas-wrapper">
-        <canvas ref="canvas"></canvas>
+    <div class="block block-home">
+        <h1 class="title">Deal Book</h1>
+        <div class="canvas-wrapper">
+            <canvas ref="canvas"></canvas>
+        </div>
+        <p class="solution">{{$t("home_solution")}}</p>
+        <button class="arrowButton" @click="test()">
+            <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
+        </button>
     </div>
 </template>
 <script>
@@ -12,6 +19,9 @@ export default {
             dataOfChart: {
                 labels: [12, -19, 3, 5, 2, 3, 12, -19, 3, 5, 2, 3, 12, -19, 3, 5, 2, 3, 12, -19, 3, 5, 2, 3, -10, 5],
                 datasets: [{
+                    barPercentage: 1,
+                    categoryPercentage: 1,
+                    maxBarThickness : 25,
                     label: '1',
                     data: [],
                     backgroundColor: function(context) {
@@ -19,10 +29,10 @@ export default {
                         var value = context.dataset.data[index];
                         return value < 0 ? '#ffffff' : '#386EE6';
                     },
-                    borderColor: [
-                        'transparent' // TODO!!! 
-                    ],
-                    borderWidth: 1
+                    borderColor: function() {
+                        return '#252525';
+                    },
+                    borderWidth: 0 // TODO. If you will create border - you wil get shaddow. Shaddow cannot be deleted without border.
                 }]
             }, 
             optionsOfChart: {
@@ -36,6 +46,7 @@ export default {
                         bottom: 0
                     }
                 }, 
+                    lineTension: 0, 
                 legend: { 
                     display: false,
                 },
@@ -44,9 +55,6 @@ export default {
                 },
                 scales: {
                     xAxes: [{
-                        maxBarThickness : 25,
-                        barPercentage: 1,
-                        categoryPercentage: 1,
                         angleLines: {
                             display: false
                         },
@@ -118,10 +126,100 @@ export default {
 }
 </script>
 <style scoped>
+#app .block-home{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20% 5% 5% 5%;
+}
+.title{
+    font-size: 91px;
+    line-height: 1.0;
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: bold;
+    color: #FFFFFF;
+}
 .canvas-wrapper{
     width: 50vw; 
-    position: relative;
-    margin: 0 auto; 
+}
+.solution{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    color: #959595;
+    white-space: nowrap;
+}
+@media (max-width: 980px){
+    .title{
+        font-size: 80px;
+    }
+    .solution{
+        font-size: 18px;
+    }
+}
+@media (max-width: 900px){
+    .title{
+        font-size: 80px;
+    }
+    .solution{
+        font-size: 18px;
+    }
+    .canvas-wrapper{
+        width: 65vw; 
+    }
+}
+@media (max-width: 683px){
+    #app .block.block-home{
+        padding: 30% 5% 5% 5%;
+    }
+    .title{
+        font-size: 70px;
+    }
+}
+@media (max-width: 600px){
+    .canvas-wrapper{
+        width: 80vw; 
+    }
+}
+@media (max-width: 600px){
+    .title{
+        font-size: 60px;
+    }
+    .canvas-wrapper{
+        width: 90vw; 
+    }
+}
+@media (max-width: 420px){
+    .title{
+        font-size: 55px;
+    }
+    #app .block.block-home{
+        padding: 40% 5% 25% 5%;
+    }
+}
+@media (max-width: 310px){
+    .title{
+        font-size: 45px;
+    }
+    .solution{
+        font-size: 12px;
+    }
+    #app .block.block-home{
+        padding: 80% 5% 45% 5%;
+    }
+}
+@media (orientation: landscape) {
+  #app .block.block-home{
+        padding: 55px 5% 5% 5%;
+        height: auto;
+    }
+    #app .block.block-home > * {
+        margin: 10px 0;
+    }
 }
 
 </style>

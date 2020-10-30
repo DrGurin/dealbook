@@ -4,14 +4,16 @@ import VueI18n from "vue-i18n";
 Vue.use(VueI18n); 
 
 export const i18n = new VueI18n({
-    locale: "en", 
-    fallbackLocale : "ru",
+    locale: "EN", 
+    fallbackLocale : "РУ",
     messages: {
-        en: {
-            home: "Home"
+        EN: {
+            home: "Home", 
+            home_solution: "Trader's personal diary",
         }, 
-        ru: {
-            home: "Главная"
+        РУ: {
+            home: "Главная",
+            home_solution: "Дневник трейдера",
         }
     }
 })
