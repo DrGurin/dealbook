@@ -2,28 +2,56 @@
     <div class="block block-roadmap">
         <h2 class="block-name">{{$t("roadmap")}}</h2>
         <div class="roadmap_wrapper">
-            <!-- svg-images that must be animated -->
-            <!-- <svg class="line firstLine" width="320" height="161" viewBox="0 0 320 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="firstLinePath" d="M0 1H269C296.614 1 319 23.3858 319 51V161" stroke="#386EE6"
-                    stroke-width="2" />
-            </svg> -->
-            <!-- <svg class="line secondLineBlue" width="160" height="2" viewBox="0 0 160 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="secondLineBluePath" d="M160 1.00001L0 1" stroke="#386EE6" stroke-width="2" />
-            </svg> -->
-            <!-- <svg class="line secondLineGrey" width="321" height="161" viewBox="0 0 321 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="secondLineGreyPath" d="M321 1H51C23.3858 1 1 23.3858 1 51V161" stroke="white" />
-            </svg> -->
-            <!-- <svg class="line thirdLine" width="320" height="161" viewBox="0 0 320 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="thirdLinePath" d="M0 1H269C296.614 1 319 23.3858 319 51V161" stroke="white" />
-            </svg> -->
-            <!-- <svg class="line fourthLine" width="321" height="161" viewBox="0 0 321 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="fourthLinePath" d="M321 1H51C23.3858 1 1 23.3858 1 51V161" stroke="white" />
-            </svg>  -->
-            <!-- svg-images that must be animated-->
 
-            <div class="step">
+            <div ref="stepWrapperFirst" class="step">
                 <div ref="stepImageFirst" class="step_image_wrapper">
-                    <img class="step_image" src="./../assets/roadmap/test.svg" alt="Lamp icon">
+                    <svg width="55" height="64" viewBox="0 0 55 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M33.1006 55.2407H22.0555C20.9477 55.2407 20.0463 54.3392 20.0463 53.2314C20.0463 52.1236 20.9477 51.2222 22.0555 51.2222H33.1006C34.2084 51.2222 35.1099 52.1236 35.1099 53.2314C35.1112 54.3392 34.2084 55.2407 33.1006 55.2407ZM22.0555 52.142C21.455 52.142 20.9661 52.6309 20.9661 53.2314C20.9661 53.832 21.455 54.3208 22.0555 54.3208H33.1006C33.7012 54.3208 34.19 53.832 34.19 53.2314C34.19 52.6309 33.7012 52.142 33.1006 52.142H22.0555Z"
+                            fill="white" />
+                        <path
+                            d="M27.5814 63.1083C26.0387 63.1083 24.7324 62.0778 24.3513 60.6096C22.3683 60.3217 20.8624 58.6209 20.8624 56.5914V56.1313H34.2926V56.5914C34.2926 58.6182 32.7906 60.3191 30.8115 60.6096C30.4317 62.0778 29.1255 63.1083 27.5814 63.1083ZM21.8164 57.0514C22.0319 58.5012 23.2475 59.6395 24.76 59.7276L25.1332 59.7486L25.1884 60.118C25.3698 61.318 26.3764 62.1882 27.5814 62.1882C28.7878 62.1882 29.7944 61.318 29.9744 60.118L30.0296 59.7486L30.4015 59.7263C31.9101 59.6369 33.123 58.4986 33.3386 57.0501H21.8164V57.0514Z"
+                            fill="white" />
+                        <path
+                            d="M34.8392 49.3003H20.2355V44.0085C18.8307 41.6346 17.192 39.2411 15.4889 37.0815C13.3351 34.3489 12.1971 31.0668 12.1971 27.5915C12.1971 19.1083 19.0975 12.2063 27.5788 12.2063C36.06 12.2063 42.9591 19.1083 42.9591 27.5915C42.9591 31.0694 41.8198 34.3515 39.6659 37.0842C38.1311 39.0321 36.332 41.6623 34.8379 44.1425V49.3003H34.8392ZM21.1554 48.3802H33.9193V43.8862L33.985 43.7771C35.5107 41.2338 37.3649 38.5182 38.9445 36.5137C40.9695 33.9453 42.0405 30.8604 42.0405 27.5915C42.0405 19.6156 35.5541 13.1264 27.5801 13.1264C19.606 13.1264 13.1183 19.6156 13.1183 27.5915C13.1183 30.8578 14.188 33.9427 16.213 36.5111C17.966 38.7364 19.6533 41.2048 21.0923 43.6496L21.1554 43.7574V48.3802Z"
+                            fill="white" stroke="white" />
+                        <path d="M22.6523 32.4345L21.6254 32.6595L25.118 48.6058L26.1449 48.3808L22.6523 32.4345Z"
+                            fill="white" />
+                        <path d="M32.5197 32.4532L29.0283 48.7449L29.9277 48.9377L33.4192 32.6461L32.5197 32.4532Z"
+                            fill="white" />
+                        <path d="M30.2438 59.7485H25.0754V60.6684H30.2438V59.7485Z" fill="white" />
+                        <path
+                            d="M26.7575 38.0293L25.8376 34.5014L23.3382 36.1747L22.9728 35.6292L26.241 33.442L26.8981 35.9604L28.5841 31.8542L29.9757 35.8237L32.4371 34.6973L32.7104 35.2953L29.5933 36.7202L28.5355 33.7023L26.7575 38.0293Z"
+                            fill="#3977FF" class="lamp_animated" />
+                        <path
+                            d="M28.1543 8.99805C27.9362 8.99805 27.7601 8.82192 27.7601 8.60373V1.76883C27.7601 1.55064 27.9362 1.37451 28.1543 1.37451C28.3725 1.37451 28.5486 1.55064 28.5486 1.76883V8.60373C28.5486 8.82192 28.3725 8.99805 28.1543 8.99805Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M38.6251 11.5564C38.5555 11.5564 38.4845 11.538 38.4214 11.4986C38.2348 11.3855 38.1757 11.1437 38.2887 10.957L41.8303 5.11174C41.9433 4.92509 42.1851 4.86594 42.3717 4.97898C42.5583 5.09202 42.6174 5.33388 42.5044 5.52053L38.9629 11.3658C38.8893 11.4894 38.7592 11.5564 38.6251 11.5564Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M45.1327 19.8068C44.9908 19.8068 44.8528 19.7293 44.7831 19.5953C44.6819 19.4021 44.7568 19.1642 44.95 19.063L51.0081 15.9013C51.2012 15.8001 51.4391 15.875 51.5403 16.0682C51.6415 16.2614 51.5666 16.4992 51.3734 16.6004L45.3153 19.7621C45.2562 19.7924 45.1931 19.8068 45.1327 19.8068Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M53.9215 29.5472C53.9136 29.5472 53.9044 29.5472 53.8965 29.5459L47.0776 29.1109C46.8607 29.0964 46.6952 28.9098 46.7096 28.6917C46.7241 28.4749 46.9107 28.3106 47.1288 28.3237L53.9477 28.7587C54.1646 28.7732 54.3301 28.9598 54.3157 29.1779C54.3012 29.3869 54.1278 29.5472 53.9215 29.5472Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M49.5705 43.3109C49.4929 43.3109 49.4141 43.2886 49.3457 43.24L43.7397 39.3331C43.561 39.2083 43.5177 38.9625 43.6412 38.7838C43.766 38.6051 44.0118 38.5617 44.1905 38.6853L49.7965 42.5921C49.9752 42.7169 50.0186 42.9627 49.895 43.1414C49.8175 43.2518 49.6953 43.3109 49.5705 43.3109Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M16.6888 11.5564C16.556 11.5564 16.4259 11.4894 16.351 11.3658L12.8095 5.52053C12.6965 5.33388 12.7556 5.09202 12.9422 4.97898C13.1288 4.86594 13.3706 4.92509 13.4836 5.11174L17.0252 10.957C17.1382 11.1437 17.0791 11.3855 16.8925 11.4986C16.8294 11.538 16.7584 11.5564 16.6888 11.5564Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M10.1826 19.8068C10.1208 19.8068 10.0591 19.7924 9.99995 19.7621L3.9419 16.6004C3.74872 16.4992 3.67382 16.2614 3.77501 16.0682C3.87619 15.875 4.11405 15.8001 4.30722 15.9013L10.3653 19.063C10.5584 19.1642 10.6334 19.4021 10.5322 19.5953C10.4625 19.7293 10.3245 19.8068 10.1826 19.8068Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M1.3938 29.5472C1.18748 29.5472 1.01402 29.3869 1.00088 29.1779C0.986424 28.9611 1.152 28.7732 1.36883 28.7587L8.18775 28.3237C8.40589 28.3106 8.5925 28.4749 8.60695 28.6917C8.62141 28.9085 8.45583 29.0964 8.239 29.1109L1.42008 29.5459C1.41088 29.5472 1.40168 29.5472 1.3938 29.5472Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                        <path
+                            d="M5.74481 43.312C5.61997 43.312 5.49776 43.2529 5.42154 43.1424C5.2967 42.9637 5.34138 42.7179 5.5201 42.593L11.1261 38.6851C11.3048 38.5602 11.5505 38.6049 11.6754 38.7837C11.8002 38.9625 11.7555 39.2083 11.5768 39.3331L5.97084 43.241C5.90119 43.2897 5.82235 43.312 5.74481 43.312Z"
+                            fill="#3977FF" class="lamp_animated" stroke="#3977FF" />
+                    </svg>
+
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("quater3")}}</p>
@@ -32,7 +60,7 @@
                 <p class="step_description">{{$t("creation")}}</p>
             </div>
 
-            <div class="step">
+            <div ref="stepWrapperSecond" class="step">
                 <div ref="stepImageSecond" class="step_image_wrapper">
                     <img class="step_image" src="./../assets/roadmap/team.svg" alt="Team icon">
                 </div>
@@ -43,15 +71,15 @@
                 <p class="step_description">{{$t("gatheringTeam")}}</p>
             </div>
 
-            <div class="step">
+            <div ref="stepWrapperThird" class="step">
                 <div ref="stepImageThird" class="step_image_wrapper step_image_rocket">
                     <!-- animation assets  -->
-                        <div class="star star1"></div>
-                        <div class="star star2"></div>
-                        <div class="star star3"></div>
-                        <div class="star star4"></div>
-                        <div class="star star5"></div>
-                        <div class="star star6"></div>
+                    <div class="star star1"></div>
+                    <div class="star star2"></div>
+                    <div class="star star3"></div>
+                    <div class="star star4"></div>
+                    <div class="star star5"></div>
+                    <div class="star star6"></div>
                     <!-- animation assets  -->
                     <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="firstfire"
@@ -76,7 +104,7 @@
                 <p class="step_description">{{$t("estimatedProject")}}</p>
             </div>
 
-            <div class="step">
+            <div ref="stepWrapperFourth" class="step">
                 <div ref="stepImageFourth" class="step_image_wrapper">
                     <img class="step_image" src="./../assets/roadmap/code.svg" alt="Code icon">
                 </div>
@@ -87,7 +115,7 @@
                 <p class="step_description">{{$t("integrationOfExchanhe")}}</p>
             </div>
 
-            <div class="step">
+            <div ref="stepWrapperFivth" class="step">
                 <div ref="stepImageFivth" class="step_image_wrapper">
                     <img class="step_image" src="./../assets/roadmap/ask.svg" alt="Ask icon">
                 </div>
@@ -96,7 +124,36 @@
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
             </div>
-
+            
+            <!-- svg-images that must be animated -->
+            <!-- <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path refs="firstLinePath" v-bind:d="directionForPathOfLeftToRightLine" fill="transparent" stroke="#386EE6" stroke-width="2"></path>
+            </svg> -->
+            <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="firstLinePathTest" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2"/>
+            </svg>
+            <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}" class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheSecondLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="white" stroke-width="2"/>
+            </svg>
+            <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfBlueLine + 'px'}" class="line secondLineBlue" :width="widthOfBlueLine" height="2" :viewBox="viewboxForBlueOne" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path ref="secondLineBluePath" d="M160 1.00001L0 1" stroke="#386EE6" stroke-width="2" />
+            </svg>
+            <!-- <svg class="line thirdLine" width="320" height="161" viewBox="0 0 320 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path ref="thirdLinePath" d="M0 1H269C296.614 1 319 23.3858 319 51V161" stroke="white" />
+            </svg> -->
+            <!-- <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path refs="thirdLinePath" v-bind:d="directionForPathOfLeftToRightLine2" fill="transparent" stroke="#386EE6" stroke-width="2"></path>
+            </svg> -->
+            <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}" class="line secondLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="firstLinePathTest" :d="directionForPathOfLeftToRightLine2" stroke="#386EE6" stroke-width="2"/>
+            </svg>
+            <svg :style="{top: exitTopPositionOfTheFourthIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}" class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheFourthLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="fourthLineGreyPath" :d="directionForPathOfRightToLeftLine2" stroke="white" stroke-width="2"/>
+            </svg>
+            <!-- <svg class="line fourthLine" width="321" height="161" viewBox="0 0 321 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path ref="fourthLinePath" d="M321 1H51C23.3858 1 1 23.3858 1 51V161" stroke="white" />
+            </svg>  -->
+            <!-- svg-images that must be animated-->
         </div>
 
 
@@ -108,6 +165,37 @@
             return {
                 length: null,
                 heightOfIcon: Number,
+                widthOfIcon: Number,
+
+                // tops for line exit from icon 
+                exitTopPositionOfTheFirstIcon: null, 
+                exitTopPositionOfTheSecondIcon: null, 
+                exitTopPositionOfTheThirdIcon: null, 
+                exitTopPositionOfTheFourthIcon: null, 
+                exitTopPositionOfTheFivthIcon: null, 
+
+                exitLeftPositionOfTheFirstIcon: null, 
+                exitLeftPositionOfTheSecondIcon: null, 
+                exitLeftPositionOfTheThirdIcon: null, 
+                exitLeftPositionOfTheFourthIcon: null, 
+
+                widthOfTheLine: null, 
+                heightOfTheLine: null, 
+                heightOfTheSecondLine: null,
+                heightOfTheThirdLine: null,
+                heightOfTheFourthLine: null,
+
+                viewbox: String,
+                viewboxForBlueOne: String, 
+                directionForPathOfLeftToRightLine: String,
+                directionForPathOfLeftToRightLine2: String,
+                directionForPathOfRightToLeftLine: String,
+                directionForPathOfRightToLeftLine2: String,
+                coeffForHorizontalOfleftToRightLine: 1.38636, 
+                coeffForVerticalOfleftToRightLine: 2.74509, 
+                // widthOfTheSecondLine: null, 
+                // widthOfTheThirdLine: null, 
+                // widthOfTheFourthLine: null, 
 
             }
         },
@@ -120,18 +208,78 @@
             getPosition() {
                 // stepImageFirst
                 this.heightOfIcon = this.$refs.stepImageFirst.clientHeight;
-                console.log(this.heightOfIcon);
+                this.widthOfIcon = this.$refs.stepImageFirst.clientWidth;
+
+                // tops for line exit from icon
+                this.exitTopPositionOfTheFirstIcon = this.$refs.stepWrapperFirst.offsetTop + (this.heightOfIcon/2); 
+                this.exitTopPositionOfTheSecondIcon = this.$refs.stepWrapperSecond.offsetTop + (this.heightOfIcon/2);
+                this.exitTopPositionOfTheThirdIcon = this.$refs.stepWrapperThird.offsetTop + (this.heightOfIcon/2);
+                this.exitTopPositionOfTheFourthIcon = this.$refs.stepWrapperFourth.offsetTop + (this.heightOfIcon/2);
+                this.exitTopPositionOfTheFivthIcon = this.$refs.stepWrapperFivth.offsetTop + (this.heightOfIcon/2);
+
+                // position of line exit starting 
+                this.exitLeftPositionOfTheFirstIcon = this.$refs.stepImageFirst.offsetLeft + this.widthOfIcon;
+                this.exitLeftPositionOfTheSecondIcon = this.$refs.stepImageSecond.offsetLeft;
+                this.exitLeftPositionOfTheThirdIcon = this.$refs.stepImageThird.offsetLeft + this.widthOfIcon;
+                this.exitLeftPositionOfTheFourthIcon = this.$refs.stepImageFourth.offsetLeft;
+
+                // needable width for connection lines
+                this.widthOfTheLine = (this.exitLeftPositionOfTheSecondIcon + this.widthOfIcon/2) -this.exitLeftPositionOfTheFirstIcon;
+                this.heightOfTheLine = this.exitTopPositionOfTheSecondIcon - (this.heightOfIcon/2) - this.exitTopPositionOfTheFirstIcon; 
+                this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this.exitTopPositionOfTheSecondIcon; 
+                this.heightOfTheThirdLine = this.$refs.stepWrapperFourth.offsetTop - this.exitTopPositionOfTheThirdIcon; 
+                this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this.exitTopPositionOfTheFourthIcon + 20; 
+                console.log(this.heightOfTheLine);
+                this.viewbox = `0 0 ${this.widthOfTheLine} ${this.heightOfTheLine}`; 
+                this.viewboxThirdLine = `0 0 ${this.widthOfTheLine} ${this.heightOfTheThirdLine}`; 
+                this.widthOfBlueLine = this.widthOfTheLine/3; 
+                this.viewboxForBlueOne = `0 0 ${this.widthOfBlueLine} 2`
+                // let koef = 1031;
+                // let clientHeight = window.innerHeight; 
+                // let koef = (1.14651 * clientHeight)/1183;
+                if (window.innerWidth < 800) {
+                        this.coeffForHorizontalOfleftToRightLine = this.coeffForHorizontalOfleftToRightLine + 0.4; 
+                }
+                if (window.innerWidth < 600) {
+                        this.coeffForHorizontalOfleftToRightLine = this.coeffForHorizontalOfleftToRightLine + 0.6;                     
+                }
+                if (window.innerWidth > 1200) {
+                        this.coeffForVerticalOfleftToRightLine = this.coeffForVerticalOfleftToRightLine - 1;                     
+                }
+                // this.directionForPathOfLeftToRightLine = `M 0 1 h ${this.widthOfTheLine/this.coeffForHorizontalOfleftToRightLine} C ${this.widthOfTheLine/1.14651} 1 ${''} ${this.widthOfTheLine/1.00549} ${this.heightOfTheLine/5.98653} ${''} ${(this.widthOfTheLine/1.00549)-1} ${this.heightOfTheLine/this.coeffForVerticalOfleftToRightLine} v ${this.heightOfTheLine}`
+                this.directionForPathOfLeftToRightLine = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`
+                this.directionForPathOfLeftToRightLine2 = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheThirdLine}`
+                this.directionForPathOfRightToLeftLine = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`
+                this.directionForPathOfRightToLeftLine2 = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`
+
+
+
                 return this.heightOfIcon
+            }, 
+            onResize() {
+                this.getPosition(); 
+            },
+            handleScroll() {
+                // console.log(this.$refs.stepImageFirst.getBoundingClientRect().top, '====', window.innerHeight);
+                    
+                // console.log(this.exitTopPositionOfTheFirstIcon,'\n',
+                //             this.exitTopPositionOfTheSecondIcon,'\n',
+                //             this.exitTopPositionOfTheThirdIcon,'\n',
+                //             this.exitTopPositionOfTheFourthIcon,'\n',
+                //             this.exitTopPositionOfTheFivthIcon);
             }
         },
         mounted: function () {
-            // this.$nextTick(function () {
-            //     setTimeout(() => {
-            //         this.getPosition();
-            //     }, 100);
-            // })
             this.getPosition();
 
+        },
+        created() {
+            window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('resize', this.onResize)
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.handleScroll);
+            window.removeEventListener('resize', this.onResize);
         },
         watch: {
             //   watchers
@@ -177,7 +325,6 @@
         margin-top: 10px;
         position: relative;
     }
-
     .step:nth-child(2n) {
         align-self: flex-end;
     }
@@ -229,6 +376,32 @@
         line-height: 19px;
         color: #787878;
     }
+
+    /* lines styles  */
+    .line{
+        position: absolute;
+    }
+    #app .firstLine, 
+    #app .secondLine{
+        transform: rotate3d(0, 360, 0, 180deg);
+    }
+
+    /* animation for lamp  */
+    #app .lamp_animated {
+        animation: lampBlining .8s ease-in-out alternate infinite;
+    }
+
+    @keyframes lampBlining {
+        0% {
+            opacity: 0.2;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* animation for lamp  */
 
     /* animation for rocket  */
     #app .step_image_rocket {

@@ -3,7 +3,7 @@
     <Navbar/>
     <Home/>
     <Roadmap/>
-    <!-- <About />
+    <About />
     <Problem />
     <Donate />
     <Team />
@@ -17,7 +17,7 @@ import Navbar from './components/Navbar.vue';
 import Roadmap from './components/Roadmap.vue';
 import Home from './components/Home.vue'
 // import Footer from './components/Footer.vue'
-// import About from './components/About.vue'
+import About from './components/About.vue'
 // import Problem from './components/Problem.vue'
 // import Team from './components/Team.vue'
 // import Subscribe from './components/Subscribe.vue'
@@ -26,7 +26,7 @@ import Home from './components/Home.vue'
 export default {
   name: 'App',
   components: {
-    // About,
+    About,
     // Problem,
     // Team,
     // Subscribe,
@@ -68,6 +68,7 @@ body{
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 #app .block-content {
   width: 65%;
