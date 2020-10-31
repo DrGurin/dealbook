@@ -2,12 +2,12 @@
   <div id="app">
     <Navbar/>
     <Home/>
-    <Roadmap/>
     <About />
-    <Problem />
-    <Donate />
-    <Team />
-    <Subscribe /> -->
+    <Roadmap/>
+    <!-- <Problem /> -->
+    <!-- <Donate /> -->
+    <!-- <Team /> -->
+    <!-- <Subscribe /> --> -->
     <!-- <Footer/> -->
   </div>
 </template>

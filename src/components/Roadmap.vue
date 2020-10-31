@@ -1,5 +1,5 @@
 <template>
-    <div class="block block-roadmap">
+    <div class="block block-roadmap" @wheel="wheelingPage">
         <h2 class="block-name">{{$t("roadmap")}}</h2>
         <div class="roadmap_wrapper">
 
@@ -124,18 +124,25 @@
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
             </div>
-            
+
             <!-- svg-images that must be animated -->
             <!-- <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
                 <path refs="firstLinePath" v-bind:d="directionForPathOfLeftToRightLine" fill="transparent" stroke="#386EE6" stroke-width="2"></path>
             </svg> -->
-            <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="firstLinePathTest" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2"/>
+            <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}"
+                class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none"
+                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="firstLinePath" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
             </svg>
-            <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}" class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheSecondLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="white" stroke-width="2"/>
+            <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
+                class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheSecondLine" :viewBox="viewbox"
+                fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="#ffffff"
+                    stroke-width="2" />
             </svg>
-            <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfBlueLine + 'px'}" class="line secondLineBlue" :width="widthOfBlueLine" height="2" :viewBox="viewboxForBlueOne" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfBlueLine + 'px'}"
+                class="line secondLineBlue" :width="widthOfBlueLine" height="2" :viewBox="viewboxForBlueOne" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path ref="secondLineBluePath" d="M160 1.00001L0 1" stroke="#386EE6" stroke-width="2" />
             </svg>
             <!-- <svg class="line thirdLine" width="320" height="161" viewBox="0 0 320 161" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,11 +151,15 @@
             <!-- <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
                 <path refs="thirdLinePath" v-bind:d="directionForPathOfLeftToRightLine2" fill="transparent" stroke="#386EE6" stroke-width="2"></path>
             </svg> -->
-            <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}" class="line secondLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="firstLinePathTest" :d="directionForPathOfLeftToRightLine2" stroke="#386EE6" stroke-width="2"/>
+            <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}"
+                class="line secondLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox"
+                fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="thirdLinePath" :d="directionForPathOfLeftToRightLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
-            <svg :style="{top: exitTopPositionOfTheFourthIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}" class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheFourthLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="fourthLineGreyPath" :d="directionForPathOfRightToLeftLine2" stroke="white" stroke-width="2"/>
+            <svg :style="{top: exitTopPositionOfTheFourthIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
+                class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheFourthLine" :viewBox="viewbox"
+                fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path ref="fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
             <!-- <svg class="line fourthLine" width="321" height="161" viewBox="0 0 321 161" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path ref="fourthLinePath" d="M321 1H51C23.3858 1 1 23.3858 1 51V161" stroke="white" />
@@ -163,59 +174,96 @@
     export default {
         data() {
             return {
-                length: null,
                 heightOfIcon: Number,
                 widthOfIcon: Number,
 
                 // tops for line exit from icon 
-                exitTopPositionOfTheFirstIcon: null, 
-                exitTopPositionOfTheSecondIcon: null, 
-                exitTopPositionOfTheThirdIcon: null, 
-                exitTopPositionOfTheFourthIcon: null, 
-                exitTopPositionOfTheFivthIcon: null, 
+                exitTopPositionOfTheFirstIcon: null,
+                exitTopPositionOfTheSecondIcon: null,
+                exitTopPositionOfTheThirdIcon: null,
+                exitTopPositionOfTheFourthIcon: null,
+                exitTopPositionOfTheFivthIcon: null,
 
-                exitLeftPositionOfTheFirstIcon: null, 
-                exitLeftPositionOfTheSecondIcon: null, 
-                exitLeftPositionOfTheThirdIcon: null, 
-                exitLeftPositionOfTheFourthIcon: null, 
+                exitLeftPositionOfTheFirstIcon: null,
+                exitLeftPositionOfTheSecondIcon: null,
+                exitLeftPositionOfTheThirdIcon: null,
+                exitLeftPositionOfTheFourthIcon: null,
 
-                widthOfTheLine: null, 
-                heightOfTheLine: null, 
+                widthOfTheLine: null,
+                widthOfBlueLine: null,
+                heightOfTheLine: null,
                 heightOfTheSecondLine: null,
                 heightOfTheThirdLine: null,
                 heightOfTheFourthLine: null,
 
                 viewbox: String,
-                viewboxForBlueOne: String, 
+                viewboxForBlueOne: String,
                 directionForPathOfLeftToRightLine: String,
                 directionForPathOfLeftToRightLine2: String,
                 directionForPathOfRightToLeftLine: String,
                 directionForPathOfRightToLeftLine2: String,
-                coeffForHorizontalOfleftToRightLine: 1.38636, 
-                coeffForVerticalOfleftToRightLine: 2.74509, 
+                coeffForHorizontalOfleftToRightLine: 1.38636,
+                coeffForVerticalOfleftToRightLine: 2.74509,
                 // widthOfTheSecondLine: null, 
                 // widthOfTheThirdLine: null, 
                 // widthOfTheFourthLine: null, 
 
+                lengthOfTheFirstLine: Number,
+                lengthOfTheSecondBlueLine: Number,
+                lengthOfTheSecondGreyLine: Number,
+                lengthOfTheThirdLine: Number,
+                lengthOfTheFourthLine: Number,
+                scrollingDown: true, // if scroll down - true; 
+
             }
         },
         methods: {
-            // checkTHeHeightOfLine() {
-            //     let a = this.$refs.firstLinePath;
-            //     this.length = a.getTotalLength();
-            //     console.log(this.length);
-            // }, 
+            hideSVGlines() {
+                this.lengthOfTheFirstLine = this.$refs.firstLinePath.getTotalLength()
+                this.$refs.firstLinePath.style.strokeDasharray =
+                    `${this.lengthOfTheFirstLine} ${this.lengthOfTheFirstLine}`;
+                this.$refs.firstLinePath.style.strokeDashoffset = this.lengthOfTheFirstLine;
+
+                this.lengthOfTheSecondGreyLine = this.$refs.secondLineGreyPath.getTotalLength()
+                this.$refs.secondLineGreyPath.style.strokeDasharray =
+                    `${this.lengthOfTheSecondGreyLine} ${this.lengthOfTheSecondGreyLine}`;
+                this.$refs.secondLineGreyPath.style.strokeDashoffset = this.lengthOfTheSecondGreyLine;
+
+                this.lengthOfTheSecondBlueLine = this.$refs.secondLineBluePath.getTotalLength()
+                this.$refs.secondLineBluePath.style.strokeDasharray =
+                    `${this.lengthOfTheSecondBlueLine} ${this.lengthOfTheSecondBlueLine}`;
+                this.$refs.secondLineBluePath.style.strokeDashoffset = this.lengthOfTheSecondBlueLine;
+
+                this.lengthOfTheThirdLine = this.$refs.thirdLinePath.getTotalLength()
+                this.$refs.thirdLinePath.style.strokeDasharray =
+                    `${this.lengthOfTheThirdLine} ${this.lengthOfTheThirdLine}`;
+                this.$refs.thirdLinePath.style.strokeDashoffset = this.lengthOfTheThirdLine;
+
+                this.lengthOfTheFourthLine = this.$refs.fourthLinePath.getTotalLength()
+                this.$refs.fourthLinePath.style.strokeDasharray =
+                    `${this.lengthOfTheFourthLine} ${this.lengthOfTheFourthLine}`;
+                this.$refs.fourthLinePath.style.strokeDashoffset = this.lengthOfTheFourthLine;
+            },
+            wheelingPage: function (ev) {
+                if (ev.deltaY < 0) {
+                    this.scrollingDown = false; 
+                    console.log(this.scrollingDown);
+                } else {
+                    this.scrollingDown = true; 
+                    console.log(this.scrollingDown);
+                }
+            },
             getPosition() {
                 // stepImageFirst
                 this.heightOfIcon = this.$refs.stepImageFirst.clientHeight;
                 this.widthOfIcon = this.$refs.stepImageFirst.clientWidth;
 
                 // tops for line exit from icon
-                this.exitTopPositionOfTheFirstIcon = this.$refs.stepWrapperFirst.offsetTop + (this.heightOfIcon/2); 
-                this.exitTopPositionOfTheSecondIcon = this.$refs.stepWrapperSecond.offsetTop + (this.heightOfIcon/2);
-                this.exitTopPositionOfTheThirdIcon = this.$refs.stepWrapperThird.offsetTop + (this.heightOfIcon/2);
-                this.exitTopPositionOfTheFourthIcon = this.$refs.stepWrapperFourth.offsetTop + (this.heightOfIcon/2);
-                this.exitTopPositionOfTheFivthIcon = this.$refs.stepWrapperFivth.offsetTop + (this.heightOfIcon/2);
+                this.exitTopPositionOfTheFirstIcon = this.$refs.stepWrapperFirst.offsetTop + (this.heightOfIcon / 2);
+                this.exitTopPositionOfTheSecondIcon = this.$refs.stepWrapperSecond.offsetTop + (this.heightOfIcon / 2);
+                this.exitTopPositionOfTheThirdIcon = this.$refs.stepWrapperThird.offsetTop + (this.heightOfIcon / 2);
+                this.exitTopPositionOfTheFourthIcon = this.$refs.stepWrapperFourth.offsetTop + (this.heightOfIcon / 2);
+                this.exitTopPositionOfTheFivthIcon = this.$refs.stepWrapperFivth.offsetTop + (this.heightOfIcon / 2);
 
                 // position of line exit starting 
                 this.exitLeftPositionOfTheFirstIcon = this.$refs.stepImageFirst.offsetLeft + this.widthOfIcon;
@@ -224,53 +272,56 @@
                 this.exitLeftPositionOfTheFourthIcon = this.$refs.stepImageFourth.offsetLeft;
 
                 // needable width for connection lines
-                this.widthOfTheLine = (this.exitLeftPositionOfTheSecondIcon + this.widthOfIcon/2) -this.exitLeftPositionOfTheFirstIcon;
-                this.heightOfTheLine = this.exitTopPositionOfTheSecondIcon - (this.heightOfIcon/2) - this.exitTopPositionOfTheFirstIcon; 
-                this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this.exitTopPositionOfTheSecondIcon; 
-                this.heightOfTheThirdLine = this.$refs.stepWrapperFourth.offsetTop - this.exitTopPositionOfTheThirdIcon; 
-                this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this.exitTopPositionOfTheFourthIcon + 20; 
-                console.log(this.heightOfTheLine);
-                this.viewbox = `0 0 ${this.widthOfTheLine} ${this.heightOfTheLine}`; 
-                this.viewboxThirdLine = `0 0 ${this.widthOfTheLine} ${this.heightOfTheThirdLine}`; 
-                this.widthOfBlueLine = this.widthOfTheLine/3; 
+                this.widthOfTheLine = (this.exitLeftPositionOfTheSecondIcon + this.widthOfIcon / 2) - this
+                    .exitLeftPositionOfTheFirstIcon;
+                this.heightOfTheLine = this.exitTopPositionOfTheSecondIcon - (this.heightOfIcon / 2) - this
+                    .exitTopPositionOfTheFirstIcon;
+                this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this
+                .exitTopPositionOfTheSecondIcon;
+                this.heightOfTheThirdLine = this.$refs.stepWrapperFourth.offsetTop - this.exitTopPositionOfTheThirdIcon;
+                this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this
+                    .exitTopPositionOfTheFourthIcon + 20;
+                this.viewbox = `0 0 ${this.widthOfTheLine} ${this.heightOfTheLine}`;
+                this.viewboxThirdLine = `0 0 ${this.widthOfTheLine} ${this.heightOfTheThirdLine}`;
+                this.widthOfBlueLine = this.widthOfTheLine / 3;
                 this.viewboxForBlueOne = `0 0 ${this.widthOfBlueLine} 2`
-                // let koef = 1031;
-                // let clientHeight = window.innerHeight; 
-                // let koef = (1.14651 * clientHeight)/1183;
-                if (window.innerWidth < 800) {
-                        this.coeffForHorizontalOfleftToRightLine = this.coeffForHorizontalOfleftToRightLine + 0.4; 
-                }
-                if (window.innerWidth < 600) {
-                        this.coeffForHorizontalOfleftToRightLine = this.coeffForHorizontalOfleftToRightLine + 0.6;                     
-                }
-                if (window.innerWidth > 1200) {
-                        this.coeffForVerticalOfleftToRightLine = this.coeffForVerticalOfleftToRightLine - 1;                     
-                }
+                // if (window.innerWidth < 630) {
+                //         this.widthOfBlueLine/4
+                // }
                 // this.directionForPathOfLeftToRightLine = `M 0 1 h ${this.widthOfTheLine/this.coeffForHorizontalOfleftToRightLine} C ${this.widthOfTheLine/1.14651} 1 ${''} ${this.widthOfTheLine/1.00549} ${this.heightOfTheLine/5.98653} ${''} ${(this.widthOfTheLine/1.00549)-1} ${this.heightOfTheLine/this.coeffForVerticalOfleftToRightLine} v ${this.heightOfTheLine}`
-                this.directionForPathOfLeftToRightLine = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`
-                this.directionForPathOfLeftToRightLine2 = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheThirdLine}`
-                this.directionForPathOfRightToLeftLine = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`
-                this.directionForPathOfRightToLeftLine2 = `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`
+                this.directionForPathOfLeftToRightLine =
+                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`
+                this.directionForPathOfLeftToRightLine2 =
+                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheThirdLine}`
+                this.directionForPathOfRightToLeftLine =
+                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`
+                this.directionForPathOfRightToLeftLine2 =
+                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`
 
-
-
-                return this.heightOfIcon
-            }, 
+            },
             onResize() {
-                this.getPosition(); 
+                this.getPosition();
             },
             handleScroll() {
-                // console.log(this.$refs.stepImageFirst.getBoundingClientRect().top, '====', window.innerHeight);
-                    
-                // console.log(this.exitTopPositionOfTheFirstIcon,'\n',
-                //             this.exitTopPositionOfTheSecondIcon,'\n',
-                //             this.exitTopPositionOfTheThirdIcon,'\n',
-                //             this.exitTopPositionOfTheFourthIcon,'\n',
-                //             this.exitTopPositionOfTheFivthIcon);
-            }
+                // if (this.scrollingDown) {
+                //     if (this.$refs.firstLinePath.style.strokeDashoffset > 0) {
+                //         this.$refs.firstLinePath.style.strokeDashoffset = this.$refs.firstLinePath.style.strokeDashoffset - this.heightOfTheLine / 20;
+                //         console.log(this.$refs.firstLinePath.style.strokeDashoffset, this.scrollingDown);
+                //     }
+                // } else if (!this.scrollingDown) {
+                //     if (this.$refs.firstLinePath.style.strokeDashoffset < this.lengthOfTheFirstLine) {
+                //         this.$refs.firstLinePath.style.strokeDashoffset--;
+                //         // this.$refs.firstLinePath.style.strokeDashoffset = this.$refs.firstLinePath.style.strokeDashoffset - this.heightOfTheLine / 20;
+                //         console.log('rastu', this.$refs.firstLinePath.style.strokeDashoffset)
+                //     }
+                // }
+            },
         },
         mounted: function () {
             this.getPosition();
+            this.$nextTick(function () {
+                this.hideSVGlines();
+            })
 
         },
         created() {
@@ -325,6 +376,7 @@
         margin-top: 10px;
         position: relative;
     }
+
     .step:nth-child(2n) {
         align-self: flex-end;
     }
@@ -378,11 +430,12 @@
     }
 
     /* lines styles  */
-    .line{
+    .line {
         position: absolute;
     }
-    #app .firstLine, 
-    #app .secondLine{
+
+    #app .firstLine,
+    #app .secondLine {
         transform: rotate3d(0, 360, 0, 180deg);
     }
 
