@@ -1,5 +1,5 @@
 <template >
-  <div id="app" @wheel="wheelingPage" ref='zal'>
+  <div id="app" @wheel="wheelingPage" ref='app'>
     <!-- <Navbar /> -->
     <Home />
     <About />

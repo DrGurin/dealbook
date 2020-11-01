@@ -164,50 +164,30 @@
             return {
                 heightOfIcon: Number,
                 widthOfIcon: Number,
-
                 // tops for line exit from icon 
                 exitTopPositionOfTheFirstIcon: null,
                 exitTopPositionOfTheSecondIcon: null,
                 exitTopPositionOfTheThirdIcon: null,
                 exitTopPositionOfTheFourthIcon: null,
                 exitTopPositionOfTheFivthIcon: null,
-
+                // lefts 
                 exitLeftPositionOfTheFirstIcon: null,
                 exitLeftPositionOfTheSecondIcon: null,
                 exitLeftPositionOfTheThirdIcon: null,
                 exitLeftPositionOfTheFourthIcon: null,
-
+                // 
                 widthOfTheLine: null,
                 widthOfBlueLine: null,
                 heightOfTheLine: null,
                 heightOfTheSecondLine: null,
                 heightOfTheThirdLine: null,
                 heightOfTheFourthLine: null,
-
                 viewbox: String,
                 viewboxForBlueOne: String,
                 directionForPathOfLeftToRightLine: String,
                 directionForPathOfLeftToRightLine2: String,
                 directionForPathOfRightToLeftLine: String,
                 directionForPathOfRightToLeftLine2: String,
-                coeffForHorizontalOfleftToRightLine: 1.38636,
-                coeffForVerticalOfleftToRightLine: 2.74509,
-                // widthOfTheSecondLine: null, 
-                // widthOfTheThirdLine: null, 
-                // widthOfTheFourthLine: null, 
-
-                lengthOfTheFirstLine: Number,
-                lengthOfTheSecondBlueLine: Number,
-                lengthOfTheSecondGreyLine: Number,
-                lengthOfTheThirdLine: Number,
-                lengthOfTheFourthLine: Number,
-                scrollingDown: Boolean, // if scroll down - true; 
-
-                coffeciantForFirstLineGrowth: Number,
-
-
-                //last chance ///
-
                 linesData: [
                     {
                         id: 'line1',
@@ -243,32 +223,6 @@
             }
         },
         methods: {
-            hideSVGlines() {
-                this.lengthOfTheFirstLine = this.$refs.firstLinePath.getTotalLength()
-                this.$refs.firstLinePath.style.strokeDasharray =
-                    `${this.lengthOfTheFirstLine} ${this.lengthOfTheFirstLine}`;
-                this.$refs.firstLinePath.style.strokeDashoffset = this.lengthOfTheFirstLine;
-
-                this.lengthOfTheSecondGreyLine = this.$refs.secondLineGreyPath.getTotalLength()
-                this.$refs.secondLineGreyPath.style.strokeDasharray =
-                    `${this.lengthOfTheSecondGreyLine} ${this.lengthOfTheSecondGreyLine}`;
-                this.$refs.secondLineGreyPath.style.strokeDashoffset = this.lengthOfTheSecondGreyLine;
-
-                this.lengthOfTheSecondBlueLine = this.$refs.secondLineBluePath.getTotalLength()
-                this.$refs.secondLineBluePath.style.strokeDasharray =
-                    `${this.lengthOfTheSecondBlueLine} ${this.lengthOfTheSecondBlueLine}`;
-                this.$refs.secondLineBluePath.style.strokeDashoffset = this.lengthOfTheSecondBlueLine;
-
-                this.lengthOfTheThirdLine = this.$refs.thirdLinePath.getTotalLength()
-                this.$refs.thirdLinePath.style.strokeDasharray =
-                    `${this.lengthOfTheThirdLine} ${this.lengthOfTheThirdLine}`;
-                this.$refs.thirdLinePath.style.strokeDashoffset = this.lengthOfTheThirdLine;
-
-                this.lengthOfTheFourthLine = this.$refs.fourthLinePath.getTotalLength()
-                this.$refs.fourthLinePath.style.strokeDasharray =
-                    `${this.lengthOfTheFourthLine} ${this.lengthOfTheFourthLine}`;
-                this.$refs.fourthLinePath.style.strokeDashoffset = this.lengthOfTheFourthLine;
-            },
             getPosition() {
                 // stepImageFirst
                 this.heightOfIcon = this.$refs.stepImageFirst.clientHeight;
@@ -281,7 +235,7 @@
                 this.exitTopPositionOfTheFourthIcon = this.$refs.stepWrapperFourth.offsetTop + (this.heightOfIcon / 2);
                 this.exitTopPositionOfTheFivthIcon = this.$refs.stepWrapperFivth.offsetTop + (this.heightOfIcon / 2);
 
-                // position of line exit starting 
+                // left position of line exit starting 
                 this.exitLeftPositionOfTheFirstIcon = this.$refs.stepImageFirst.offsetLeft + this.widthOfIcon;
                 this.exitLeftPositionOfTheSecondIcon = this.$refs.stepImageSecond.offsetLeft;
                 this.exitLeftPositionOfTheThirdIcon = this.$refs.stepImageThird.offsetLeft + this.widthOfIcon;
@@ -290,6 +244,9 @@
                 // needable width for connection lines
                 this.widthOfTheLine = (this.exitLeftPositionOfTheSecondIcon + this.widthOfIcon / 2) - this
                     .exitLeftPositionOfTheFirstIcon;
+                this.widthOfBlueLine = this.widthOfTheLine / 3;
+                // 
+                // heights of lines
                 this.heightOfTheLine = this.exitTopPositionOfTheSecondIcon - (this.heightOfIcon / 2) - this
                     .exitTopPositionOfTheFirstIcon;
                 this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this
@@ -297,10 +254,13 @@
                 this.heightOfTheThirdLine = this.$refs.stepWrapperFourth.offsetTop - this.exitTopPositionOfTheThirdIcon;
                 this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this
                     .exitTopPositionOfTheFourthIcon + 20;
+                // 
+                // vieboxes for lines 
                 this.viewbox = `0 0 ${this.widthOfTheLine} ${this.heightOfTheLine}`;
                 this.viewboxThirdLine = `0 0 ${this.widthOfTheLine} ${this.heightOfTheThirdLine}`;
-                this.widthOfBlueLine = this.widthOfTheLine / 3;
-                this.viewboxForBlueOne = `0 0 ${this.widthOfBlueLine} 2`
+                this.viewboxForBlueOne = `0 0 ${this.widthOfBlueLine} 2`;
+                // 
+                // directions that are inserted on <path :d=""></path>
                 this.directionForPathOfLeftToRightLine =
                     `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`
                 this.directionForPathOfLeftToRightLine2 =
@@ -314,12 +274,6 @@
             onResize() {
                 this.getPosition();
             },
-            getCoeff() {
-                    let difference = Number(this.$refs.stepWrapperFirst.getBoundingClientRect().top - this.$refs.stepWrapperSecond.getBoundingClientRect().top) * -1;
-                    let coeff = Number(this.$refs.firstLinePath.style.strokeDashoffset / difference);
-                    this.coffeciantForFirstLineGrowth = coeff + 1;
-
-            },
             calcPathLength(elem){
                 if (elem.getTotalLength){
                     return elem.getTotalLength();
@@ -330,7 +284,7 @@
                 let elementViewportOffset = elem.getBoundingClientRect().top; 
                 let totalOffset = scrolledDistance + elementViewportOffset;
                 let toMiddlePointOnScreen = totalOffset - window.innerHeight/2;
-                let percentStartPoint = (toMiddlePointOnScreen / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
+                let percentStartPoint = (toMiddlePointOnScreen / (this.$parent.$refs.app.clientHeight - window.innerHeight)) * 100;
                 return percentStartPoint
             },
             calcFinishPoint(elem) {
@@ -338,12 +292,12 @@
                 let elementViewportOffset = elem.getBoundingClientRect().top; 
                 let totalOffset = scrolledDistance + elementViewportOffset;
                 let toMiddlePointOnScreen = totalOffset - window.innerHeight/2;
-                let percentFinishPoint = (toMiddlePointOnScreen / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
+                let percentFinishPoint = (toMiddlePointOnScreen / (this.$parent.$refs.app.clientHeight - window.innerHeight)) * 100;
                 return percentFinishPoint
             },
             handleScroll() {
                 console.log(this.$refs.secondLineBluePath.getTotalLength());
-                let percentOfScroll = (window.scrollY / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
+                let percentOfScroll = (window.scrollY / (this.$parent.$refs.app.clientHeight - window.innerHeight)) * 100;
                 for (let i = 0; i < this.linesData.length; i++) {
                     let data = this.linesData[i];
                     let elem = document.getElementById(data.id)
@@ -354,15 +308,15 @@
                     let fractionThroughThisElem = (percentOfScroll - dataStartPct) / (dataFinishPct - dataStartPct);
                     fractionThroughThisElem = Math.max(fractionThroughThisElem, 0);
                     fractionThroughThisElem = Math.min(fractionThroughThisElem, 1);
-                    var dashOffset = dashLen * (1 - fractionThroughThisElem);
+                    let dashOffset = dashLen * (1 - fractionThroughThisElem);
                     elem.setAttribute("stroke-dasharray", dashLen);
                     elem.setAttribute("stroke-dashoffset", dashOffset);
                 }
             }
         },
         mounted: function () {
-            this.getPosition();
             this.$nextTick(function () {
+                this.getPosition();
             })
 
         },
