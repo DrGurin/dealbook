@@ -4,7 +4,7 @@
         <div class="roadmap_wrapper">
 
             <div ref="stepWrapperFirst" class="step">
-                <div ref=" stepImageFirst" class="step_image_wrapper">
+                <div ref="stepImageFirst" class="step_image_wrapper">
                     <svg width="55" height="64" viewBox="0 0 55 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M33.1006 55.2407H22.0555C20.9477 55.2407 20.0463 54.3392 20.0463 53.2314C20.0463 52.1236 20.9477 51.2222 22.0555 51.2222H33.1006C34.2084 51.2222 35.1099 52.1236 35.1099 53.2314C35.1112 54.3392 34.2084 55.2407 33.1006 55.2407ZM22.0555 52.142C21.455 52.142 20.9661 52.6309 20.9661 53.2314C20.9661 53.832 21.455 54.3208 22.0555 54.3208H33.1006C33.7012 54.3208 34.19 53.832 34.19 53.2314C34.19 52.6309 33.7012 52.142 33.1006 52.142H22.0555Z"
@@ -62,7 +62,7 @@
 
             <div ref="stepWrapperSecond" class="step">
                 <div ref="stepImageSecond" class="step_image_wrapper">
-                    <img class="step_image" src="./../assets/roadmap/team.svg" alt="Team icon">
+                    <img id="icon2" class="step_image" src="./../assets/roadmap/team.svg" alt="Team icon">
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("quater4")}}</p>
@@ -81,7 +81,7 @@
                     <div class="star star5"></div>
                     <div class="star star6"></div>
                     <!-- animation assets  -->
-                    <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="icon3" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="firstfire"
                             d="M27.3942 64.1096C27.1761 64.1096 27 63.9335 27 63.7153V56.8804C27 56.6622 27.1761 56.4861 27.3942 56.4861C27.6124 56.4861 27.7885 56.6622 27.7885 56.8804V63.7153C27.7885 63.9335 27.6124 64.1096 27.3942 64.1096Z"
                             fill="#3977FF" stroke="#3977FF" />
@@ -106,7 +106,7 @@
 
             <div ref="stepWrapperFourth" class="step">
                 <div ref="stepImageFourth" class="step_image_wrapper">
-                    <img class="step_image" src="./../assets/roadmap/code.svg" alt="Code icon">
+                    <img id="icon4" class="step_image" src="./../assets/roadmap/code.svg" alt="Code icon">
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("quater214")}}</p>
@@ -117,7 +117,7 @@
 
             <div ref="stepWrapperFivth" class="step">
                 <div ref="stepImageFivth" class="step_image_wrapper">
-                    <img class="step_image" src="./../assets/roadmap/ask.svg" alt="Ask icon">
+                    <img id="icon5" class="step_image" src="./../assets/roadmap/ask.svg" alt="Ask icon">
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("commingSoon")}}</p>
@@ -126,44 +126,32 @@
             </div>
 
             <!-- svg-images that must be animated -->
-            <!-- <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path refs="firstLinePath" v-bind:d="directionForPathOfLeftToRightLine" fill="transparent" stroke="#386EE6" stroke-width="2"></path>
-            </svg> -->
             <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}"
                 class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none"
                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="lineTest firstLinePath" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
+                <path id="line1" ref="firstLinePath" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
                 class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheSecondLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="lineTest secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="#ffffff"
+                <path id="line2" ref="secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="#ffffff"
                     stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfBlueLine + 'px'}"
                 class="line secondLineBlue" :width="widthOfBlueLine" height="2" :viewBox="viewboxForBlueOne" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path ref="lineTest secondLineBluePath" d="M160 1.00001L0 1" stroke="#386EE6" stroke-width="2" />
+                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+                <path id="line2Blue" ref="secondLineBluePath" :d="directionForPathOfBlueLine" stroke="#386EE6" stroke-width="2" />
             </svg>
-            <!-- <svg class="line thirdLine" width="320" height="161" viewBox="0 0 320 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="thirdLinePath" d="M0 1H269C296.614 1 319 23.3858 319 51V161" stroke="white" />
-            </svg> -->
-            <!-- <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}" class="line firstLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path refs="thirdLinePath" v-bind:d="directionForPathOfLeftToRightLine2" fill="transparent" stroke="#386EE6" stroke-width="2"></path>
-            </svg> -->
             <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}"
                 class="line secondLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="lineTest thirdLinePath" :d="directionForPathOfLeftToRightLine2" stroke="#ffffff" stroke-width="2" />
+                <path id="line3" ref="thirdLinePath" :d="directionForPathOfLeftToRightLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheFourthIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
                 class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheFourthLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="lineTest fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
+                <path id="line4" ref="fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
-            <!-- <svg class="line fourthLine" width="321" height="161" viewBox="0 0 321 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path ref="fourthLinePath" d="M321 1H51C23.3858 1 1 23.3858 1 51V161" stroke="white" />
-            </svg>  -->
             <!-- svg-images that must be animated-->
         </div>
 
@@ -222,10 +210,35 @@
 
                 linesData: [
                     {
-                        ref: 1,
-                        startPct: 0, 
-                        endPct: 0,
-                    }
+                        id: 'line1',
+                        startPct: Number, 
+                        endPct: Number,
+                        goToId: 'icon2'
+                    },
+                    {
+                        id: 'line2',
+                        startPct: Number, 
+                        endPct: Number,
+                        goToId: 'icon3'
+                    },
+                    {
+                        id: 'line2Blue',
+                        startPct: Number, 
+                        endPct: Number,
+                        goToId: 'icon3'
+                    },
+                    {
+                        id: 'line3',
+                        startPct: Number, 
+                        endPct: Number,
+                        goToId: 'icon4'
+                    },
+                    {
+                        id: 'line4',
+                        startPct: Number, 
+                        endPct: Number,
+                        goToId: 'icon5'
+                    },
                 ],
             }
         },
@@ -296,13 +309,12 @@
                     `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`
                 this.directionForPathOfRightToLeftLine2 =
                     `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`
-
+                this.directionForPathOfBlueLine = `M ${this.widthOfBlueLine} 1 H -${this.widthOfBlueLine} 1`
             },
             onResize() {
                 this.getPosition();
             },
             getCoeff() {
-                // for first line 
                     let difference = Number(this.$refs.stepWrapperFirst.getBoundingClientRect().top - this.$refs.stepWrapperSecond.getBoundingClientRect().top) * -1;
                     let coeff = Number(this.$refs.firstLinePath.style.strokeDashoffset / difference);
                     this.coffeciantForFirstLineGrowth = coeff + 1;
@@ -310,114 +322,49 @@
             },
             calcPathLength(elem){
                 if (elem.getTotalLength){
-                    // It's a path
                     return elem.getTotalLength();
                 }
             },
+            calcStartPoint(elem) {
+                let scrolledDistance = window.scrollY; 
+                let elementViewportOffset = elem.getBoundingClientRect().top; 
+                let totalOffset = scrolledDistance + elementViewportOffset;
+                let toMiddlePointOnScreen = totalOffset - window.innerHeight/2;
+                let percentStartPoint = (toMiddlePointOnScreen / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
+                return percentStartPoint
+            },
+            calcFinishPoint(elem) {
+                let scrolledDistance = window.scrollY; 
+                let elementViewportOffset = elem.getBoundingClientRect().top; 
+                let totalOffset = scrolledDistance + elementViewportOffset;
+                let toMiddlePointOnScreen = totalOffset - window.innerHeight/2;
+                let percentFinishPoint = (toMiddlePointOnScreen / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
+                return percentFinishPoint
+            },
             handleScroll() {
+                console.log(this.$refs.secondLineBluePath.getTotalLength());
                 let percentOfScroll = (window.scrollY / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
-
                 for (let i = 0; i < this.linesData.length; i++) {
-                    console.log(this.$refs.firstLinePath);
                     let data = this.linesData[i];
-                    let elem = data[i].ref; 
+                    let elem = document.getElementById(data.id)
+                    let goToElem = document.getElementById(data.goToId);
                     let dashLen = this.calcPathLength(elem);
-
-                    let fractionThroughThisElem = (percentOfScroll - data.startPct) / (data.endPct - data.startPct);
+                    let dataStartPct = this.calcStartPoint(elem);
+                    let dataFinishPct = this.calcFinishPoint(goToElem); 
+                    let fractionThroughThisElem = (percentOfScroll - dataStartPct) / (dataFinishPct - dataStartPct);
                     fractionThroughThisElem = Math.max(fractionThroughThisElem, 0);
                     fractionThroughThisElem = Math.min(fractionThroughThisElem, 1);
                     var dashOffset = dashLen * (1 - fractionThroughThisElem);
-
                     elem.setAttribute("stroke-dasharray", dashLen);
                     elem.setAttribute("stroke-dashoffset", dashOffset);
                 }
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // console.log(this.$refs.stepWrapperFirst.getBoundingClientRect().top); ////UUUUUURRRRRRRRRAAAAA!!!!!!!
-                // console.log(window.pageYOffset);
-                // console.log(this.$refs.firstLinePath.style.strokeDashoffset);
-                // console.log('a vot dlina: ', this.lengthOfTheFirstLine);
-                // let coeff = this.coffeciantForFirstLineGrowth;   
-                //     // console.log(coeff);
-
-                //             // console.log(this.$refs.stepWrapperFirst.getBoundingClientRect().top <= window.innerHeight - this.heightOfIcon, this.$refs.stepWrapperFirst.getBoundingClientRect().top,  window.innerHeight);
-                // if (this.$parent.scrollingDown) {
-                //     // console.log('vniz');
-                //     if (this.$refs.firstLinePath.style.strokeDashoffset > 0 && this.$refs.stepWrapperFirst.getBoundingClientRect().top <= window.innerHeight - this.heightOfIcon) {
-                //         if (this.$refs.firstLinePath.style.strokeDashoffset < this.heightOfTheLine / coeff) {
-                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(0);
-                //         } else {
-                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(this.$refs.firstLinePath.style.strokeDashoffset) - coeff;
-                //         }
-                //     }
-                // } else if(!this.$parent.scrollingDown){
-                //     // console.log('verh');
-                //     if(this.$refs.stepWrapperFirst.getBoundingClientRect().top > window.innerHeight) {
-                //             this.$refs.firstLinePath.style.strokeDashoffset = this.lengthOfTheFirstLine;
-                //     }
-                //     if (this.$refs.firstLinePath.style.strokeDashoffset < this.lengthOfTheFirstLine && this.$refs.stepWrapperFirst.getBoundingClientRect().top < window.innerHeight - this.heightOfIcon && this.$refs.stepWrapperFirst.getBoundingClientRect().top > 55) {
-                //         if ((this.lengthOfTheFirstLine - this.$refs.firstLinePath.style.strokeDashoffset) < this.heightOfTheLine / coeff) {
-                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(this.lengthOfTheFirstLine);
-                //         } 
-                //         // else if(this.$refs.stepWrapperFirst.getBoundingClientRect().top > window.innerHeight) {
-                //         //     this.$refs.firstLinePath.style.strokeDashoffset = this.lengthOfTheFirstLine;
-                //         // }
-                //         else {
-                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(this.$refs.firstLinePath.style.strokeDashoffset) + Number(this.heightOfTheLine / coeff);
-                //         }
-                //     }
-                // }
-                // } else if (!this.$parent.scrollingDown) {
-                //     if (this.$refs.firstLinePath.style.strokeDashoffset < this.lengthOfTheFirstLine) {
-                //         this.$refs.firstLinePath.style.strokeDashoffset--;
-                //         // this.$refs.firstLinePath.style.strokeDashoffset = this.$refs.firstLinePath.style.strokeDashoffset - this.heightOfTheLine / 20;
-                //         console.log('rastu', this.$refs.firstLinePath.style.strokeDashoffset)
-                //     }
-                // }
-            },
-            // wheelingPage: function (ev) {
-            //     // let controllOffset = this.$refs.firstLinePath.style.strokeDashoffset;
-            //     if (ev.deltaY < 0) {
-            //         console.log(ev.deltaY);
-            //         this.$parent.scrollingDown = false;
-            //         // ON SCROLL UP 
-            //     } else {
-            //         this.$parent.scrollingDown = true; 
-            //         console.log(ev.deltaY);
-            //         // ON SCROLL DOWN
-            //         // if (this.$refs.firstLinePath.style.strokeDashoffset > 0) {
-            //         //     this.$refs.firstLinePath.style.strokeDashoffset--;
-            //         // } else  if (this.$refs.firstLinePath.style.strokeDashoffset < 0){
-            //         //    this.$refs.firstLinePath.style.strokeDashoffset = 0;
-            //         // }
-            //         // this.$refs.firstLinePath.style.strokeDashoffset = Number(this.$refs.firstLinePath.style.strokeDashoffset) - 1;
-            //     }
-            // },
+            }
         },
         mounted: function () {
             this.getPosition();
             this.$nextTick(function () {
-                this.hideSVGlines();
             })
 
-        },
-        computed: {
-            //
         },
         created() {
             window.addEventListener('scroll', this.handleScroll);
@@ -426,9 +373,6 @@
         destroyed() {
             window.removeEventListener('scroll', this.handleScroll);
             window.removeEventListener('resize', this.onResize);
-        },
-        watch: {
-           
         }
     }
 </script>
@@ -448,7 +392,6 @@
     }
 
     #app .block-roadmap {
-        /* height: auto; */
         height: fit-content;
         justify-content: flex-start;
     }
@@ -563,7 +506,6 @@
         background: #ffffff;
         border-radius: 50%;
         position: absolute;
-        /* box-shadow: 5px 5px 5px rgba(250, 250, 250, 0.8); */
         box-shadow: 0px 0px 6px 1px rgba(57, 119, 255, 1)
     }
 
