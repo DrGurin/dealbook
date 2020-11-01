@@ -283,20 +283,19 @@
                 let scrolledDistance = window.scrollY; 
                 let elementViewportOffset = elem.getBoundingClientRect().top; 
                 let totalOffset = scrolledDistance + elementViewportOffset;
-                let toMiddlePointOnScreen = totalOffset - window.innerHeight/2;
+                let toMiddlePointOnScreen = totalOffset - window.innerHeight/1.2;
                 let percentStartPoint = (toMiddlePointOnScreen / (this.$parent.$refs.app.clientHeight - window.innerHeight)) * 100;
-                return percentStartPoint
+                return percentStartPoint; 
             },
             calcFinishPoint(elem) {
                 let scrolledDistance = window.scrollY; 
                 let elementViewportOffset = elem.getBoundingClientRect().top; 
                 let totalOffset = scrolledDistance + elementViewportOffset;
-                let toMiddlePointOnScreen = totalOffset - window.innerHeight/2;
+                let toMiddlePointOnScreen = totalOffset - window.innerHeight/1.2;
                 let percentFinishPoint = (toMiddlePointOnScreen / (this.$parent.$refs.app.clientHeight - window.innerHeight)) * 100;
-                return percentFinishPoint
+                return percentFinishPoint;
             },
             handleScroll() {
-                console.log(this.$refs.secondLineBluePath.getTotalLength());
                 let percentOfScroll = (window.scrollY / (this.$parent.$refs.app.clientHeight - window.innerHeight)) * 100;
                 for (let i = 0; i < this.linesData.length; i++) {
                     let data = this.linesData[i];
