@@ -62,7 +62,17 @@
 
             <div ref="stepWrapperSecond" class="step">
                 <div ref="stepImageSecond" class="step_image_wrapper">
-                    <img id="icon2" class="step_image" src="./../assets/roadmap/team.svg" alt="Team icon">
+                    <!-- <img id="icon2" class="step_image" src="./../assets/roadmap/team.svg" alt="Team icon"> -->
+                    <svg id="icon2" class="step_image" width="64" height="29" viewBox="0 0 64 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M33.1635 14.0286C36.9332 13.1385 39.2675 9.36092 38.3774 5.59121C37.4873 1.8215 33.7097 -0.512855 29.94 0.37728C26.1703 1.26742 23.8359 5.04497 24.7261 8.81468C25.6162 12.5844 29.3938 14.9187 33.1635 14.0286ZM33.6805 16.1488H29.9789C22.9652 16.1488 17.3154 21.7987 17.3154 28.8124H46.5388C46.5388 21.7987 40.6941 16.1488 33.6805 16.1488Z" fill="white"/>
+                        <transition name="slide-fade">
+                            <path v-if="linesData[0].dashOffset == 0" fill-rule="evenodd" clip-rule="evenodd" d="M56.8393 13.2733C58.8575 12.7967 60.1072 10.7744 59.6307 8.7562C59.1541 6.73804 57.1318 5.48832 55.1136 5.96487C53.0955 6.44141 51.8457 8.46376 52.3223 10.4819C52.7988 12.5001 54.8212 13.7498 56.8393 13.2733ZM57.1161 14.408H55.1344C51.3796 14.408 48.3549 17.4327 48.3549 21.1875H64C64 17.4327 60.871 14.408 57.1161 14.408Z" fill="#386EE6"/>
+                        </transition>
+                        <transition name="slide-fade">
+                            <path v-if="linesData[0].dashOffset == 0" fill-rule="evenodd" clip-rule="evenodd" d="M8.71447 13.272C10.7326 12.7955 11.9824 10.7731 11.5058 8.75498C11.0293 6.73682 9.00691 5.4871 6.98875 5.96364C4.97059 6.44019 3.72087 8.46254 4.19741 10.4807C4.67396 12.4989 6.69631 13.7486 8.71447 13.272ZM8.99125 14.4068H7.00953C3.2547 14.4068 0.22998 17.4315 0.22998 21.1863H15.8751C15.8751 17.4315 12.7461 14.4068 8.99125 14.4068Z" fill="#386EE6"/>
+                        </transition>
+                    </svg>
+
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("quater4")}}</p>
@@ -74,21 +84,21 @@
             <div ref="stepWrapperThird" class="step">
                 <div ref="stepImageThird" class="step_image_wrapper step_image_rocket">
                     <!-- animation assets  -->
-                    <div class="star star1"></div>
-                    <div class="star star2"></div>
-                    <div class="star star3"></div>
-                    <div class="star star4"></div>
-                    <div class="star star5"></div>
-                    <div class="star star6"></div>
+                    <div :class="[linesData[2].dashOffset == 0 ? 'star1' : '', 'star']"></div>
+                    <div :class="[linesData[2].dashOffset == 0 ? 'star2' : '', 'star']"></div>
+                    <div :class="[linesData[2].dashOffset == 0 ? 'star3' : '', 'star']"></div>
+                    <div :class="[linesData[2].dashOffset == 0 ? 'star4' : '', 'star']"></div>
+                    <div :class="[linesData[2].dashOffset == 0 ? 'star5' : '', 'star']"></div>
+                    <div :class="[linesData[2].dashOffset == 0 ? 'star6' : '', 'star']"></div>
                     <!-- animation assets  -->
                     <svg id="icon3" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="firstfire"
+                        <path :class="[linesData[2].dashOffset == 0 ? 'firstfire' : '']"
                             d="M27.3942 64.1096C27.1761 64.1096 27 63.9335 27 63.7153V56.8804C27 56.6622 27.1761 56.4861 27.3942 56.4861C27.6124 56.4861 27.7885 56.6622 27.7885 56.8804V63.7153C27.7885 63.9335 27.6124 64.1096 27.3942 64.1096Z"
                             fill="#3977FF" stroke="#3977FF" />
-                        <path class="secondfire"
+                        <path :class="[linesData[2].dashOffset == 0 ? 'secondfire' : '']" 
                             d="M33.3942 61.1089C33.1761 61.1089 33 60.9328 33 60.7146V53.8797C33 53.6615 33.1761 53.4854 33.3942 53.4854C33.6124 53.4854 33.7885 53.6615 33.7885 53.8797V60.7146C33.7885 60.9328 33.6124 61.1089 33.3942 61.1089Z"
                             fill="#3977FF" stroke="#3977FF" />
-                        <path class="thirdfire"
+                        <path :class="[linesData[2].dashOffset == 0 ? 'thirdfire' : '']"
                             d="M39.3942 64.1096C39.1761 64.1096 39 63.9335 39 63.7153V56.8804C39 56.6622 39.1761 56.4861 39.3942 56.4861C39.6124 56.4861 39.7885 56.6622 39.7885 56.8804V63.7153C39.7885 63.9335 39.6124 64.1096 39.3942 64.1096Z"
                             fill="#3977FF" stroke="#3977FF" />
                         <path
@@ -106,7 +116,17 @@
 
             <div ref="stepWrapperFourth" class="step">
                 <div ref="stepImageFourth" class="step_image_wrapper">
-                    <img id="icon4" class="step_image" src="./../assets/roadmap/code.svg" alt="Code icon">
+                    <svg id="icon4" class="step_image" width="50" height="33" viewBox="0 0 50 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <transition name="right-fade">
+                            <path v-if="linesData[3].dashOffset == 0" fill-rule="evenodd" clip-rule="evenodd" d="M49.2211 16.5499C49.3337 15.7958 49.1011 14.9997 48.5225 14.4171L36.5433 2.35481C35.5704 1.37513 33.9875 1.36966 33.0078 2.34259C32.0281 3.31552 32.0226 4.89843 32.9956 5.8781L43.2132 16.1666L32.9247 26.3842C31.945 27.3571 31.9395 28.94 32.9125 29.9197C33.8854 30.8994 35.4683 30.9049 36.448 29.9319L48.5103 17.9527C48.9073 17.5584 49.1444 17.0639 49.2211 16.5499Z" fill="white"/>
+                        </transition>
+                        <transition name="slash-fade">
+                            <rect v-if="linesData[3].dashOffset == 0" x="26.3605" width="5" height="32.0469" rx="2.5" transform="rotate(13.2781 26.3605 0)" fill="#386EE6"/>
+                        </transition>
+                        <transition name="left-fade">
+                            <path v-if="linesData[3].dashOffset == 0" fill-rule="evenodd" clip-rule="evenodd" d="M0.0275784 16.5143C-0.0850525 15.7601 0.147512 14.9641 0.726156 14.3814L12.7054 2.31916C13.6783 1.33948 15.2612 1.33401 16.2409 2.30695C17.2206 3.27988 17.226 4.86278 16.2531 5.84246L6.03548 16.1309L16.324 26.3486C17.3036 27.3215 17.3091 28.9044 16.3362 29.8841C15.3632 30.8637 13.7803 30.8692 12.8007 29.8963L0.73839 17.9171C0.341337 17.5228 0.104307 17.0282 0.0275784 16.5143Z" fill="white"/>
+                        </transition>
+                    </svg>
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("quater214")}}</p>
@@ -117,7 +137,11 @@
 
             <div ref="stepWrapperFivth" class="step">
                 <div ref="stepImageFivth" class="step_image_wrapper">
-                    <img id="icon5" class="step_image" src="./../assets/roadmap/ask.svg" alt="Ask icon">
+                    <svg id="icon5" class="step_image" width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <transition name="slide-fade">
+                            <path v-if="linesData[4].dashOffset == 0" d="M8.0444 27.6613C8.0444 25.1523 8.34628 23.1541 8.95006 21.6667C9.55383 20.1792 10.6548 18.7186 12.2531 17.2849C13.869 15.8333 14.9434 14.6595 15.4761 13.7634C16.0089 12.8495 16.2752 11.8907 16.2752 10.8871C16.2752 7.85842 14.8901 6.34409 12.1199 6.34409C10.8058 6.34409 9.74917 6.75627 8.95006 7.58065C8.1687 8.3871 7.76027 9.50717 7.72475 10.9409H0C0.0355161 7.51792 1.12764 4.83871 3.27636 2.90323C5.44284 0.967742 8.39068 0 12.1199 0C15.8846 0 18.8058 0.922939 20.8835 2.76882C22.9612 4.59677 24 7.18638 24 10.5376C24 12.0609 23.6626 13.5036 22.9878 14.8656C22.313 16.2097 21.1321 17.7061 19.4451 19.3548L17.2875 21.4247C15.9378 22.733 15.1654 24.2652 14.97 26.0215L14.8635 27.6613H8.0444ZM7.27192 35.914C7.27192 34.7133 7.67148 33.7276 8.47059 32.957C9.28746 32.1685 10.3263 31.7742 11.5871 31.7742C12.8479 31.7742 13.8779 32.1685 14.677 32.957C15.4939 33.7276 15.9023 34.7133 15.9023 35.914C15.9023 37.0968 15.5028 38.0735 14.7037 38.8441C13.9223 39.6147 12.8835 40 11.5871 40C10.2908 40 9.24306 39.6147 8.44395 38.8441C7.6626 38.0735 7.27192 37.0968 7.27192 35.914Z" fill="white"/>
+                        </transition>
+                    </svg>
                 </div>
                 <div class="step_title">
                     <p class="step_title_text">{{$t("commingSoon")}}</p>
@@ -188,38 +212,46 @@
                 directionForPathOfLeftToRightLine2: String,
                 directionForPathOfRightToLeftLine: String,
                 directionForPathOfRightToLeftLine2: String,
+                directionForPathOfBlueLine: String,
                 linesData: [
                     {
                         id: 'line1',
                         startPct: Number, 
                         endPct: Number,
-                        goToId: 'icon2'
+                        goToId: 'icon2',
+                        dashOffset: Number
                     },
                     {
                         id: 'line2',
                         startPct: Number, 
                         endPct: Number,
-                        goToId: 'icon3'
+                        goToId: 'icon3',
+                        dashOffset: Number
                     },
                     {
                         id: 'line2Blue',
                         startPct: Number, 
                         endPct: Number,
-                        goToId: 'icon3'
+                        goToId: 'icon3',
+                        dashOffset: Number
                     },
                     {
                         id: 'line3',
                         startPct: Number, 
                         endPct: Number,
-                        goToId: 'icon4'
+                        goToId: 'icon4',
+                        dashOffset: Number
                     },
                     {
                         id: 'line4',
                         startPct: Number, 
                         endPct: Number,
-                        goToId: 'icon5'
+                        goToId: 'icon5',
+                        dashOffset: Number
                     },
                 ],
+                dashOffsetOfTheFIrstLine: Number,
+                a: 0,
             }
         },
         methods: {
@@ -308,16 +340,20 @@
                     fractionThroughThisElem = Math.max(fractionThroughThisElem, 0);
                     fractionThroughThisElem = Math.min(fractionThroughThisElem, 1);
                     let dashOffset = dashLen * (1 - fractionThroughThisElem);
+                    this.checkDashOffset(i, dashOffset); 
                     elem.setAttribute("stroke-dasharray", dashLen);
                     elem.setAttribute("stroke-dashoffset", dashOffset);
                 }
+            }, 
+            checkDashOffset(i, dashOffset) {
+                this.linesData[i].dashOffset = dashOffset; 
+                return
             }
         },
         mounted: function () {
             this.$nextTick(function () {
                 this.getPosition();
             })
-
         },
         created() {
             window.addEventListener('scroll', this.handleScroll);
@@ -326,6 +362,36 @@
         destroyed() {
             window.removeEventListener('scroll', this.handleScroll);
             window.removeEventListener('resize', this.onResize);
+        }, 
+        computed: {
+            collectDashOffset: function () {
+
+                // let collection = []; 
+                // for (let index = 0; index < collection.length; index++) {
+                //     collection.push(this.linesData[index].dashOffset)
+                // }
+                // console.log(collection);
+                // return collection;
+
+                let a = []; 
+                a.push(this.linesData[0].dashOffset)
+                a.push(this.linesData[1].dashOffset)
+                a.push(this.linesData[2].dashOffset)
+                a.push(this.linesData[3].dashOffset)
+                a.push(this.linesData[4].dashOffset)
+                return a;
+            }
+        },
+        watch: {
+            collectDashOffset: function (collection) {
+                // console.log('log all: ', collection);
+                if (collection[0] == 0) {
+                    console.log('connected');
+                } else {
+                    console.log('not connected');
+                }
+
+            },
         }
     }
 </script>
@@ -446,7 +512,57 @@
     }
 
     /* animation for lamp  */
+    /* animations for team  */
+    .slide-fade-enter-active {
+        transition: all .8s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(0);
+        opacity: 0;
+    }
 
+    /* animation for lamp  */
+    /* slash-fade */
+
+    .slash-fade-enter-active {
+        transition: all .1s linear;
+        transition-delay: 0.5s;
+    }
+    .slash-fade-leave-active {
+        transition: all .03s;
+    }
+    .slash-fade-enter, .slash-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+    .right-fade-enter-active {
+        transition: all .1s linear;
+        transition-delay: 1s;
+    }
+    .right-fade-leave-active {
+        transition: all .03s;
+    }
+    .right-fade-enter, .right-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+
+    .left-fade-enter-active {
+        transition: all .1s linear;
+        transition-delay: 0s;
+    }
+    .left-fade-leave-active {
+        transition: all .03s;
+    }
+    .left-fade-enter, .left-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+    
     /* animation for rocket  */
     #app .step_image_rocket {
         position: relative;
@@ -459,7 +575,8 @@
         background: #ffffff;
         border-radius: 50%;
         position: absolute;
-        box-shadow: 0px 0px 6px 1px rgba(57, 119, 255, 1)
+        box-shadow: 0px 0px 6px 1px rgba(57, 119, 255, 1);
+        top: -10%;
     }
 
     #app .star1 {
