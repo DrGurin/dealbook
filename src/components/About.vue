@@ -71,7 +71,7 @@ export default {
     width: 100%;
     height: 60%;
     border: none;
-    padding-top: 10%;
+    margin-top: 5vw;
   }
   #block-content-about > .slick-slider > .slick-list {
     height: 100%;

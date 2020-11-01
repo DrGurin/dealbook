@@ -1,26 +1,26 @@
 <template >
   <div id="app" @wheel="wheelingPage" ref='app'>
-    <!-- <Navbar /> -->
+    <Navbar />
     <Home />
     <About />
-    <Roadmap />
     <Problem />
+    <Roadmap />
     <Donate />
-    <!-- <Team /> -->
-    <!-- <Subscribe /> --> -->
+    <Team />
+    <Subscribe /> -->
     <!-- <Footer/> -->
   </div>
 </template>
 
 <script>
-  // import Navbar from './components/Navbar.vue';
+  import Navbar from './components/Navbar.vue';
   import Roadmap from './components/Roadmap.vue';
   import Home from './components/Home.vue'
   // import Footer from './components/Footer.vue'
   import About from './components/About.vue'
   import Problem from './components/Problem.vue'
-  // import Team from './components/Team.vue'
-  // import Subscribe from './components/Subscribe.vue'
+  import Team from './components/Team.vue'
+  import Subscribe from './components/Subscribe.vue'
   import Donate from './components/Donate.vue'
 
   export default {
@@ -28,10 +28,10 @@
     components: {
       About,
       Problem,
-      // Team,
-      // Subscribe,
+      Team,
+      Subscribe,
       Donate,
-      // Navbar,
+      Navbar,
       Roadmap,
       Home,
       // Footer
@@ -103,20 +103,22 @@
     line-height: 42px;
     text-align: center;
     color: #FFFFFF;
-    padding-top: 10%;
+    margin-top: 5vw;
   }
 
   #app .arrow {
     width: 15px;
     height: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
   }
 
   #app .arrowButton {
     background: transparent;
     border: none;
     outline: none;
+    height: fit-content;
+    width: fit-content;
+    margin-top: 5vw;
+    margin-bottom: 2.5vw;
   }
 
   *,

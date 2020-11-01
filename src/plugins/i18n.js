@@ -20,7 +20,8 @@ export const i18n = new VueI18n({
             quater3: "Q3 2020", 
             quater4: "Q4 2020", 
             quater14: "Q1-Q4 2021", 
-            quater214: "Q1-Q4 2022"
+            quater214: "Q1-Q4 2022", 
+            warningRoadmap: "Updating the platform with constant adding new features"
         }, 
         РУ: {
             home: "Главная",

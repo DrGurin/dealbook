@@ -47,7 +47,7 @@
   .problemRow {
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
+    margin-top: 5vw;
     width: 100%;
   }
   .row-content {
