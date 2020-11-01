@@ -250,8 +250,6 @@
                         dashOffset: Number
                     },
                 ],
-                dashOffsetOfTheFIrstLine: Number,
-                a: 0,
             }
         },
         methods: {
@@ -381,17 +379,6 @@
                 a.push(this.linesData[4].dashOffset)
                 return a;
             }
-        },
-        watch: {
-            collectDashOffset: function (collection) {
-                // console.log('log all: ', collection);
-                if (collection[0] == 0) {
-                    console.log('connected');
-                } else {
-                    console.log('not connected');
-                }
-
-            },
         }
     }
 </script>
