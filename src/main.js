@@ -5,10 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import {i18n} from "./plugins/i18n.js"
 import Chart from 'chart.js'
-// 2. Импортируйте метод `generateChart()` для создания компонента vue
 
-// 3. Расширьте один из графиков по умолчанию
-// http://www.chartjs.org/docs/latest/developers/charts.html
 Chart.defaults.global.defaultFontColor = 'transparent';
 Chart.defaults.global.legend.display = false;
 Chart.defaults.global.elements.line.tension = 0;

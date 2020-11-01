@@ -1,10 +1,10 @@
 <template>
-    <div class="block block-roadmap" @wheel="wheelingPage">
+    <div class="block block-roadmap">
         <h2 class="block-name">{{$t("roadmap")}}</h2>
         <div class="roadmap_wrapper">
 
             <div ref="stepWrapperFirst" class="step">
-                <div ref="stepImageFirst" class="step_image_wrapper">
+                <div ref=" stepImageFirst" class="step_image_wrapper">
                     <svg width="55" height="64" viewBox="0 0 55 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M33.1006 55.2407H22.0555C20.9477 55.2407 20.0463 54.3392 20.0463 53.2314C20.0463 52.1236 20.9477 51.2222 22.0555 51.2222H33.1006C34.2084 51.2222 35.1099 52.1236 35.1099 53.2314C35.1112 54.3392 34.2084 55.2407 33.1006 55.2407ZM22.0555 52.142C21.455 52.142 20.9661 52.6309 20.9661 53.2314C20.9661 53.832 21.455 54.3208 22.0555 54.3208H33.1006C33.7012 54.3208 34.19 53.832 34.19 53.2314C34.19 52.6309 33.7012 52.142 33.1006 52.142H22.0555Z"
@@ -132,18 +132,18 @@
             <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}"
                 class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none"
                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="firstLinePath" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
+                <path ref="lineTest firstLinePath" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
                 class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheSecondLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="#ffffff"
+                <path ref="lineTest secondLineGreyPath" :d="directionForPathOfRightToLeftLine" stroke="#ffffff"
                     stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfBlueLine + 'px'}"
                 class="line secondLineBlue" :width="widthOfBlueLine" height="2" :viewBox="viewboxForBlueOne" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path ref="secondLineBluePath" d="M160 1.00001L0 1" stroke="#386EE6" stroke-width="2" />
+                <path ref="lineTest secondLineBluePath" d="M160 1.00001L0 1" stroke="#386EE6" stroke-width="2" />
             </svg>
             <!-- <svg class="line thirdLine" width="320" height="161" viewBox="0 0 320 161" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path ref="thirdLinePath" d="M0 1H269C296.614 1 319 23.3858 319 51V161" stroke="white" />
@@ -154,12 +154,12 @@
             <svg :style="{top: exitTopPositionOfTheThirdIcon + 'px', left: exitLeftPositionOfTheThirdIcon + 'px'}"
                 class="line secondLine" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="thirdLinePath" :d="directionForPathOfLeftToRightLine2" stroke="#ffffff" stroke-width="2" />
+                <path ref="lineTest thirdLinePath" :d="directionForPathOfLeftToRightLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheFourthIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
                 class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheFourthLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path ref="fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
+                <path ref="lineTest fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
             <!-- <svg class="line fourthLine" width="321" height="161" viewBox="0 0 321 161" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path ref="fourthLinePath" d="M321 1H51C23.3858 1 1 23.3858 1 51V161" stroke="white" />
@@ -213,8 +213,20 @@
                 lengthOfTheSecondGreyLine: Number,
                 lengthOfTheThirdLine: Number,
                 lengthOfTheFourthLine: Number,
-                scrollingDown: true, // if scroll down - true; 
+                scrollingDown: Boolean, // if scroll down - true; 
 
+                coffeciantForFirstLineGrowth: Number,
+
+
+                //last chance ///
+
+                linesData: [
+                    {
+                        ref: 1,
+                        startPct: 0, 
+                        endPct: 0,
+                    }
+                ],
             }
         },
         methods: {
@@ -243,15 +255,6 @@
                 this.$refs.fourthLinePath.style.strokeDasharray =
                     `${this.lengthOfTheFourthLine} ${this.lengthOfTheFourthLine}`;
                 this.$refs.fourthLinePath.style.strokeDashoffset = this.lengthOfTheFourthLine;
-            },
-            wheelingPage: function (ev) {
-                if (ev.deltaY < 0) {
-                    this.scrollingDown = false; 
-                    console.log(this.scrollingDown);
-                } else {
-                    this.scrollingDown = true; 
-                    console.log(this.scrollingDown);
-                }
             },
             getPosition() {
                 // stepImageFirst
@@ -285,10 +288,6 @@
                 this.viewboxThirdLine = `0 0 ${this.widthOfTheLine} ${this.heightOfTheThirdLine}`;
                 this.widthOfBlueLine = this.widthOfTheLine / 3;
                 this.viewboxForBlueOne = `0 0 ${this.widthOfBlueLine} 2`
-                // if (window.innerWidth < 630) {
-                //         this.widthOfBlueLine/4
-                // }
-                // this.directionForPathOfLeftToRightLine = `M 0 1 h ${this.widthOfTheLine/this.coeffForHorizontalOfleftToRightLine} C ${this.widthOfTheLine/1.14651} 1 ${''} ${this.widthOfTheLine/1.00549} ${this.heightOfTheLine/5.98653} ${''} ${(this.widthOfTheLine/1.00549)-1} ${this.heightOfTheLine/this.coeffForVerticalOfleftToRightLine} v ${this.heightOfTheLine}`
                 this.directionForPathOfLeftToRightLine =
                     `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`
                 this.directionForPathOfLeftToRightLine2 =
@@ -302,13 +301,88 @@
             onResize() {
                 this.getPosition();
             },
+            getCoeff() {
+                // for first line 
+                    let difference = Number(this.$refs.stepWrapperFirst.getBoundingClientRect().top - this.$refs.stepWrapperSecond.getBoundingClientRect().top) * -1;
+                    let coeff = Number(this.$refs.firstLinePath.style.strokeDashoffset / difference);
+                    this.coffeciantForFirstLineGrowth = coeff + 1;
+
+            },
+            calcPathLength(elem){
+                if (elem.getTotalLength){
+                    // It's a path
+                    return elem.getTotalLength();
+                }
+            },
             handleScroll() {
-                // if (this.scrollingDown) {
-                //     if (this.$refs.firstLinePath.style.strokeDashoffset > 0) {
-                //         this.$refs.firstLinePath.style.strokeDashoffset = this.$refs.firstLinePath.style.strokeDashoffset - this.heightOfTheLine / 20;
-                //         console.log(this.$refs.firstLinePath.style.strokeDashoffset, this.scrollingDown);
+                let percentOfScroll = (window.scrollY / (this.$parent.$refs.zal.clientHeight - window.innerHeight)) * 100;
+
+                for (let i = 0; i < this.linesData.length; i++) {
+                    console.log(this.$refs.firstLinePath);
+                    let data = this.linesData[i];
+                    let elem = data[i].ref; 
+                    let dashLen = this.calcPathLength(elem);
+
+                    let fractionThroughThisElem = (percentOfScroll - data.startPct) / (data.endPct - data.startPct);
+                    fractionThroughThisElem = Math.max(fractionThroughThisElem, 0);
+                    fractionThroughThisElem = Math.min(fractionThroughThisElem, 1);
+                    var dashOffset = dashLen * (1 - fractionThroughThisElem);
+
+                    elem.setAttribute("stroke-dasharray", dashLen);
+                    elem.setAttribute("stroke-dashoffset", dashOffset);
+                }
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // console.log(this.$refs.stepWrapperFirst.getBoundingClientRect().top); ////UUUUUURRRRRRRRRAAAAA!!!!!!!
+                // console.log(window.pageYOffset);
+                // console.log(this.$refs.firstLinePath.style.strokeDashoffset);
+                // console.log('a vot dlina: ', this.lengthOfTheFirstLine);
+                // let coeff = this.coffeciantForFirstLineGrowth;   
+                //     // console.log(coeff);
+
+                //             // console.log(this.$refs.stepWrapperFirst.getBoundingClientRect().top <= window.innerHeight - this.heightOfIcon, this.$refs.stepWrapperFirst.getBoundingClientRect().top,  window.innerHeight);
+                // if (this.$parent.scrollingDown) {
+                //     // console.log('vniz');
+                //     if (this.$refs.firstLinePath.style.strokeDashoffset > 0 && this.$refs.stepWrapperFirst.getBoundingClientRect().top <= window.innerHeight - this.heightOfIcon) {
+                //         if (this.$refs.firstLinePath.style.strokeDashoffset < this.heightOfTheLine / coeff) {
+                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(0);
+                //         } else {
+                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(this.$refs.firstLinePath.style.strokeDashoffset) - coeff;
+                //         }
                 //     }
-                // } else if (!this.scrollingDown) {
+                // } else if(!this.$parent.scrollingDown){
+                //     // console.log('verh');
+                //     if(this.$refs.stepWrapperFirst.getBoundingClientRect().top > window.innerHeight) {
+                //             this.$refs.firstLinePath.style.strokeDashoffset = this.lengthOfTheFirstLine;
+                //     }
+                //     if (this.$refs.firstLinePath.style.strokeDashoffset < this.lengthOfTheFirstLine && this.$refs.stepWrapperFirst.getBoundingClientRect().top < window.innerHeight - this.heightOfIcon && this.$refs.stepWrapperFirst.getBoundingClientRect().top > 55) {
+                //         if ((this.lengthOfTheFirstLine - this.$refs.firstLinePath.style.strokeDashoffset) < this.heightOfTheLine / coeff) {
+                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(this.lengthOfTheFirstLine);
+                //         } 
+                //         // else if(this.$refs.stepWrapperFirst.getBoundingClientRect().top > window.innerHeight) {
+                //         //     this.$refs.firstLinePath.style.strokeDashoffset = this.lengthOfTheFirstLine;
+                //         // }
+                //         else {
+                //             this.$refs.firstLinePath.style.strokeDashoffset = Number(this.$refs.firstLinePath.style.strokeDashoffset) + Number(this.heightOfTheLine / coeff);
+                //         }
+                //     }
+                // }
+                // } else if (!this.$parent.scrollingDown) {
                 //     if (this.$refs.firstLinePath.style.strokeDashoffset < this.lengthOfTheFirstLine) {
                 //         this.$refs.firstLinePath.style.strokeDashoffset--;
                 //         // this.$refs.firstLinePath.style.strokeDashoffset = this.$refs.firstLinePath.style.strokeDashoffset - this.heightOfTheLine / 20;
@@ -316,6 +390,24 @@
                 //     }
                 // }
             },
+            // wheelingPage: function (ev) {
+            //     // let controllOffset = this.$refs.firstLinePath.style.strokeDashoffset;
+            //     if (ev.deltaY < 0) {
+            //         console.log(ev.deltaY);
+            //         this.$parent.scrollingDown = false;
+            //         // ON SCROLL UP 
+            //     } else {
+            //         this.$parent.scrollingDown = true; 
+            //         console.log(ev.deltaY);
+            //         // ON SCROLL DOWN
+            //         // if (this.$refs.firstLinePath.style.strokeDashoffset > 0) {
+            //         //     this.$refs.firstLinePath.style.strokeDashoffset--;
+            //         // } else  if (this.$refs.firstLinePath.style.strokeDashoffset < 0){
+            //         //    this.$refs.firstLinePath.style.strokeDashoffset = 0;
+            //         // }
+            //         // this.$refs.firstLinePath.style.strokeDashoffset = Number(this.$refs.firstLinePath.style.strokeDashoffset) - 1;
+            //     }
+            // },
         },
         mounted: function () {
             this.getPosition();
@@ -323,6 +415,9 @@
                 this.hideSVGlines();
             })
 
+        },
+        computed: {
+            //
         },
         created() {
             window.addEventListener('scroll', this.handleScroll);
@@ -333,7 +428,7 @@
             window.removeEventListener('resize', this.onResize);
         },
         watch: {
-            //   watchers
+           
         }
     }
 </script>
