@@ -432,6 +432,11 @@
         height: fit-content;
         justify-content: flex-start;
     }
+    @media (max-width: 769px) {
+            .block-roadmap{
+                padding-bottom: 10px;
+            }
+        }
 
     .roadmap_wrapper {
         width: 50%;
@@ -446,7 +451,7 @@
         margin-top: 5vw;
         position: relative;
     }
-
+        
     .step:nth-child(2n) {
         align-self: flex-end;
     }
