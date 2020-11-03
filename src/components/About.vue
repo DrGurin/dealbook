@@ -24,6 +24,16 @@
           <h3 class="carousel-item1_whiteText carousel-item1_item2">Deal Book - is a completely unique service, which does not have any similar analogues</h3>
           <p class="carousel-item1_greyText carousel-item1_item3">You will be able to analyze the reason why your result was not 100% achieved</p>
         </div>
+        <template #customPaging="page">
+          <div class="custom-dot">
+            <svg :id="[`backIcon_${page}`]" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="7" stroke="#787878" stroke-width="2"/>
+            </svg>
+            <svg class="front_icon"  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle class="time-circle" :style="setDashes" :id="[`frontIcon_${page}`]" cx="8" cy="8" r="7" stroke="#386EE6" stroke-width="2"/>
+            </svg>
+          </div>
+        </template>
       </VueSlickCarousel>
     </div>
     <button class="arrowButton" @click="test()">
@@ -49,11 +59,25 @@ export default {
       autoplaySpeed: 7000,
       infinite: true,
       fade: false,
+      circumference: Number, 
     }
   },
   methods: {
-    test() {
-      // console.log('ochko arangutanga')
+    calcCircumferenceOfIcon(id) {
+      let elem = document.getElementById(id); 
+      let radius = elem.r.baseVal.value;
+      this.circumference = radius * 2 * Math.PI;
+    }
+  }, 
+  mounted: function() {
+    this.$nextTick(function () {
+      this.calcCircumferenceOfIcon("frontIcon_0");
+    })
+  },
+  // 'transition: stroke-dashoffset' + ' ' + this.autoplaySpeed + 's ' + ' ' + 'ease' + ';' + 
+  computed: {
+    setDashes() {
+      return 'stroke-dasharray:' + this.circumference + ' ' + this.circumference + '; stroke-dashoffset:' + this.circumference + ';'
     }
   }
 };
@@ -139,15 +163,37 @@ export default {
   #block-content-about .slick-slider>>>button:focus {
     outline: none !important;
   }
-  #block-content-about .slick-slider>>>ul {
+  #block-content-about .slick-slider>>>ul.slick-dots{
     font-size: 30px;
-    margin-left: 3%;
-    list-style-type: circle;
-    color: #787878;
+    margin-left: 0;
+    list-style-type: none;
+    color: transparent;
+    padding: 0;
+  }
+  #block-content-about .slick-slider>>>ul > li{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-right: 16px;
+  }
+  #block-content-about .slick-slider>>>ul > li > div.custom-dot{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+  }
+  .front_icon{
+    position: absolute;
+    transform-origin: center;
+    transform: rotate(-90deg);
+  }
+ 
+  #block-content-about .slick-slider>>>ul .slick-active .custom-dot .front_icon .time-circle{
+    stroke-dashoffset: 0 !important;
+    transition: stroke-dashoffset 7s linear !important;
+    transform: rotate(0);
   }
   #block-content-about .slick-slider>>>ul .slick-active {
-    color: #386EE6;
-    list-style-type: disc;
+    list-style-type: none;
   }
 @media (max-width: 769px) {
   #block-content-about .slick-slider>>>.slick-next:before {
