@@ -62,7 +62,6 @@
 
             <div ref="stepWrapperSecond" class="step">
                 <div ref="stepImageSecond" class="step_image_wrapper">
-                    <!-- <img id="icon2" class="step_image" src="./../assets/roadmap/team.svg" alt="Team icon"> -->
                     <svg id="icon2" class="step_image" width="64" height="29" viewBox="0 0 64 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M33.1635 14.0286C36.9332 13.1385 39.2675 9.36092 38.3774 5.59121C37.4873 1.8215 33.7097 -0.512855 29.94 0.37728C26.1703 1.26742 23.8359 5.04497 24.7261 8.81468C25.6162 12.5844 29.3938 14.9187 33.1635 14.0286ZM33.6805 16.1488H29.9789C22.9652 16.1488 17.3154 21.7987 17.3154 28.8124H46.5388C46.5388 21.7987 40.6941 16.1488 33.6805 16.1488Z" fill="white"/>
                         <transition name="slide-fade">
@@ -149,7 +148,7 @@
                 </div>
             </div>
 
-            <!-- svg-images that must be animated -->
+            <!-- LINES svg-images that must be animated -->
             <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}"
                 class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none"
                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
@@ -176,10 +175,15 @@
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
                 <path id="line4" ref="fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
-            <!-- svg-images that must be animated-->
+            <!--LINES svg-images that must be animated-->
         </div>
-
-
+        <div class="warning_block">
+            <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
+            <p class="warning_text">{{$t("warningRoadmap")}}</p>
+        </div>
+        <button class="arrowButton" @click="test()">
+            <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
+        </button>
     </div>
 </template>
 <script>
@@ -250,8 +254,6 @@
                         dashOffset: Number
                     },
                 ],
-                dashOffsetOfTheFIrstLine: Number,
-                a: 0,
             }
         },
         methods: {
@@ -381,21 +383,37 @@
                 a.push(this.linesData[4].dashOffset)
                 return a;
             }
-        },
-        watch: {
-            collectDashOffset: function (collection) {
-                // console.log('log all: ', collection);
-                if (collection[0] == 0) {
-                    console.log('connected');
-                } else {
-                    console.log('not connected');
-                }
-
-            },
         }
     }
 </script>
 <style scoped>
+.warning_block{
+    min-width: 50vw;
+    max-width: 80vw;
+    border: 1px solid #888888;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: fit-content;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 8px;
+    margin-top: 5vw;
+}
+.warning_text{
+    color: #787878;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 14px;
+}
+.warning_icon{
+    width: 13px;
+    height: 12px;
+    margin-right: 8px;
+}
     #app .step_image_wrapper {
         display: flex;
         justify-content: center;
@@ -414,11 +432,11 @@
         height: fit-content;
         justify-content: flex-start;
     }
-
-    #app .block-name {
-        padding: 0;
-        margin-top: 10px;
-    }
+    @media (max-width: 769px) {
+            .block-roadmap{
+                padding-bottom: 10px;
+            }
+        }
 
     .roadmap_wrapper {
         width: 50%;
@@ -430,10 +448,10 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: flex-start;
-        margin-top: 10px;
+        margin-top: 5vw;
         position: relative;
     }
-
+        
     .step:nth-child(2n) {
         align-self: flex-end;
     }
