@@ -16,7 +16,8 @@
 
             <div :class="active ? 'active-border-bottom list-first-block' : 'list-first-block'">
               <div :class="active ? 'leftside active-border-right' : 'leftside'">
-                <p :class="active ? 'activeInputText' : 'leftsideText'">{{donateTextMethods || 'Donat method' }}</p>
+                <p :class="active ? 'activeInputText' : 'leftsideText'" id="currencyChange">{{donateTextMethods || 'Donat method' }}</p>
+
               </div>
               <div :class="active ? 'rightSide active-border-left' : 'rightSide'" @click="activateChanges()">
                 <img :src="active ? activeArrow : arrow" alt="Arrow icon" class="custom-arrow">
@@ -37,9 +38,7 @@
                 <p class="currencyName">USDT</p>
               </div>
             </div>
-
-
-
+            <button class="copy-btn" @click="copyText()" v-if="copyBtn">Copy</button>
           </div>
         </div>
 				<button class="sub-btn" @click="sendDonate()">Donate</button>
@@ -62,7 +61,8 @@ export default {
       cross,
       arrow,
       activeArrow,
-      donateTextMethods: null
+      donateTextMethods: null,
+      copyBtn: false,
 		};
 	},
 	methods: {
@@ -81,15 +81,28 @@ export default {
         console.log('BTC')
         this.donateTextMethods = 'tut dolzhna byt kakayz-to huinya'
         this.activateChanges()
+        this.copyBtn = true
       } else if(param == 'ETH') {
         console.log('ETH')
         this.donateTextMethods = 'tut dolzhna byt kakayz-to huinya'
         this.activateChanges()
+        this.copyBtn = true
       } else {
         console.log('USDT')
         this.donateTextMethods = 'tut dolzhna byt kakayz-to huinya'
         this.activateChanges()
+        this.copyBtn = true
       }
+    },
+    copyText() {
+      let mytext = document.getElementById('currencyChange').innerHTML
+      navigator.clipboard.writeText(mytext)
+        .then(() => {
+          console.log('ok')
+        })
+        .catch(err => {
+          console.log('Something went wrong', err);
+        });
     }
 	},
 };
@@ -182,6 +195,7 @@ export default {
   display: flex;
   flex-direction: column;
   border-collapse: collapse;
+  position: relative;
 }
 .activeCustomInput {
   border: solid 1px  #386EE6;
@@ -298,5 +312,26 @@ export default {
   .customInput {
     width: 95%;
   }
+}
+.copy-btn {
+  position: absolute;
+  right: 0px;
+  top: 125%;
+  width: 18%;
+  background: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #787878;
+  border: 1px solid #787878;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.copy-btn:active,
+.copy-btn:focus {
+  outline: none;
 }
 </style>
