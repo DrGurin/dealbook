@@ -30,7 +30,7 @@
               <circle cx="8" cy="8" r="7" stroke="#787878" stroke-width="2"/>
             </svg>
             <svg class="front_icon"  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle class="time-circle" :style="setDashes" :id="[`frontIcon_${page}`]" cx="8" cy="8" r="7" stroke="#386EE6" stroke-width="2"/>
+              <circle :class="[isReadyForTransition ? 'ready' : 'broken', 'time-circle' ]" :style="setDashes" :id="[`frontIcon_${page}`]" cx="8" cy="8" r="7" stroke="#386EE6" stroke-width="2"/>
             </svg>
           </div>
         </template>
@@ -60,6 +60,7 @@ export default {
       infinite: true,
       fade: false,
       circumference: Number, 
+      isReadyForTransition: false
     }
   },
   methods: {
@@ -72,6 +73,9 @@ export default {
   mounted: function() {
     this.$nextTick(function () {
       this.calcCircumferenceOfIcon("frontIcon_0");
+      setTimeout(() => {
+        this.isReadyForTransition = true
+      }, 100);
     })
   },
   // 'transition: stroke-dashoffset' + ' ' + this.autoplaySpeed + 's ' + ' ' + 'ease' + ';' + 
@@ -187,10 +191,9 @@ export default {
     transform: rotate(-90deg);
   }
  
-  #block-content-about .slick-slider>>>ul .slick-active .custom-dot .front_icon .time-circle{
+  #block-content-about .slick-slider>>>ul .slick-active .custom-dot .front_icon .time-circle.ready{
     stroke-dashoffset: 0 !important;
-    transition: stroke-dashoffset 7s linear !important;
-    transform: rotate(0);
+    transition: stroke-dashoffset 7s linear;
   }
   #block-content-about .slick-slider>>>ul .slick-active {
     list-style-type: none;
