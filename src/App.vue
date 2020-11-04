@@ -1,14 +1,16 @@
 <template >
-  <div id="app" @wheel="wheelingPage" ref='app'>
+  <div id="app" ref='app'>
     <Navbar />
     <Home />
     <About />
     <Problem />
-    <Roadmap />
-    <Donate />
-    <Team />
     <Subscribe /> -->
-    <!-- <Footer/> -->
+    <Roadmap />
+    <Team />
+    <Donate />
+    <div v-if="!isMobile">
+    <Footer/>
+    </div>
   </div>
 </template>
 
@@ -16,7 +18,7 @@
   import Navbar from './components/Navbar.vue';
   import Roadmap from './components/Roadmap.vue';
   import Home from './components/Home.vue'
-  // import Footer from './components/Footer.vue'
+  import Footer from './components/Footer.vue'
   import About from './components/About.vue'
   import Problem from './components/Problem.vue'
   import Team from './components/Team.vue'
@@ -34,21 +36,21 @@
       Navbar,
       Roadmap,
       Home,
-      // Footer
+      Footer, 
     },
     data() {
       return{
-        scrollingDown: Boolean,
+        isMobile: Boolean, 
       }
     },
     methods: {
-      wheelingPage: function (ev) {
-        if (ev.deltaY < 0) {
-          this.scrollingDown = false;
-        } else {
-          this.scrollingDown = true;
-        }
-      },
+      checkIsMobile() {
+        if (window.innerWidth < 991) this.isMobile = true; 
+        if (window.innerWidth > 991) this.isMobile = false; 
+      }
+    },
+    created() {
+      this.checkIsMobile(); 
     }
   }
 </script>

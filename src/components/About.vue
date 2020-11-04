@@ -87,7 +87,6 @@ export default {
     },
     beforeChangeStillGo() {
       this.$refs.carousel.next()
-      console.log('worked');
     }
   }, 
   mounted: function() {

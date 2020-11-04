@@ -79,4 +79,6 @@ export default {
 .footer .warning-text u{
     color: #70777E;
 }
+
+
 </style>
