@@ -8,7 +8,10 @@
         :autoplay="autoplay"
         :autoplaySpeed="autoplaySpeed"
         :infinite="infinite"
-        :fade="fade">
+        :fade="fade"
+        ref="carousel"
+        @afterChange="afterChangeStillGo()"
+        @beforeChange="beforeChangeStillGo()">
         <div class="carousel-content">
           <img src="../assets/about/graph.svg" alt="Graph" class="graph carousel-item1_item1">
           <h3 class="carousel-item1_whiteText carousel-item1_item2">Have you ever thought of: “Why have I opened/closed the deal too early/late?”</h3>
@@ -24,6 +27,16 @@
           <h3 class="carousel-item1_whiteText carousel-item1_item2">Deal Book - is a completely unique service, which does not have any similar analogues</h3>
           <p class="carousel-item1_greyText carousel-item1_item3">You will be able to analyze the reason why your result was not 100% achieved</p>
         </div>
+        <template #prevArrow="arrowOption">
+          <div class="custom-arrow">
+            <img src="./../assets/about/prevArrow.svg" :alt="[`${arrowOption}`]">
+          </div>
+        </template>
+        <template #nextArrow="arrowOption">
+          <div class="custom-arrow">
+            <img src="./../assets/about/nextArrow.svg" :alt="[`${arrowOption}`]">
+          </div>
+        </template>
         <template #customPaging="page">
           <div class="custom-dot">
             <svg :id="[`backIcon_${page}`]" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +68,7 @@ export default {
     return {
       arrows: true,
       dots: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 7000,
       infinite: true,
       fade: false,
@@ -68,17 +81,25 @@ export default {
       let elem = document.getElementById(id); 
       let radius = elem.r.baseVal.value;
       this.circumference = radius * 2 * Math.PI;
+    },
+    afterChangeStillGo() {
+        this.$refs.carousel.play()
+    },
+    beforeChangeStillGo() {
+      this.$refs.carousel.next()
+      console.log('worked');
     }
   }, 
   mounted: function() {
     this.$nextTick(function () {
       this.calcCircumferenceOfIcon("frontIcon_0");
+      console.log('first: ', this.circumference);
       setTimeout(() => {
-        this.isReadyForTransition = true
-      }, 100);
+        this.isReadyForTransition = true;
+        this.$refs.carousel.play()
+      }, 1000);
     })
   },
-  // 'transition: stroke-dashoffset' + ' ' + this.autoplaySpeed + 's ' + ' ' + 'ease' + ';' + 
   computed: {
     setDashes() {
       return 'stroke-dasharray:' + this.circumference + ' ' + this.circumference + '; stroke-dashoffset:' + this.circumference + ';'
@@ -198,26 +219,12 @@ export default {
   #block-content-about .slick-slider>>>ul .slick-active {
     list-style-type: none;
   }
-@media (max-width: 769px) {
-  #block-content-about .slick-slider>>>.slick-next:before {
-    content: "›";
-    right: 3%;
-    /* top: 35%; */
+  #block-content-about .slick-slider>>>.slick-arrow{
+    display: none;
   }
-  #block-content-about .slick-slider>>>.slick-prev:before {
-    content: "‹";
-    left: 3%;
-    /* top: 35%; */
-  }
-  #block-content-about .slick-slider>>>.slick-next:before,
-  #block-content-about .slick-slider>>>.slick-prev:before {
-    font-family: slick;
-    font-size: 50px;
-    line-height: 1;
-    opacity: .75;
-    color: #fff;
-    position: absolute;
-    z-index: 10;
+@media (max-width: 990px) {
+  #block-content-about .slick-slider>>>.slick-arrow{
+    display: block;
   }
   #block-content-about .slick-slider>>>.slick-next {
     right: 3%;
@@ -229,13 +236,19 @@ export default {
   }
   #block-content-about .slick-slider>>>.slick-next,
   #block-content-about .slick-slider>>>.slick-prev {
-    font-family: slick;
-    font-size: 30px;
-    line-height: 1;
-    opacity: .75;
-    color: transparent;
     position: absolute;
     z-index: 10;
+  }
+}
+
+@media (max-width: 771px){
+  #block-content-about .slick-slider>>> .slick-slide{
+        padding: 0 20px;
+  }
+}
+@media (max-width: 321px){
+  #block-content-about .slick-slider>>>.slick-arrow{
+    top: 20%;
   }
 }
 </style>
