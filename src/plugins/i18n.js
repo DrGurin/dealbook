@@ -21,7 +21,8 @@ export const i18n = new VueI18n({
             quater4: "Q4 2020", 
             quater14: "Q1-Q4 2021", 
             quater214: "Q1-Q4 2022", 
-            warningRoadmap: "Updating the platform with constant adding new features"
+            warningRoadmap: "Updating the platform with constant adding new features",
+            footerText:'Donations are completely free-will and are non-obligatory, but they will help us to develop further and  faster. <u>The team consists of volunteers and fans of the idea.</u>',
         }, 
         РУ: {
             home: "Главная",

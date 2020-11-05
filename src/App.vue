@@ -8,7 +8,7 @@
     <Roadmap />
     <Team />
     <Donate />
-    <div v-if="!isMobile">
+    <div class="app_footer_wrapper">
     <Footer/>
     </div>
   </div>
