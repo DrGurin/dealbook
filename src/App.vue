@@ -3,7 +3,7 @@
     <Navbar />
     <Home />
     <About />
-    <!-- <Problem /> -->
+    <Problem />
     <Subscribe />
     <Roadmap />
     <Team />
@@ -20,7 +20,7 @@
   import Home from './components/Home.vue'
   // import Footer from './components/Footer.vue'
   import About from './components/About.vue'
-  // import Problem from './components/Problem.vue'
+  import Problem from './components/Problem.vue'
   import Team from './components/Team.vue'
   import Subscribe from './components/Subscribe.vue'
   import Donate from './components/Donate.vue'
@@ -29,7 +29,7 @@
     name: 'App',
     components: {
       About,
-      // Problem,
+      Problem,
       Team,
       Subscribe,
       Donate,
