@@ -142,6 +142,16 @@
             window.addEventListener('resize', this.onResize)
             // window.addEventListener('scroll', this.onScroll)
         },
+        watch: {
+            isBurgerMenuOpened: function() {
+            if(this.isBurgerMenuOpened){
+                document.documentElement.style.overflow = 'hidden'
+                return
+            }
+
+            document.documentElement.style.overflow = 'auto'
+            }
+        },
         beforeDestroy() {
             window.removeEventListener('resize', this.onResize);
             // window.removeEventListener('scroll', this.onScroll);
