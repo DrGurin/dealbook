@@ -60,6 +60,7 @@
 
   body {
     background: #000000;
+    transform: translateZ(1000px);
   }
 
   #app .header__wrapper {
