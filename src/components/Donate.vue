@@ -3,14 +3,14 @@
     <div class="block-content">
 			<div class="container-donate">
 				<h2 class="block-name">Donate</h2>
-        <button  @click="sendDonate()" class="closeButton" v-if="step2">
+        <button  @click="close()" class="closeButton" v-if="step2">
           <img :src="cross" alt="Close" class="cross">
         </button>
-        <div class="changesBlock" v-if="step1">
+        <div class="changesBlock" v-if="step1" id="firstBlock">
           <img src="../assets/donate/donate.svg" alt="Donate icon" class="logo" />
           <p class="underDonate">Donations are completely free-will and are non-obligatory, but they will help us to develop further and faster.</p>
         </div>
-        <div class="changesBlock" v-if="step2">
+        <div class="changesBlock" v-if="step2" :style="`height: ${heightForSecondBlock}px`">
           <p class="underDonate underDonateStep2">Select a method and indicate the amount of donation</p>
           <div :class="active ? 'customInput activeCustomInput' : 'customInput'">
 
@@ -63,12 +63,23 @@ export default {
       activeArrow,
       donateTextMethods: null,
       copyBtn: false,
+      heightForSecondBlock: null
 		};
 	},
 	methods: {
 		sendDonate() {
 			this.step1 = !this.step1
-			this.step2 = !this.step2 
+      this.step2 = !this.step2
+      // this.active = !this.active
+      this.copyBtn = false
+      this.donateTextMethods = null;
+    },
+    close() {
+      this.step1 = true;
+      this.step2 = false;
+      this.active = false;
+      this.copyBtn = false;
+      this.donateTextMethods = null;
     },
     activateChanges() {
       this.active = !this.active
@@ -79,17 +90,17 @@ export default {
     methodDonate(param) {
       if(param == 'BTC') {
         console.log('BTC')
-        this.donateTextMethods = 'tut dolzhna byt kakayz-to huinya'
+        this.donateTextMethods = 'tut kakayz-to huinya'
         this.activateChanges()
         this.copyBtn = true
       } else if(param == 'ETH') {
         console.log('ETH')
-        this.donateTextMethods = 'tut dolzhna byt kakayz-to huinya'
+        this.donateTextMethods = 'tut kakayz-to huinya'
         this.activateChanges()
         this.copyBtn = true
       } else {
         console.log('USDT')
-        this.donateTextMethods = 'tut dolzhna byt kakayz-to huinya'
+        this.donateTextMethods = 'tut kakayz-to huinya'
         this.activateChanges()
         this.copyBtn = true
       }
@@ -104,7 +115,17 @@ export default {
           console.log('Something went wrong', err);
         });
     }
-	},
+  },
+  mounted() {
+    let a = document.getElementById('firstBlock')
+    // this.heightForSecondBlock = a.height
+    // console.log(a.bottom - a.top)
+    console.log(a.getBoundingClientRect())
+    console.log(a.clientHeight)
+    console.log(a.offsetHeight)
+    console.log(a.scrollHeight)
+    // console.log(a.top)
+  }
 };
 </script>
 
@@ -305,14 +326,6 @@ export default {
   font-size: 14px;
   color: #787878;
 }
-@media (max-width: 769px) {
-  .logo {
-    width: 50%;
-  }
-  .customInput {
-    width: 95%;
-  }
-}
 .copy-btn {
   position: absolute;
   right: 0px;
@@ -334,4 +347,19 @@ export default {
 .copy-btn:focus {
   outline: none;
 }
+@media (max-width: 769px) {
+  .logo {
+    width: 50%;
+  }
+  .customInput {
+    width: 95%;
+  }
+  .copy-btn {
+    width: 30%;
+  }
+  .container-donate {
+    padding: 5% 5%;
+  }
+}
+
 </style>
