@@ -59,7 +59,6 @@ export default {
   },
 	methods: {
 		sendEmail() {
-      console.log('ochko')
       const email = this.email
       const url = 'http://localhost:3000/user'
 			axios.post(url, {
@@ -76,11 +75,11 @@ export default {
     },
   },
   mounted() {
-    console.log('mounted')
+    // console.log('mounted')
     this.heightBig = document.querySelector('.content-subscribe').scrollHeight
     this.heightSmall = document.querySelector('.subscribe-text_block').scrollHeight
-    console.log(this.heightBig)
-    console.log(this.heightSmall)
+    // console.log(this.heightBig)
+    // console.log(this.heightSmall)
   },
   computed: {
     getHeightBlock() {

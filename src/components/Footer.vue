@@ -16,7 +16,7 @@
       </div>
       <div class="footer-item warning-block">
           <img src="../assets/common/warning.svg" class="warning-item warning-icon" alt="Warning icon">
-          <p class="warning-item warning-text">Donations are completely free-will and are non-obligatory, but they will help us to develop further and  faster. <u>The team consists of volunteers and fans of the idea</u></p>
+          <p class="warning-item warning-text" v-html="$t('footerText')"></p>
       </div>
   </div>
 </template>
@@ -75,8 +75,37 @@ export default {
 .footer .warning-text{
     text-decoration: unset;
     color: #70777E;
+    font-size: 12px;
+    line-height: 16px;
 }
 .footer .warning-text u{
     color: #70777E;
 }
+
+@media (min-width: 991px){
+#app .footer{
+    max-width: 100%;
+    padding: 4vh 2vw;
+    background: #000000;
+    display: flex;
+    flex-direction: row;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    color: #70777E;
+    overflow: hidden;
+    }
+}
+.social-item-button{
+    width: 35px;
+}
+@media (max-width: 990px){
+    #app .app_footer_wrapper .footer{
+        display: none;
+    }
+    .warning-text{
+        font-size: 14px;
+    }
+}
+
 </style>

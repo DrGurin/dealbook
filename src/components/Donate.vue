@@ -109,7 +109,7 @@ export default {
       let mytext = document.getElementById('currencyChange').innerHTML
       navigator.clipboard.writeText(mytext)
         .then(() => {
-          console.log('ok')
+          // console.log('ok')
         })
         .catch(err => {
           console.log('Something went wrong', err);
