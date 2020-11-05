@@ -3,13 +3,13 @@
     <Navbar />
     <Home />
     <About />
-    <!-- <Problem /> -->
+    <Problem />
     <Subscribe />
     <Roadmap />
     <Team />
     <Donate />
     <div class="app_footer_wrapper">
-    <!-- <Footer/> -->
+    <Footer/>
     </div>
   </div>
 </template>
@@ -18,9 +18,9 @@
   import Navbar from './components/Navbar.vue';
   import Roadmap from './components/Roadmap.vue';
   import Home from './components/Home.vue'
-  // import Footer from './components/Footer.vue'
+  import Footer from './components/Footer.vue'
   import About from './components/About.vue'
-  // import Problem from './components/Problem.vue'
+  import Problem from './components/Problem.vue'
   import Team from './components/Team.vue'
   import Subscribe from './components/Subscribe.vue'
   import Donate from './components/Donate.vue'
@@ -29,14 +29,14 @@
     name: 'App',
     components: {
       About,
-      // Problem,
+      Problem,
       Team,
       Subscribe,
       Donate,
       Navbar,
       Roadmap,
       Home,
-      // Footer, 
+      Footer, 
     },
     data() {
       return{
