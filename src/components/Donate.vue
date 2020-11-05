@@ -83,6 +83,7 @@ export default {
     },
     activateChanges() {
       this.active = !this.active
+      this.copyBtn = false
       if (this.active) {
         this.donateTextMethods = null
       }
@@ -122,7 +123,7 @@ export default {
       this.heightForSecondBlock = a.getBoundingClientRect().height * 0.6
     } else {
       let a = document.getElementById('containerDonate')
-      this.heightForSecondBlock = a.getBoundingClientRect().height * 0.7
+      this.heightForSecondBlock = a.getBoundingClientRect().height * 0.6
     }
     // let b = document.getElementById('firstBlock')
     // console.log(a.getBoundingClientRect().height)
@@ -359,6 +360,7 @@ export default {
   }
   .copy-btn {
     width: 30%;
+    padding: 5px;
   }
   .container-donate {
     padding: 5% 5%;
