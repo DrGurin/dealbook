@@ -231,6 +231,7 @@
         border-radius: 5px;
         transform: translateZ(1px);
     }
+   
 
     @media (max-width: 991px) {
         .dropdown-content {

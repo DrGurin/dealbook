@@ -102,6 +102,7 @@
     align-items: center;
     margin-bottom: 10px;
     overflow: hidden;
+    padding-bottom: 2.5vw;
   }
 
   #app .block-content {
@@ -135,8 +136,8 @@
     outline: none;
     height: fit-content;
     width: fit-content;
-    margin-top: 5vw;
-    margin-bottom: 2.5vw;
+    margin-top: 3vw;
+    margin-bottom: 0;
   }
 
   *,
