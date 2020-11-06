@@ -45,7 +45,7 @@
         </div>
         <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
             v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'mobile-navbar-nav']">
-            <li class="nav-item">
+            <li ref="firstLi" class="nav-item">
                 <a class="nav-link" href="#">{{$t("home")}}</a>
             </li>
             <li class="nav-item">
@@ -60,7 +60,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Donate</a>
             </li>
-            <li class="nav-item">
+            <li ref="lastLi" class="nav-item">
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
@@ -121,8 +121,7 @@
                 this.heightOfFooter = this.$refs.footerWrapper.getBoundingClientRect().height; 
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
-                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - this.heightOfFooter/2;
-                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 46;
+                this.burgerMenuHeight = Number(window.innerHeight) - Number(this.heightOfFooter) - 46;
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
@@ -130,10 +129,11 @@
             },
         },
         mounted() {
-            setTimeout(() => {
-                this.matchSizes();
-            }, 10);
-            window.addEventListener('resize', this.onResize)
+            this.$nextTick(function () {
+                setTimeout(() => {
+                    this.matchSizes();
+                }, 200);
+            })
         },
         watch: {
             isBurgerMenuOpened: function() {
@@ -141,12 +141,8 @@
                 document.documentElement.style.overflow = 'hidden'
                 return
             }
-
             document.documentElement.style.overflow = 'auto'
             }
-        },
-        beforeDestroy() {
-            window.removeEventListener('resize', this.onResize);
         }
     }
 </script>

@@ -1,6 +1,6 @@
 <template >
   <div id="app" ref='app'>
-    <Navbar />
+    <Navbar ref="navbar"/>
     <Home />
     <About />
     <Problem ref="problem"/>
@@ -50,14 +50,22 @@
       },
       onScrollChangesInChildrenComponents() {
         this.$refs.problem.handleScroll(); 
+      },
+      onResizeChangesInChildrenComponents() {
+        setTimeout(() => {
+          this.$refs.navbar.onResize(); 
+        }, 1000);
       }
     },
     created() {
       this.checkIsMobile(); 
       window.addEventListener('scroll', this.onScrollChangesInChildrenComponents);
+      window.addEventListener('resize', this.onResizeChangesInChildrenComponents)
     },
     destroyed() {
-      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('scroll', this.onScrollChangesInChildrenComponents);
+      window.removeEventListener('resize', this.onResizeChangesInChildrenComponents);
+
     },
   }
 </script>

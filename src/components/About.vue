@@ -92,7 +92,6 @@ export default {
   mounted: function() {
     this.$nextTick(function () {
       this.calcCircumferenceOfIcon("frontIcon_0");
-      console.log('first: ', this.circumference);
       setTimeout(() => {
         this.isReadyForTransition = true;
         this.$refs.carousel.play()
