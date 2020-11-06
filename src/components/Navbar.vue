@@ -322,7 +322,6 @@
         top: 46px;
         left: -100vw;
         right: auto;
-        height: 300px;
         width: 100vw;
         background: #252525;
         display: flex;
@@ -332,12 +331,15 @@
         margin: 0;
         padding: 4vh 0vw;
         border-top: 1px solid #151515;
-        transition: all .3s linear;
+        border-bottom: 1px solid #000000;
+        transition: all .2s linear;
+        opacity: 0;
         z-index: 90;
     }
     .mobile-navbar-nav.opened {
         left: 0;
-        transition: all .3s linear;
+        opacity: 1;
+        transition: all .2s linear;
         z-index: 90;
     }
 
@@ -361,13 +363,16 @@
         right: -100vw;
         top: auto;
         overflow: hidden;
-        border-top: 1px solid #000000;
-        transition: all .3s linear;
+        /* transition: all .3s linear; */
+        transition: opacity .2s linear;
         z-index: 90;
+        opacity: 0;
     }
     .footer-wrapper.opened{
-        transition: right .3s linear;
+        /* transition: right .3s linear; */
         right: 0;
+        opacity: 1;
+        transition: opacity .2s linear;
         z-index: 90;
     }
 
