@@ -1,7 +1,7 @@
 <template>
   <div class="block block-donate">
     <div class="block-content">
-			<div class="container-donate">
+			<div class="container-donate" id="containerDonate">
 				<h2 class="block-name">Donate</h2>
         <button  @click="close()" class="closeButton" v-if="step2">
           <img :src="cross" alt="Close" class="cross">
@@ -83,6 +83,7 @@ export default {
     },
     activateChanges() {
       this.active = !this.active
+      this.copyBtn = false
       if (this.active) {
         this.donateTextMethods = null
       }
@@ -117,14 +118,17 @@ export default {
     }
   },
   mounted() {
-    let a = document.getElementById('firstBlock')
-    // this.heightForSecondBlock = a.height
-    // console.log(a.bottom - a.top)
-    console.log(a.getBoundingClientRect())
-    console.log(a.clientHeight)
-    console.log(a.offsetHeight)
-    console.log(a.scrollHeight)
-    // console.log(a.top)
+    if (window.innerWidth > 769) {
+      let a = document.getElementById('containerDonate')
+      this.heightForSecondBlock = a.getBoundingClientRect().height * 0.6
+    } else {
+      let a = document.getElementById('containerDonate')
+      this.heightForSecondBlock = a.getBoundingClientRect().height * 0.6
+    }
+    // let b = document.getElementById('firstBlock')
+    // console.log(a.getBoundingClientRect().height)
+    // console.log(b.getBoundingClientRect().height)
+    // console.log(window.innerWidth)
   }
 };
 </script>
@@ -348,17 +352,21 @@ export default {
   outline: none;
 }
 @media (max-width: 769px) {
-  .logo {
+  /* .logo {
     width: 50%;
-  }
+  } */
   .customInput {
     width: 95%;
   }
   .copy-btn {
     width: 30%;
+    padding: 5px;
   }
   .container-donate {
     padding: 5% 5%;
+  }
+  .list-first-block {
+    height: 60px;
   }
 }
 
