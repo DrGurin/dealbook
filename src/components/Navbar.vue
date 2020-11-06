@@ -112,7 +112,6 @@
             },
             changeLocalization(ctx) {
                 this.$i18n.locale = ctx;
-                // console.log(this.$i18n.locale); 
                 this.localization = ctx;
                 this.isDropDowmMenuOpened = false;
             },
@@ -120,7 +119,6 @@
                 this.mobile = window.innerWidth < 991;
                 this.logoWrapperHeight = this.$refs.logoImg.clientHeight + 'px';
                 this.heightOfFooter = this.$refs.footerWrapper.getBoundingClientRect().height; 
-                // console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
                 this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - this.heightOfFooter/2;
@@ -130,17 +128,12 @@
                 this.mobile = window.innerWidth < 991;
                 this.matchSizes();
             },
-            // onScroll() {
-            //     let el = document.getElementById('blockSubscribe');
-            //     return el.getBoundingClientRect();
-            // }
         },
         mounted() {
             setTimeout(() => {
                 this.matchSizes();
             }, 10);
             window.addEventListener('resize', this.onResize)
-            // window.addEventListener('scroll', this.onScroll)
         },
         watch: {
             isBurgerMenuOpened: function() {
@@ -154,7 +147,6 @@
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.onResize);
-            // window.removeEventListener('scroll', this.onScroll);
         }
     }
 </script>

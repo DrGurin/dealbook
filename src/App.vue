@@ -3,7 +3,7 @@
     <Navbar />
     <Home />
     <About />
-    <Problem />
+    <Problem ref="problem"/>
     <Subscribe />
     <Roadmap />
     <Team />
@@ -47,11 +47,18 @@
       checkIsMobile() {
         if (window.innerWidth < 991) this.isMobile = true; 
         if (window.innerWidth > 991) this.isMobile = false; 
+      },
+      onScrollChangesInChildrenComponents() {
+        this.$refs.problem.handleScroll(); 
       }
     },
     created() {
       this.checkIsMobile(); 
-    }
+      window.addEventListener('scroll', this.onScrollChangesInChildrenComponents);
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
   }
 </script>
 
