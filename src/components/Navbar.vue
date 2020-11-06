@@ -181,12 +181,12 @@
             transition-delay: 0.3s;
         }
         .header.opened{
-            height: 100vh;
+            /* height: 100vh; */
+            min-height: 100vh; 
             transition: height .05s ease-in-out;
             transition-delay: 0;
         }
     }
-
     .navbar-brand-img {
         width: 23px;
         height: 30px;
@@ -229,11 +229,13 @@
         background: #303030;
         box-shadow: 2px 1px 5px #000000;
         border-radius: 5px;
+        transform: translateZ(1px);
     }
 
     @media (max-width: 991px) {
         .dropdown-content {
             right: 1vw;
+            transform: translateZ(1px);
         }
     }
 
