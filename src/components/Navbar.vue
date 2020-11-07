@@ -45,7 +45,7 @@
         </div>
         <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
             v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'mobile-navbar-nav']">
-            <li class="nav-item">
+            <li ref="firstLi" class="nav-item">
                 <a class="nav-link" href="#">{{$t("home")}}</a>
             </li>
             <li class="nav-item">
@@ -60,7 +60,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Donate</a>
             </li>
-            <li class="nav-item">
+            <li ref="lastLi" class="nav-item">
                 <a class="nav-link" href="#">Team</a>
             </li>
         </ul>
@@ -112,7 +112,6 @@
             },
             changeLocalization(ctx) {
                 this.$i18n.locale = ctx;
-                // console.log(this.$i18n.locale); 
                 this.localization = ctx;
                 this.isDropDowmMenuOpened = false;
             },
@@ -120,27 +119,21 @@
                 this.mobile = window.innerWidth < 991;
                 this.logoWrapperHeight = this.$refs.logoImg.clientHeight + 'px';
                 this.heightOfFooter = this.$refs.footerWrapper.getBoundingClientRect().height; 
-                // console.log(this.heightOfFooter);
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
-                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - this.heightOfFooter/2;
-                this.burgerMenuHeight = this.clientHeight - this.heightOfFooter - 46;
+                this.burgerMenuHeight = Number(window.innerHeight) - Number(this.heightOfFooter) - 46 - Number(window.innerHeight/10);
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
                 this.matchSizes();
             },
-            // onScroll() {
-            //     let el = document.getElementById('blockSubscribe');
-            //     return el.getBoundingClientRect();
-            // }
         },
         mounted() {
-            setTimeout(() => {
-                this.matchSizes();
-            }, 10);
-            window.addEventListener('resize', this.onResize)
-            // window.addEventListener('scroll', this.onScroll)
+            this.$nextTick(function () {
+                setTimeout(() => {
+                    this.matchSizes();
+                }, 200);
+            })
         },
         watch: {
             isBurgerMenuOpened: function() {
@@ -148,13 +141,8 @@
                 document.documentElement.style.overflow = 'hidden'
                 return
             }
-
             document.documentElement.style.overflow = 'auto'
             }
-        },
-        beforeDestroy() {
-            window.removeEventListener('resize', this.onResize);
-            // window.removeEventListener('scroll', this.onScroll);
         }
     }
 </script>
@@ -193,12 +181,12 @@
             transition-delay: 0.3s;
         }
         .header.opened{
-            height: 100vh;
+            /* height: 100vh; */
+            height: 90vh; 
             transition: height .05s ease-in-out;
             transition-delay: 0;
         }
     }
-
     .navbar-brand-img {
         width: 23px;
         height: 30px;
@@ -241,11 +229,14 @@
         background: #303030;
         box-shadow: 2px 1px 5px #000000;
         border-radius: 5px;
+        transform: translateZ(1px);
     }
+   
 
     @media (max-width: 991px) {
         .dropdown-content {
             right: 1vw;
+            transform: translateZ(1px);
         }
     }
 
@@ -331,7 +322,6 @@
         top: 46px;
         left: -100vw;
         right: auto;
-        height: 300px;
         width: 100vw;
         background: #252525;
         display: flex;
@@ -341,12 +331,15 @@
         margin: 0;
         padding: 4vh 0vw;
         border-top: 1px solid #151515;
-        transition: all .3s linear;
+        border-bottom: 1px solid #000000;
+        transition: all .2s linear;
+        opacity: 0;
         z-index: 90;
     }
     .mobile-navbar-nav.opened {
         left: 0;
-        transition: all .3s linear;
+        opacity: 1;
+        transition: all .2s linear;
         z-index: 90;
     }
 
@@ -370,13 +363,17 @@
         right: -100vw;
         top: auto;
         overflow: hidden;
-        border-top: 1px solid #000000;
-        transition: all .3s linear;
+        /* transition: all .3s linear; */
+        transition: opacity .2s linear;
         z-index: 90;
+        opacity: 0;
+        box-shadow: 0vh 48vh 0px 30vh #252525;
     }
     .footer-wrapper.opened{
-        transition: right .3s linear;
+        /* transition: right .3s linear; */
         right: 0;
+        opacity: 1;
+        transition: opacity .2s linear;
         z-index: 90;
     }
 

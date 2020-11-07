@@ -1,9 +1,9 @@
 <template >
   <div id="app" ref='app'>
-    <Navbar />
+    <Navbar ref="navbar"/>
     <Home />
     <About />
-    <Problem />
+    <Problem ref="problem"/>
     <Subscribe />
     <Roadmap />
     <Team />
@@ -47,11 +47,26 @@
       checkIsMobile() {
         if (window.innerWidth < 991) this.isMobile = true; 
         if (window.innerWidth > 991) this.isMobile = false; 
+      },
+      onScrollChangesInChildrenComponents() {
+        this.$refs.problem.handleScroll(); 
+      },
+      onResizeChangesInChildrenComponents() {
+        setTimeout(() => {
+          this.$refs.navbar.onResize(); 
+        }, 1000);
       }
     },
     created() {
       this.checkIsMobile(); 
-    }
+      window.addEventListener('scroll', this.onScrollChangesInChildrenComponents);
+      window.addEventListener('resize', this.onResizeChangesInChildrenComponents)
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.onScrollChangesInChildrenComponents);
+      window.removeEventListener('resize', this.onResizeChangesInChildrenComponents);
+
+    },
   }
 </script>
 
@@ -87,13 +102,13 @@
     align-items: center;
     margin-bottom: 10px;
     overflow: hidden;
+    padding-bottom: 2.5vw;
   }
 
   #app .block-content {
     width: 65%;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-content: center;
     align-items: center;
   }
@@ -120,8 +135,8 @@
     outline: none;
     height: fit-content;
     width: fit-content;
-    margin-top: 5vw;
-    margin-bottom: 2.5vw;
+    margin-top: 3vw;
+    margin-bottom: 0;
   }
 
   *,

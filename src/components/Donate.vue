@@ -90,17 +90,17 @@ export default {
     },
     methodDonate(param) {
       if(param == 'BTC') {
-        console.log('BTC')
+        // console.log('BTC')
         this.donateTextMethods = 'tut kakayz-to huinya'
         this.activateChanges()
         this.copyBtn = true
       } else if(param == 'ETH') {
-        console.log('ETH')
+        // console.log('ETH')
         this.donateTextMethods = 'tut kakayz-to huinya'
         this.activateChanges()
         this.copyBtn = true
       } else {
-        console.log('USDT')
+        // console.log('USDT')
         this.donateTextMethods = 'tut kakayz-to huinya'
         this.activateChanges()
         this.copyBtn = true

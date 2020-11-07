@@ -92,7 +92,6 @@ export default {
   mounted: function() {
     this.$nextTick(function () {
       this.calcCircumferenceOfIcon("frontIcon_0");
-      console.log('first: ', this.circumference);
       setTimeout(() => {
         this.isReadyForTransition = true;
         this.$refs.carousel.play()
@@ -199,6 +198,9 @@ export default {
     justify-content: center;
     position: relative;
     margin-right: 16px;
+  }
+  #block-content-about .slick-slider>>>ul > li:last-child{
+    margin-right: 0;
   }
   #block-content-about .slick-slider>>>ul > li > div.custom-dot{
     width: fit-content;
