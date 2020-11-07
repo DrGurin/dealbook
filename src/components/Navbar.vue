@@ -121,7 +121,7 @@
                 this.heightOfFooter = this.$refs.footerWrapper.getBoundingClientRect().height; 
                 this.mobileNavBarToTop = this.$refs.mobileNavBar.getBoundingClientRect().top;
                 this.clientHeight = window.screen.height;
-                this.burgerMenuHeight = Number(window.innerHeight) - Number(this.heightOfFooter) - 46;
+                this.burgerMenuHeight = Number(window.innerHeight) - Number(this.heightOfFooter) - 46 - Number(window.innerHeight/10);
             },
             onResize() {
                 this.mobile = window.innerWidth < 991;
@@ -182,7 +182,7 @@
         }
         .header.opened{
             /* height: 100vh; */
-            min-height: 100vh; 
+            height: 90vh; 
             transition: height .05s ease-in-out;
             transition-delay: 0;
         }
@@ -367,6 +367,7 @@
         transition: opacity .2s linear;
         z-index: 90;
         opacity: 0;
+        box-shadow: 0vh 48vh 0px 30vh #252525;
     }
     .footer-wrapper.opened{
         /* transition: right .3s linear; */
