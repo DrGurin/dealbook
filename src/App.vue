@@ -86,7 +86,9 @@
     top: 0;
     left: 0;
   }
-
+  button {
+    cursor: pointer;
+  }
   #app {
     position: relative;
     padding: 0 10vw;

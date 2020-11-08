@@ -165,7 +165,7 @@ export default {
   line-height: 19px;
   text-align: center;
   color: #787878;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 }
 .emailField {
   background: transparent;
