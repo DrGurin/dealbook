@@ -146,6 +146,7 @@
                     <p class="step_title_text">{{$t("commingSoon")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
+                <p class="step_description"> <br> </p>
             </div>
 
             <!-- LINES svg-images that must be animated -->
@@ -170,12 +171,14 @@
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
                 <path id="line3" ref="thirdLinePath" :d="directionForPathOfLeftToRightLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
+            <!-- the height of fourth svg must be like the third. This is a crutch-fix for safari bug -->
             <svg :style="{top: exitTopPositionOfTheFourthIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
-                class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheFourthLine" :viewBox="viewbox"
+                class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheThirdLine" :viewBox="viewbox"
                 fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
                 <path id="line4" ref="fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
             <!--LINES svg-images that must be animated-->
+            
         </div>
         <div class="warning_block">
             <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
@@ -184,6 +187,7 @@
         <button class="arrowButton" @click="test()">
             <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
         </button>
+
     </div>
 </template>
 <script>
@@ -286,8 +290,7 @@
                 this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this
                 .exitTopPositionOfTheSecondIcon;
                 this.heightOfTheThirdLine = this.$refs.stepWrapperFourth.offsetTop - this.exitTopPositionOfTheThirdIcon;
-                this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this
-                    .exitTopPositionOfTheFourthIcon + 20;
+                this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this.exitTopPositionOfTheFourthIcon + 19;
                 // 
                 // vieboxes for lines 
                 this.viewbox = `0 0 ${this.widthOfTheLine} ${this.heightOfTheLine}`;
@@ -357,24 +360,8 @@
                 this.getPosition();
             })
         },
-        created() {
-            window.addEventListener('scroll', this.handleScroll);
-            window.addEventListener('resize', this.onResize)
-        },
-        destroyed() {
-            window.removeEventListener('scroll', this.handleScroll);
-            window.removeEventListener('resize', this.onResize);
-        }, 
         computed: {
             collectDashOffset: function () {
-
-                // let collection = []; 
-                // for (let index = 0; index < collection.length; index++) {
-                //     collection.push(this.linesData[index].dashOffset)
-                // }
-                // console.log(collection);
-                // return collection;
-
                 let a = []; 
                 a.push(this.linesData[0].dashOffset)
                 a.push(this.linesData[1].dashOffset)
@@ -387,6 +374,7 @@
     }
 </script>
 <style scoped>
+
 .warning_block{
     min-width: 50vw;
     max-width: 80vw;
@@ -431,6 +419,7 @@
     #app .block-roadmap {
         height: fit-content;
         justify-content: flex-start;
+        position: relative;
     }
     @media (max-width: 769px) {
             .block-roadmap{

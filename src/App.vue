@@ -5,7 +5,7 @@
     <About />
     <Problem ref="problem"/>
     <Subscribe />
-    <Roadmap />
+    <Roadmap ref="roadmap"/>
     <Team />
     <Donate />
     <div class="app_footer_wrapper">
@@ -50,10 +50,12 @@
       },
       onScrollChangesInChildrenComponents() {
         this.$refs.problem.handleScroll(); 
+        this.$refs.roadmap.handleScroll(); 
       },
       onResizeChangesInChildrenComponents() {
         setTimeout(() => {
           this.$refs.navbar.onResize(); 
+          this.$refs.roadmap.onResize(); 
         }, 1000);
       }
     },
