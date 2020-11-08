@@ -153,7 +153,7 @@
             <svg :style="{top: exitTopPositionOfTheFirstIcon + 'px', left: exitLeftPositionOfTheFirstIcon + 'px'}"
                 class="line firstLine" :width="widthOfTheLine" :height="heightOfTheLine" :viewBox="viewbox" fill="none"
                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
-                <path id="line1" ref="firstLinePath" :d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
+                <path id="line1" ref="firstLinePath" d="directionForPathOfLeftToRightLine" stroke="#386EE6" stroke-width="2" />
             </svg>
             <svg :style="{top: exitTopPositionOfTheSecondIcon + 'px', left: exitLeftPositionOfTheSecondIcon-widthOfTheLine + 'px'}"
                 class="line secondLineGrey" :width="widthOfTheLine" :height="heightOfTheSecondLine" :viewBox="viewbox"
@@ -296,17 +296,7 @@
                 this.viewbox = `0 0 ${this.widthOfTheLine} ${this.heightOfTheLine}`;
                 this.viewboxThirdLine = `0 0 ${this.widthOfTheLine} ${this.heightOfTheThirdLine}`;
                 this.viewboxForBlueOne = `0 0 ${this.widthOfBlueLine} 2`;
-                // 
-                // directions that are inserted on <path :d=""></path>
-                this.directionForPathOfLeftToRightLine =
-                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`
-                this.directionForPathOfLeftToRightLine2 =
-                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheThirdLine}`
-                this.directionForPathOfRightToLeftLine =
-                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`
-                this.directionForPathOfRightToLeftLine2 =
-                    `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`
-                this.directionForPathOfBlueLine = `M ${this.widthOfBlueLine} 1 H -${this.widthOfBlueLine} 1`
+                //
             },
             onResize() {
                 this.getPosition();
@@ -358,6 +348,12 @@
         mounted: function () {
             this.$nextTick(function () {
                 this.getPosition();
+                document.getElementById("line1").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`);
+                document.getElementById("line2").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`);
+                document.getElementById("line2Blue").setAttribute("d", `M ${this.widthOfBlueLine} 1 H -${this.widthOfBlueLine} 1`);
+                document.getElementById("line3").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheThirdLine}`);
+                document.getElementById("line4").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`);
+                // document.getElementById("line1")[0].setAttribute("d", "democlass");
             })
         },
         computed: {
@@ -374,34 +370,6 @@
     }
 </script>
 <style scoped>
-
-.warning_block{
-    min-width: 50vw;
-    max-width: 80vw;
-    border: 1px solid #888888;
-    box-sizing: border-box;
-    border-radius: 5px;
-    height: fit-content;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    padding: 8px;
-    margin-top: 5vw;
-}
-.warning_text{
-    color: #787878;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 12px;
-    line-height: 14px;
-}
-.warning_icon{
-    width: 13px;
-    height: 12px;
-    margin-right: 8px;
-}
     #app .step_image_wrapper {
         display: flex;
         justify-content: center;

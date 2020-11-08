@@ -34,7 +34,7 @@
       </div>
     </div>
     <button class="arrowButton" @click="test()">
-      <img src="../assets/common/arrowUp.svg" alt="Arrow" class="arrow" />
+      <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow" />
     </button>
   </div>
 </template>
@@ -75,11 +75,8 @@ export default {
     },
   },
   mounted() {
-    // console.log('mounted')
     this.heightBig = document.querySelector('.content-subscribe').scrollHeight
     this.heightSmall = document.querySelector('.subscribe-text_block').scrollHeight
-    // console.log(this.heightBig)
-    // console.log(this.heightSmall)
   },
   computed: {
     getHeightBlock() {

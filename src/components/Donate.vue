@@ -43,6 +43,9 @@
         </div>
 				<button class="sub-btn" @click="sendDonate()">Donate</button>
 			</div>
+      <button class="arrowButton" @click="test()">
+        <img src="../assets/common/arrowUp.svg" alt="Arrow" class="arrow" />
+      </button>
     </div>
   </div>
 </template>
@@ -134,6 +137,9 @@ export default {
 </script>
 
 <style scoped>
+#app .arrowButton{
+  margin-top: 0;
+}
 .sub-btn {
   background: #ffffff;
   border-radius: 5px;

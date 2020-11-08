@@ -9,9 +9,9 @@
           <p class="position">{{ card.position }}</p>
         </div>
       </div>
-      <div class="aboutTeam">
-        <img src="../assets/team/triangle.svg" alt="Triangle" class="triangle">
-        <p class="aboutTeamText">The team consists of volunteers and fans of the idea</p>
+      <div class="warning_block">
+            <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
+            <p class="warning_text">{{$t("warningTeam")}}</p>
       </div>
     </div>
     <button class="arrowButton" @click="test()">
