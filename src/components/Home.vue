@@ -1,10 +1,10 @@
 <template>
     <div class="block block-home">
-        <h1 class="title">Deal Book</h1>
+        <h1 class="title">{{$t("home_title")}}</h1>
         <div class="canvas-wrapper">
             <canvas ref="canvas"></canvas>
         </div>
-        <p class="solution">{{$t("homeSolution")}}</p>
+        <p class="solution">{{$t("home_motto")}}</p>
         <button class="arrowButton" @click="test()">
             <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
         </button>

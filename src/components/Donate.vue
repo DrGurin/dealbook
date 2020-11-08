@@ -2,21 +2,21 @@
   <div class="block block-donate">
     <div class="block-content">
 			<div class="container-donate" id="containerDonate">
-				<h2 class="block-name">Donate</h2>
+				<h2 class="block-name">{{$t('donate_title')}}</h2>
         <button  @click="close()" class="closeButton" v-if="step2">
           <img :src="cross" alt="Close" class="cross">
         </button>
         <div class="changesBlock" v-if="step1" id="firstBlock">
           <img src="../assets/donate/donate.svg" alt="Donate icon" class="logo" />
-          <p class="underDonate">Donations are completely free-will and are non-obligatory, but they will help us to develop further and faster.</p>
+          <p class="underDonate">{{$t('donate_description')}}</p>
         </div>
         <div class="changesBlock" v-if="step2" :style="`height: ${heightForSecondBlock}px`">
-          <p class="underDonate underDonateStep2">Select a method and indicate the amount of donation</p>
+          <p class="underDonate underDonateStep2">{{$t('donate_select')}}</p>
           <div :class="active ? 'customInput activeCustomInput' : 'customInput'">
 
             <div :class="active ? 'active-border-bottom list-first-block' : 'list-first-block'">
               <div :class="active ? 'leftside active-border-right' : 'leftside'">
-                <p :class="active ? 'activeInputText' : 'leftsideText'" id="currencyChange">{{donateTextMethods || 'Donat method' }}</p>
+                <p :class="active ? 'activeInputText' : 'leftsideText'" id="currencyChange">{{donateTextMethods || $t('donate_method') }}</p>
 
               </div>
               <div :class="active ? 'rightSide active-border-left' : 'rightSide'" @click="activateChanges()">
@@ -38,10 +38,10 @@
                 <p class="currencyName">USDT</p>
               </div>
             </div>
-            <button class="copy-btn" @click="copyText()" v-if="copyBtn">Copy</button>
+            <button class="copy-btn" @click="copyText()" v-if="copyBtn">{{$t('donate_copy')}}</button>
           </div>
         </div>
-				<button class="sub-btn" @click="sendDonate()">Donate</button>
+				<button class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
 			</div>
       <button class="arrowButton" @click="test()">
         <img src="../assets/common/arrowUp.svg" alt="Arrow" class="arrow" />

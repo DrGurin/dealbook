@@ -4,8 +4,8 @@
     <Home />
     <About />
     <Problem ref="problem"/>
-    <Subscribe />
     <Roadmap ref="roadmap"/>
+    <Subscribe />
     <Team />
     <Donate />
     <div class="app_footer_wrapper">

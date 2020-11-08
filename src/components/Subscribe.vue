@@ -16,21 +16,21 @@
           />
           <div class="subscribe-text_block" :style="getHeightBlock">
             <h3 class="subscribe-whiteText">
-              {{answer ? 'Thank you for your subscription' : 'Subscribe to our newsletter to always be updated about the progress'}}
+              {{answer ? $t('subscribe_thanks') : $t('subscribe_letSubscribe')}}
             </h3>
             <p class="subscribe-greyText">
-              {{answer ? 'When the project is released, we will definitely contact you' : 'Your email is required solely for feedback'}}
+              {{answer ? $t('subscribe_answer') : $t('subscribe_emailForFeedback')}}
             </p> 
             <input
               type="text"
-              placeholder="Enter your email"
+              :placeholder="$t('subscribe_enterEmail')"
               class="emailField"
               v-model="email"
               v-if="!answer"
             />
           </div>
         </div>
-        <button :class="answer ? 'na-btn sub-btn' : 'sub-btn'" @click="sendEmail()">Subscribe</button>
+        <button :class="answer ? 'na-btn sub-btn' : 'sub-btn'" @click="sendEmail()">{{$t('subscribe_button')}}</button>
       </div>
     </div>
     <button class="arrowButton" @click="test()">

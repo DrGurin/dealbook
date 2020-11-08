@@ -1,32 +1,32 @@
 <template>
   <div class="block block-problem">
     <div class="block-content">
-      <h2 class="block-name">What problem do we solve?</h2>
+      <h2 class="block-name">{{$t('problem_title')}}</h2>
       <div id="problemRow1" :class="[blocksData[0].isActive ? 'active-block' : 'not-active-block' ,'problemRow no-reverse']">
         <div class="row-content">
           <img src="../assets/problem/graph1.svg" alt="Graph" class="graph notRev">
-          <h3 class="rowText">You will have the opportunity to thoroughly analyze completed transactions</h3>
+          <h3 class="rowText">{{$t('problem_argument1')}}</h3>
         </div>
         <div class="line"></div>
       </div>
       <div id="problemRow2" :class="[blocksData[1].isActive ? 'active-block' : 'not-active-block' ,'problemRow reverse']">
         <div class="row-content revrow">
           <img src="../assets/problem/graph2.svg" alt="Graph" class="graph rev">
-          <h3 class="rowText revText">Ability to keep detailed records of your trades</h3>
+          <h3 class="rowText revText">{{$t('problem_argument2')}}</h3>
         </div>
         <div class="line revLine"></div>
       </div>
       <div id="problemRow3" :class="[blocksData[2].isActive ? 'active-block' : 'not-active-block' ,'problemRow no-reverse']">
         <div class="row-content">
           <img src="../assets/problem/graph3.svg" alt="Graph" class="graph notRev">
-          <h3 class="rowText">You will have the opportunity to thoroughly analyze completed transactions</h3>
+          <h3 class="rowText">{{$t('problem_argument3')}}</h3>
         </div>
         <div class="line"></div>
       </div>
       <div id="problemRow4" :class="[blocksData[3].isActive ? 'active-block' : 'not-active-block' ,'problemRow reverse']">
         <div class="row-content revrow">
           <img src="../assets/problem/graph4.svg" alt="Graph" class="graph rev">
-          <h3 class="rowText revText">Ability to keep detailed records of your trades</h3>
+          <h3 class="rowText revText">{{$t('problem_argument4')}}</h3>
         </div>
         <!-- <div class="line revLine"></div> -->
       </div>

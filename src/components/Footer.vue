@@ -2,21 +2,21 @@
   <div class="footer">
       <div class="footer-item block-social">
           <a class="social-item-button">
-              <img src="../assets/footer/twitter.svg" alt="Twitter icon" class="button-icon">
+              <img src="../assets/footer/twitter.svg" alt="Twitter icon" class="Twitter-icon">
           </a>
           <a class="social-item-button">
-              <img src="../assets/footer/ld.svg" alt="Linkedin icon" class="button-icon">
+              <img src="../assets/footer/ld.svg" alt="Linkedin icon" class="Linkedin-icon">
           </a>
           <a class="social-item-button">
-              <img src="../assets/footer/fb.svg" alt="Facebook icon" class="button-icon">
+              <img src="../assets/footer/fb.svg" alt="Facebook icon" class="Facebook-icon">
           </a>
           <a class="social-item-button">
-              <img src="../assets/footer/tg.svg" alt="Telegram icon" class="button-icon">
+              <img src="../assets/footer/tg.svg" alt="Telegram icon" class="Telegram-icon">
           </a>
       </div>
       <div class="footer-item warning-block">
           <img src="../assets/common/warning.svg" class="warning-item warning-icon" alt="Warning icon">
-          <p class="warning-item warning-text" v-html="$t('footerText')"></p>
+          <p class="warning-item warning-text" v-html="$t('footer_footerText')"></p>
       </div>
   </div>
 </template>

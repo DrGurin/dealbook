@@ -11,7 +11,7 @@
       </div>
       <div class="warning_block">
             <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
-            <p class="warning_text">{{$t("warningTeam")}}</p>
+            <p class="warning_text">{{$t("team_warning")}}</p>
       </div>
     </div>
     <button class="arrowButton" @click="test()">
@@ -29,33 +29,43 @@ export default {
       cards: [
         {
           img: borys,
-          name: "Yevhenii Hryshchuk",
-          position: "CEO, UI/UX Designer"
+          name: this.$t('team_teammate1'),
+          position: this.$t('team_teammate1position')
         },
         {
           img: borys,
-          name: "Andrii Fedunin",
-          position: "Community Manager, PM"
+          name: this.$t('team_teammate2'),
+          position: this.$t('team_teammate2position')
         },
         {
           img: borys,
-          name: "Ilya Lopatko",
-          position: "CTO, Backend developer"
+          name: this.$t('team_teammate3'),
+          position: this.$t('team_teammate3position')
         },
         {
           img: borys,
-          name: "Mykhailo Hurin",
-          position: "Frontend developer"
+          name: this.$t('team_teammate4'),
+          position: this.$t('team_teammate4position')
         },
         {
           img: borys,
-          name: "Borys Rohulia",
-          position: "Frontend developer"
+          name: this.$t('team_teammate5'),
+          position: this.$t('team_teammate5position')
         },
         {
           img: borys,
-          name: "Alexandr Klimenko",
-          position: "Targetologist"
+          name: this.$t('team_teammate6'),
+          position: this.$t('team_teammate6position')
+        },
+        {
+          img: borys,
+          name: this.$t('team_teammate7'),
+          position: this.$t('team_teammate7position')
+        },
+        {
+          img: borys,
+          name: this.$t('team_teammate8'),
+          position: this.$t('team_teammate8position')
         }
       ]
     }

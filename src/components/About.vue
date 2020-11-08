@@ -1,7 +1,7 @@
 <template>
   <div id="blockAbout" class="block block-about">
     <div class="block-content" id="block-content-about">
-      <h2 class="block-name">About</h2>
+      <h2 class="block-name">{{$t('about_title')}}</h2>
       <VueSlickCarousel
         :arrows="arrows"
         :dots="dots"
@@ -14,18 +14,18 @@
         @beforeChange="beforeChangeStillGo()">
         <div class="carousel-content">
           <img src="../assets/about/graph.svg" alt="Graph" class="graph carousel-item1_item1">
-          <h3 class="carousel-item1_whiteText carousel-item1_item2">Have you ever thought of: “Why have I opened/closed the deal too early/late?”</h3>
-          <p class="carousel-item1_greyText carousel-item1_item3">Yes, you did it.</p>
+          <h3 class="carousel-item1_whiteText carousel-item1_item2">{{$t('about_cardFirstTitle')}}</h3>
+          <p class="carousel-item1_greyText carousel-item1_item3">{{$t('about_cardFirstSubtitle')}}</p>
         </div>
         <div class="carousel-content">
           <img src="../assets/about/table.svg" alt="Table" class="table carousel-item1_item1">
-          <h3 class="carousel-item1_whiteText carousel-item1_item2">Have you ever searched for some tools which can help you to analyze when and why you have to open and close the deal?</h3>
-          <p class="carousel-item1_greyText carousel-item1_item3">And the answer is “yes”</p>
+          <h3 class="carousel-item1_whiteText carousel-item1_item2">{{$t('about_cardSecondTitle')}}</h3>
+          <p class="carousel-item1_greyText carousel-item1_item3">{{$t('about_cardSecondSubtitle')}}</p>
         </div>
         <div class="carousel-content">
           <img src="../assets/about/question.svg" alt="Info image" class="question carousel-item1_item1">
-          <h3 class="carousel-item1_whiteText carousel-item1_item2">Deal Book - is a completely unique service, which does not have any similar analogues</h3>
-          <p class="carousel-item1_greyText carousel-item1_item3">You will be able to analyze the reason why your result was not 100% achieved</p>
+          <h3 class="carousel-item1_whiteText carousel-item1_item2">{{$t('about_cardThirdTitle')}}</h3>
+          <p class="carousel-item1_greyText carousel-item1_item3">{{$t('about_cardThirdSubtitle')}}</p>
         </div>
         <template #prevArrow="arrowOption">
           <div class="custom-arrow">

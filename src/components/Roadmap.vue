@@ -1,6 +1,6 @@
 <template>
     <div class="block block-roadmap">
-        <h2 class="block-name">{{$t("roadmap")}}</h2>
+        <h2 class="block-name">{{$t("roadmap_title")}}</h2>
         <div class="roadmap_wrapper">
 
             <div ref="stepWrapperFirst" class="step">
@@ -54,10 +54,10 @@
 
                 </div>
                 <div class="step_title">
-                    <p class="step_title_text">{{$t("quater3")}}</p>
+                    <p class="step_title_text">{{$t("roadmap_quater3")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/completeIcon.svg" alt="Title icon">
                 </div>
-                <p class="step_description">{{$t("creation")}}</p>
+                <p class="step_description">{{$t("roadmap_creation")}}</p>
             </div>
 
             <div ref="stepWrapperSecond" class="step">
@@ -74,10 +74,10 @@
 
                 </div>
                 <div class="step_title">
-                    <p class="step_title_text">{{$t("quater4")}}</p>
+                    <p class="step_title_text">{{$t("roadmap_quater4")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/completeIcon.svg" alt="Title icon">
                 </div>
-                <p class="step_description">{{$t("gatheringTeam")}}</p>
+                <p class="step_description">{{$t("roadmap_gatheringTeam")}}</p>
             </div>
 
             <div ref="stepWrapperThird" class="step">
@@ -107,10 +107,10 @@
 
                 </div>
                 <div class="step_title">
-                    <p class="step_title_text">{{$t("quater14")}}</p>
+                    <p class="step_title_text">{{$t("roadmap_quater14")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
-                <p class="step_description">{{$t("estimatedProject")}}</p>
+                <p class="step_description">{{$t("roadmap_estimatedProject")}}</p>
             </div>
 
             <div ref="stepWrapperFourth" class="step">
@@ -128,10 +128,10 @@
                     </svg>
                 </div>
                 <div class="step_title">
-                    <p class="step_title_text">{{$t("quater214")}}</p>
+                    <p class="step_title_text">{{$t("roadmap_quater214")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
-                <p class="step_description">{{$t("integrationOfExchanhe")}}</p>
+                <p class="step_description">{{$t("roadmap_integrationOfExchanhe")}}</p>
             </div>
 
             <div ref="stepWrapperFivth" class="step">
@@ -143,7 +143,7 @@
                     </svg>
                 </div>
                 <div class="step_title">
-                    <p class="step_title_text">{{$t("commingSoon")}}</p>
+                    <p class="step_title_text">{{$t("roadmap_commingSoon")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
                 <p class="step_description"> <br> </p>
@@ -182,7 +182,7 @@
         </div>
         <div class="warning_block">
             <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
-            <p class="warning_text">{{$t("warningRoadmap")}}</p>
+            <p class="warning_text">{{$t("roadmap_warningRoadmap")}}</p>
         </div>
         <button class="arrowButton" @click="test()">
             <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">

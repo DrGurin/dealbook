@@ -7,22 +7,22 @@
 
         <ul v-if="!mobile" class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('home')}}</a>
+                <a class="nav-link" href="#">{{$t('navbar_home')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">{{$t('navbar_about')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Problem</a>
+                <a class="nav-link" href="#">{{$t('navbar_problem')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Roadmap</a>
+                <a class="nav-link" href="#">{{$t('navbar_roadmap')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Donate</a>
+                <a class="nav-link" href="#">{{$t('navbar_subscribe')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Team</a>
+                <a class="nav-link" href="#">{{$t('navbar_team')}}</a>
             </li>
         </ul>
         <div v-if="mobile" id="burgerImg" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger"
@@ -40,28 +40,29 @@
             </button>
             <div v-bind:class="[isDropDowmMenuOpened ? 'show' : '', 'dropdown-content']">
                 <button @click="changeLocalization('EN')" class="dropdown-content-button" type="button">English</button>
+                <button @click="changeLocalization('УКР')" class="dropdown-content-button" type="button">Українська</button>
                 <button @click="changeLocalization('РУ')" class="dropdown-content-button" type="button">Русский</button>
             </div>
         </div>
         <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
             v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'mobile-navbar-nav']">
             <li ref="firstLi" class="nav-item">
-                <a class="nav-link" href="#">{{$t("home")}}</a>
+                <a class="nav-link" href="#">{{$t('navbar_home')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">{{$t('navbar_about')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Problem</a>
+                <a class="nav-link" href="#">{{$t('navbar_problem')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Roadmap</a>
+                <a class="nav-link" href="#">{{$t('navbar_roadmap')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Donate</a>
+                <a class="nav-link" href="#">{{$t('navbar_subscribe')}}</a>
             </li>
             <li ref="lastLi" class="nav-item">
-                <a class="nav-link" href="#">Team</a>
+                <a class="nav-link" href="#">{{$t('navbar_team')}}</a>
             </li>
         </ul>
         <div v-if="mobile" ref="footerWrapper" class="footer-wrapper"
@@ -163,6 +164,7 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         padding: .5rem 10vw;
         position: fixed;
+        max-width: 100vw;
         width: 100vw;
         left: 0;
         display: flex;
@@ -400,7 +402,7 @@
             border-radius: 5px 5px 0px 0px;
         }
 
-        .dropdown-content .dropdown-content-button:nth-child(2):hover {
+        .dropdown-content .dropdown-content-button:last-child:hover {
             border-radius: 0px 0px 5px 5px;
         }
     }
