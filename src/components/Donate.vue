@@ -187,8 +187,8 @@ export default {
   text-align: center;
   height: 70%;
   min-height: 250px;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 7%;
+  margin-bottom: 7%;
 }
 .underDonate {
   font-family: Roboto;
@@ -352,10 +352,15 @@ export default {
   border: 1px solid #787878;
   box-sizing: border-box;
   border-radius: 5px;
+  cursor: pointer;
 }
 .copy-btn:active,
 .copy-btn:focus {
   outline: none;
+}
+.copy-btn:active {
+  transform: translateY(1px);
+  opacity: 0.5;
 }
 @media (max-width: 769px) {
   /* .logo {
@@ -366,13 +371,16 @@ export default {
   }
   .copy-btn {
     width: 30%;
-    padding: 5px;
+    padding: 2px;
   }
   .container-donate {
     padding: 5% 5%;
   }
   .list-first-block {
-    height: 60px;
+    height: 50px;
+  }
+  .activeInputText {
+    top: -17%;
   }
 }
 
