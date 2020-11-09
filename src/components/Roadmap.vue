@@ -131,7 +131,7 @@
                     <p class="step_title_text">{{$t("roadmap_quater214")}}</p>
                     <img class="step_title_icon" src="./../assets/roadmap/time.svg" alt="Title icon">
                 </div>
-                <p class="step_description">{{$t("roadmap_integrationOfExchanhe")}}</p>
+                <p class="step_description" v-html="$t('roadmap_integrationOfExchanhe')"></p>
             </div>
 
             <div ref="stepWrapperFivth" class="step">
