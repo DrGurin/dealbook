@@ -7,22 +7,22 @@
 
         <ul v-if="!mobile" class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_home')}}</a>
+                <a class="nav-link" href="#" v-scroll-to="'#home'">{{$t('navbar_home')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_about')}}</a>
+                <a class="nav-link" href="#" v-scroll-to="'#about'">{{$t('navbar_about')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_problem')}}</a>
+                <a class="nav-link" href="#" v-scroll-to="'#problem'">{{$t('navbar_problem')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_roadmap')}}</a>
+                <a class="nav-link" href="#" v-scroll-to="'#roadmap'">{{$t('navbar_roadmap')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_subscribe')}}</a>
+                <a class="nav-link" href="#" v-scroll-to="'#subscribe'">{{$t('navbar_subscribe')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_team')}}</a>
+                <a class="nav-link" href="#" v-scroll-to="'#team'">{{$t('navbar_team')}}</a>
             </li>
         </ul>
         <div v-if="mobile" id="burgerImg" v-bind:style="{height: logoWrapperHeight + 'px' }" class="wrapper-burger"
@@ -47,22 +47,22 @@
         <ul v-if="mobile" ref="mobileNavBar" v-bind:style="{height: burgerMenuHeight+'px' }"
             v-bind:class="[isBurgerMenuOpened ? 'opened' : '', 'mobile-navbar-nav']">
             <li ref="firstLi" class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_home')}}</a>
+                <a @click="handleClickOnNavbarItem()" class="nav-link" href="#" v-scroll-to="'#home'">{{$t('navbar_home')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_about')}}</a>
+                <a @click="handleClickOnNavbarItem()" class="nav-link" href="#" v-scroll-to="'#about'">{{$t('navbar_about')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_problem')}}</a>
+                <a @click="handleClickOnNavbarItem()" class="nav-link" href="#" v-scroll-to="'#problem'">{{$t('navbar_problem')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_roadmap')}}</a>
+                <a @click="handleClickOnNavbarItem()" class="nav-link" href="#" v-scroll-to="'#roadmap'">{{$t('navbar_roadmap')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_subscribe')}}</a>
+                <a @click="handleClickOnNavbarItem()" class="nav-link" href="#" v-scroll-to="'#subscribe'">{{$t('navbar_subscribe')}}</a>
             </li>
             <li ref="lastLi" class="nav-item">
-                <a class="nav-link" href="#">{{$t('navbar_team')}}</a>
+                <a @click="handleClickOnNavbarItem()" class="nav-link" href="#" v-scroll-to="'#team'">{{$t('navbar_team')}}</a>
             </li>
         </ul>
         <div v-if="mobile" ref="footerWrapper" class="footer-wrapper"
@@ -128,6 +128,9 @@
                 this.mobile = window.innerWidth < 991;
                 this.matchSizes();
             },
+            handleClickOnNavbarItem() {
+                this.isBurgerMenuOpened = false;
+            }
         },
         mounted() {
             this.$nextTick(function () {

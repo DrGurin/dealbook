@@ -1,15 +1,15 @@
 <template >
   <div id="app" ref='app'>
     <Navbar ref="navbar"/>
-    <Home />
-    <About />
-    <Problem ref="problem"/>
-    <Roadmap ref="roadmap"/>
-    <Subscribe />
-    <Team />
-    <Donate />
+    <Home id="home" />
+    <About id="about" />
+    <Problem id="problem" ref="problem"/>
+    <Roadmap id="roadmap" ref="roadmap"/>
+    <Subscribe id="subscribe" />
+    <Team id="team" />
+    <Donate id="donate" />
     <div class="app_footer_wrapper">
-    <Footer/>
+      <Footer/>
     </div>
   </div>
 </template>

@@ -33,7 +33,7 @@
         <button :class="answer ? 'na-btn sub-btn' : 'sub-btn'" @click="sendEmail()">{{$t('subscribe_button')}}</button>
       </div>
     </div>
-    <button class="arrowButton" @click="test()">
+    <button class="arrowButton" v-scroll-to="'#team'">
       <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow" />
     </button>
   </div>

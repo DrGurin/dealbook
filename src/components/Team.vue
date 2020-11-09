@@ -14,7 +14,7 @@
             <p class="warning_text">{{$t("team_warning")}}</p>
       </div>
     </div>
-    <button class="arrowButton" @click="test()">
+    <button class="arrowButton" v-scroll-to="'#donate'">
       <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
     </button>
   </div>
@@ -88,7 +88,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    width: 30%;
+    width: 25%;
     margin-bottom: 5%;
   }
   .foto {
@@ -100,7 +100,7 @@ export default {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 23px;
     text-align: center;
     color: #FFFFFF;
@@ -109,7 +109,7 @@ export default {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 23px;
     text-align: center;
     color: #abb4bd;

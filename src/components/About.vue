@@ -49,7 +49,7 @@
         </template>
       </VueSlickCarousel>
     </div>
-    <button class="arrowButton" @click="test()">
+    <button v-scroll-to="'#problem'" class="arrowButton">
       <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
     </button>
   </div>

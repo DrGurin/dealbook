@@ -5,7 +5,7 @@
             <canvas ref="canvas"></canvas>
         </div>
         <p class="solution">{{$t("home_motto")}}</p>
-        <button class="arrowButton" @click="test()">
+        <button v-scroll-to="'#about'" class="arrowButton">
             <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
         </button>
     </div>

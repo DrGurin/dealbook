@@ -184,7 +184,7 @@
             <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
             <p class="warning_text">{{$t("roadmap_warningRoadmap")}}</p>
         </div>
-        <button class="arrowButton" @click="test()">
+        <button class="arrowButton" v-scroll-to="'#subscribe'">
             <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
         </button>
 

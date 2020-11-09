@@ -31,7 +31,7 @@
         <!-- <div class="line revLine"></div> -->
       </div>
     </div>
-    <button class="arrowButton" @click="test()">
+    <button class="arrowButton" v-scroll-to="'#roadmap'">
       <img src="../assets/common/arrow.svg" alt="Arrow" class="arrow">
     </button>
   </div>
@@ -182,10 +182,6 @@
   .rev {
     margin-left: 55px;
     margin-right: 0px;
-  }
-
-  .revText {
-    /* */
   }
 
   @media (max-width: 769px) {

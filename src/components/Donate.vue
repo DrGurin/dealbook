@@ -43,7 +43,7 @@
         </div>
 				<button class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
 			</div>
-      <button class="arrowButton" @click="test()">
+      <button class="arrowButton" v-scroll-to="'#home'">
         <img src="../assets/common/arrowUp.svg" alt="Arrow" class="arrow" />
       </button>
     </div>
