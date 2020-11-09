@@ -2,7 +2,7 @@
   <div class="block block-donate">
     <div class="block-content">
 			<div class="container-donate" id="containerDonate">
-				<h2 class="block-name">{{$t('donate_title')}}</h2>
+				<h2 class="block-name" data-i18n="[html]content.body">{{$t('donate_title')}}</h2>
         <button  @click="close()" class="closeButton" v-if="step2">
           <img :src="cross" alt="Close" class="cross">
         </button>
@@ -347,7 +347,7 @@ export default {
   position: absolute;
   right: 0px;
   top: 125%;
-  width: 18%;
+  width: auto;
   background: transparent;
   font-family: Roboto;
   font-style: normal;
@@ -360,6 +360,10 @@ export default {
   box-sizing: border-box;
   border-radius: 5px;
   cursor: pointer;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .copy-btn:active,
 .copy-btn:focus {
@@ -376,10 +380,10 @@ export default {
   .customInput {
     width: 95%;
   }
-  .copy-btn {
-    width: 30%;
-    padding: 2px;
-  }
+  /* .copy-btn { */
+    /* width: 30%; */
+    /* padding: 2px; */
+  /* } */
   .container-donate {
     padding: 5% 5%;
   }
@@ -395,6 +399,7 @@ export default {
   width: 45%;
   height: auto;
   max-width: 185px;
+  border: 1px solid #787878;
 }
 #currencyChange {
   overflow: hidden;
