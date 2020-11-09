@@ -3,7 +3,7 @@
     <div class="block-content">
       <h2 class="block-name">Team</h2>
       <div class="galeryContainer">
-        <div v-for="(card, i) in cards" :key="i" class="card">
+        <div v-for="card in getCards" :key="card.name" class="card">
           <img :src="card.img" alt="Foto" class="foto">
           <p class="name">{{ card.name }}</p>
           <p class="position">{{ card.position }}</p>
@@ -26,7 +26,12 @@ import borys from '../assets/team/borys.jpg';
 export default {
   data() {
     return {
-      cards: [
+      //
+    }
+  },
+  computed: {
+    getCards() {
+      return [
         {
           img: borys,
           name: this.$t('team_teammate1'),

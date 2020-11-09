@@ -6,7 +6,7 @@
     <Problem id="problem" ref="problem"/>
     <Roadmap id="roadmap" ref="roadmap"/>
     <Subscribe id="subscribe" />
-    <Team id="team" />
+    <Team id="team" ref="team" />
     <Donate id="donate" />
     <div class="app_footer_wrapper">
       <Footer/>
