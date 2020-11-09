@@ -133,6 +133,7 @@
             }
         },
         mounted() {
+            if(localStorage.localization) this.localization = localStorage.localization;
             this.$nextTick(function () {
                 setTimeout(() => {
                     this.matchSizes();
@@ -140,6 +141,9 @@
             })
         },
         watch: {
+            localization(newLocalization) {
+                localStorage.localization = newLocalization;
+            },
             isBurgerMenuOpened: function() {
             if(this.isBurgerMenuOpened){
                 document.documentElement.style.overflow = 'hidden'
