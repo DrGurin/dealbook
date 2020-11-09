@@ -6,18 +6,21 @@
         <button  @click="close()" class="closeButton" v-if="step2">
           <img :src="cross" alt="Close" class="cross">
         </button>
+
         <div class="changesBlock" v-if="step1" id="firstBlock">
           <img src="../assets/donate/donate.svg" alt="Donate icon" class="logo" />
           <p class="underDonate">{{$t('donate_description')}}</p>
         </div>
+
         <div class="changesBlock" v-if="step2" :style="`height: ${heightForSecondBlock}px`">
           <p class="underDonate underDonateStep2">{{$t('donate_select')}}</p>
+          <img :src="qr" alt="QR code" class="qr" v-if="copyBtn">
           <div :class="active ? 'customInput activeCustomInput' : 'customInput'">
 
             <div :class="active ? 'active-border-bottom list-first-block' : 'list-first-block'">
-              <div :class="active ? 'leftside active-border-right' : 'leftside'">
+              <div :class="active ? 'leftside active-border-right' : 'leftside'" id="leftside">
                 <p :class="active ? 'activeInputText' : 'leftsideText'" id="currencyChange">{{donateTextMethods || $t('donate_method') }}</p>
-
+                <p v-if="donateTextMethods && !mywidthbool" class="leftsideText">...</p>
               </div>
               <div :class="active ? 'rightSide active-border-left' : 'rightSide'" @click="activateChanges()">
                 <img :src="active ? activeArrow : arrow" alt="Arrow icon" class="custom-arrow">
@@ -25,23 +28,19 @@
             </div>
 
             <div class="variantsBlcok" v-if="active">
-              <div class="variant variant1" @click="methodDonate('BTC')">
-                <img src="../assets/donate/btc.svg" alt="Icon" class="currencyIcon">
-                <p class="currencyName">BTC</p>
-              </div>
               <div class="variant variant2" @click="methodDonate('ETH')">
                 <img src="../assets/donate/btc.svg" alt="Icon" class="currencyIcon">
                 <p class="currencyName">ETH</p>
               </div>
               <div class="variant" @click="methodDonate('USDT')">
-                <img src="../assets/donate/btc.svg" alt="Icon" class="currencyIcon">
+                <img src="../assets/donate/usdt.svg" alt="Icon" class="currencyIcon usdtIcon">
                 <p class="currencyName">USDT</p>
               </div>
             </div>
             <button class="copy-btn" @click="copyText()" v-if="copyBtn">{{$t('donate_copy')}}</button>
           </div>
         </div>
-				<button class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
+				<button v-if="step1" class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
 			</div>
       <button class="arrowButton" v-scroll-to="'#home'">
         <img src="../assets/common/arrowUp.svg" alt="Arrow" class="arrow" />
@@ -54,6 +53,8 @@
 import cross from '../assets/donate/cross.svg';
 import arrow from '../assets/donate/arrow.svg';
 import activeArrow from '../assets/donate/activeArrow.svg';
+import eth from '../assets/donate/ETH.png';
+import usd from '../assets/donate/USD.png';
 
 export default {
 	data() {
@@ -63,17 +64,18 @@ export default {
       active: false,
       cross,
       arrow,
+      qr: null,
       activeArrow,
       donateTextMethods: null,
       copyBtn: false,
-      heightForSecondBlock: null
+      heightForSecondBlock: null,
+      mywidthbool: null
 		};
 	},
 	methods: {
 		sendDonate() {
 			this.step1 = !this.step1
       this.step2 = !this.step2
-      // this.active = !this.active
       this.copyBtn = false
       this.donateTextMethods = null;
     },
@@ -92,21 +94,20 @@ export default {
       }
     },
     methodDonate(param) {
-      if(param == 'BTC') {
-        // console.log('BTC')
-        this.donateTextMethods = 'tut kakayz-to huinya'
+      let mywidth = document.getElementById('leftside').getBoundingClientRect().width 
+      mywidth < 385 ? this.mywidthbool = false : this.mywidthbool = true
+      if(param == 'ETH') {
+        this.donateTextMethods = '0x54F3392498ff4118bA80ebA1D51dc37661AB97A9'
+        // this.donateTextMethods = '0x54F3392498ff4118bA...'
         this.activateChanges()
         this.copyBtn = true
-      } else if(param == 'ETH') {
-        // console.log('ETH')
-        this.donateTextMethods = 'tut kakayz-to huinya'
-        this.activateChanges()
-        this.copyBtn = true
+        this.qr = eth
       } else {
-        // console.log('USDT')
-        this.donateTextMethods = 'tut kakayz-to huinya'
+        this.donateTextMethods = '0x54F3392498ff4118bA80ebA1D51dc37661AB97A9'
+        // this.donateTextMethods = '0x54F3392498ff4118bA...'
         this.activateChanges()
         this.copyBtn = true
+        this.qr = usd
       }
     },
     copyText() {
@@ -200,7 +201,7 @@ export default {
   color: #787878;
 }
 .underDonateStep2 {
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 .closeButton {
   width: 20px;
@@ -227,6 +228,7 @@ export default {
   flex-direction: column;
   border-collapse: collapse;
   position: relative;
+  margin-bottom: 10%;
 }
 .activeCustomInput {
   border: solid 1px  #386EE6;
@@ -249,6 +251,8 @@ export default {
   text-align: left;
   align-self: center;
   padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
 }
 .leftsideText {
   font-family: Roboto;
@@ -329,6 +333,9 @@ export default {
   height: auto;
   margin-right: 4%;
 }
+.usdtIcon {
+  width: 20px;
+}
 .currencyName {
   font-family: Roboto;
   font-style: normal;
@@ -382,6 +389,15 @@ export default {
   .activeInputText {
     top: -17%;
   }
+}
+.qr {
+  margin-bottom: 5%;
+  width: 45%;
+  height: auto;
+  max-width: 185px;
+}
+#currencyChange {
+  overflow: hidden;
 }
 
 </style>
