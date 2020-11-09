@@ -1,3 +1,7 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-useless-escape */
 <template>
   <div class="block block-subscribe">
     <div class="block-content">
@@ -40,7 +44,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import mainImage from '../assets/subscribe/mainImage.svg';
 import mainImage2 from '../assets/subscribe/mainImage2.svg';
 import cross from '../assets/subscribe/cross.svg';
@@ -59,20 +63,30 @@ export default {
   },
 	methods: {
 		sendEmail() {
-      const email = this.email
-      const url = 'http://localhost:3000/user'
-			axios.post(url, {
-        email,
-			}).then(res => {
-				this.answer = res
-      }).catch(e => {
-				console.log(e)
-			}) 
+      if (this.validateEmail(this.email)) {
+        // const email = this.email
+        // const url = 'http://localhost:3000/user'
+        // axios.post(url, {
+        //   email,
+        // eslint-disable-next-line no-mixed-spaces-and-tabs
+        // }).then(res => {
+        //   this.answer = res
+        // }).catch(e => {
+        //   console.log(e)
+        // }) 
+        console.log('vso normalno')
+      } else {
+        console.log('enter normal email')
+      }
     },
     toForm() {
       this.answer = null;
       this.email = '';
     },
+    validateEmail(email) {
+      var re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
   },
   mounted() {
     this.heightBig = document.querySelector('.content-subscribe').scrollHeight
