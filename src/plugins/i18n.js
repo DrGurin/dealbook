@@ -105,7 +105,7 @@ export const i18n = new VueI18n({
             roadmap_quater4: "Q4 2020",
             roadmap_quater14: "Q1-Q4 2021",
             roadmap_quater214: "Q1-Q4 2022",
-            roadmap_warningRoadmap: "Обновление платформы с постоянным расширением функионала",
+            roadmap_warningRoadmap: "Обновление платформы с постоянным расширением функционала",
 
             subscribe_letSubscribe: "Подпишитесь на нашу рассылку, чтобы всегда быть в курсе прогресса",
             subscribe_thanks: "Спасибо за Вашу подписку!",
