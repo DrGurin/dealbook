@@ -203,7 +203,7 @@
     }
 
     .dropdown {
-        overflow: hidden;
+        overflow: visible;
         z-index: 101;
     }
 
