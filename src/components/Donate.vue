@@ -29,7 +29,7 @@
 
             <div class="variantsBlcok" v-if="active">
               <div class="variant variant2" @click="methodDonate('ETH')">
-                <img src="../assets/donate/btc.svg" alt="Icon" class="currencyIcon">
+                <img src="../assets/donate/ephir.svg" alt="Icon" class="currencyIcon" style="margin-left: 3px;">
                 <p class="currencyName">ETH</p>
               </div>
               <div class="variant" @click="methodDonate('USDT')">
@@ -55,6 +55,7 @@ import arrow from '../assets/donate/arrow.svg';
 import activeArrow from '../assets/donate/activeArrow.svg';
 import eth from '../assets/donate/ETH.png';
 import usd from '../assets/donate/USD.png';
+import ephir from '../assets/donate/ephir.svg';
 
 export default {
 	data() {
@@ -64,6 +65,7 @@ export default {
       active: false,
       cross,
       arrow,
+      ephir,
       qr: null,
       activeArrow,
       donateTextMethods: null,

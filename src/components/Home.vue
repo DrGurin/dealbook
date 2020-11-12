@@ -127,7 +127,7 @@ export default {
 </script>
 <style scoped>
 #app .block-home{
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
