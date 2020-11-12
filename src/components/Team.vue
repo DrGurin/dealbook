@@ -21,7 +21,14 @@
 </template>
 
 <script>
-import borys from '../assets/team/borys.jpg';
+import ph1 from '../assets/team/1.jpg';
+import ph2 from '../assets/team/2.jpg';
+import ph3 from '../assets/team/3.jpg';
+import ph4 from '../assets/team/4.jpg';
+import ph5 from '../assets/team/5.jpg';
+import ph6 from '../assets/team/6.jpg';
+import ph7 from '../assets/team/7.jpg';
+import ph8 from '../assets/team/8.jpg';
 
 export default {
   data() {
@@ -33,42 +40,42 @@ export default {
     getCards() {
       return [
         {
-          img: borys,
+          img: ph1,
           name: this.$t('team_teammate1'),
           position: this.$t('team_teammate1position')
         },
         {
-          img: borys,
+          img: ph2,
           name: this.$t('team_teammate2'),
           position: this.$t('team_teammate2position')
         },
         {
-          img: borys,
+          img: ph3,
           name: this.$t('team_teammate3'),
           position: this.$t('team_teammate3position')
         },
         {
-          img: borys,
+          img: ph4,
           name: this.$t('team_teammate4'),
           position: this.$t('team_teammate4position')
         },
         {
-          img: borys,
+          img: ph5,
           name: this.$t('team_teammate5'),
           position: this.$t('team_teammate5position')
         },
         {
-          img: borys,
+          img: ph6,
           name: this.$t('team_teammate6'),
           position: this.$t('team_teammate6position')
         },
         {
-          img: borys,
+          img: ph7,
           name: this.$t('team_teammate7'),
           position: this.$t('team_teammate7position')
         },
         {
-          img: borys,
+          img: ph8,
           name: this.$t('team_teammate8'),
           position: this.$t('team_teammate8position')
         }
