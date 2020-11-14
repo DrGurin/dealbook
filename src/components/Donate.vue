@@ -37,7 +37,11 @@
                 <p class="currencyName">USDT</p>
               </div>
             </div>
-            <button class="copy-btn" @click="copyText()" v-if="copyBtn">{{$t('donate_copy')}}</button>
+            <div class="copy-block" v-if="copyBtn">
+              <button class="copy-btn" @click="copyText()">{{$t('donate_copy')}}</button>
+              <p v-if="copied" class="copied-text">{{$t('donate_copied')}}</p>
+              <img v-if="copied" src="../assets/donate/copied.svg" alt="Icon" class="copiedIcon">
+            </div>
           </div>
         </div>
 				<button v-if="step1" class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
@@ -71,7 +75,8 @@ export default {
       donateTextMethods: null,
       copyBtn: false,
       heightForSecondBlock: null,
-      mywidthbool: null
+      mywidthbool: null,
+      copied: false
 		};
 	},
 	methods: {
@@ -80,10 +85,12 @@ export default {
       this.step2 = !this.step2
       this.copyBtn = false
       this.donateTextMethods = null;
+      this.copied = false
     },
     close() {
       this.step1 = true;
       this.step2 = false;
+      this.copied = false
       this.active = false;
       this.copyBtn = false;
       this.donateTextMethods = null;
@@ -100,16 +107,16 @@ export default {
       mywidth < 385 ? this.mywidthbool = false : this.mywidthbool = true
       if(param == 'ETH') {
         this.donateTextMethods = '0x54F3392498ff4118bA80ebA1D51dc37661AB97A9'
-        // this.donateTextMethods = '0x54F3392498ff4118bA...'
         this.activateChanges()
         this.copyBtn = true
         this.qr = eth
+        this.copied = false
       } else {
         this.donateTextMethods = '0x54F3392498ff4118bA80ebA1D51dc37661AB97A9'
-        // this.donateTextMethods = '0x54F3392498ff4118bA...'
         this.activateChanges()
         this.copyBtn = true
         this.qr = usd
+        this.copied = false
       }
     },
     copyText() {
@@ -121,6 +128,7 @@ export default {
         .catch(err => {
           console.log('Something went wrong', err);
         });
+        this.copied = true
     }
   },
   mounted() {
@@ -345,10 +353,34 @@ export default {
   font-size: 14px;
   color: #787878;
 }
-.copy-btn {
+.copy-block {
   position: absolute;
   right: 0px;
   top: 125%;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.copiedIcon {
+  width: 15px;
+  height: auto;
+}
+.copied-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #787878;
+  margin-right: 10px;
+}
+.copy-btn {
+  position: absolute;
+  right: 0px;
+  top: 7px;
   width: auto;
   background: transparent;
   font-family: Roboto;
@@ -394,6 +426,9 @@ export default {
   }
   .activeInputText {
     top: -17%;
+  }
+  .qr {
+    display: none;
   }
 }
 .qr {
