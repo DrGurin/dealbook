@@ -69,7 +69,6 @@ export default {
         .catch(e => {
           console.log(e)
         }) 
-        console.log('vso normalno')
         } 
       else {
         console.log('enter normal email')
