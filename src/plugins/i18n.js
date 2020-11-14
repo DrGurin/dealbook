@@ -53,6 +53,7 @@ export const i18n = new VueI18n({
             donate_method : "Donat method",
             donate_copy : "Copy",
             donate_button : "Donate",
+            donate_copied: "Copied",
 
             team_teammate1 : "Yevhenii Hryshchuk",
             team_teammate2 : "Andrii Fedunin",
@@ -120,6 +121,7 @@ export const i18n = new VueI18n({
             donate_method : "Метод платежа",
             donate_copy : "Скопировать",
             donate_button : "Донат",
+            donate_copied: "Скопировано",
 
             team_teammate1 : "Yevhenii Hryshchuk",
             team_teammate2 : "Andrii Fedunin",
@@ -187,6 +189,7 @@ export const i18n = new VueI18n({
             donate_method : "Метод донату",
             donate_copy : "Скопіювати",
             donate_button : "Донат",
+            donate_copied: "Скопійовано",
 
             team_teammate1 : "Yevhenii Hryshchuk",
             team_teammate2 : "Andrii Fedunin",
