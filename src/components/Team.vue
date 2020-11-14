@@ -4,7 +4,8 @@
       <h2 class="block-name">Team</h2>
       <div class="galeryContainer">
         <div v-for="card in getCards" :key="card.name" class="card">
-          <img :src="card.img" alt="Foto" class="foto">
+          <!-- <img :src="card.img" alt="Foto" class="foto"> -->
+          <div class="photo-wrapper" :style="{backgroundImage: 'url(' + card.img + ')'}"></div>
           <p class="name">{{ card.name }}</p>
           <p class="position">{{ card.position }}</p>
         </div>
@@ -107,6 +108,13 @@ export default {
     width: 80%;
     height: auto;
     margin-bottom: 10px;
+  }
+  .photo-wrapper{
+    width: 93px;
+    height: 100px;
+    border: 1px solid #FFFFFF;
+    background-position: center;
+    background-size: cover;
   }
   .name {
     font-family: Roboto;

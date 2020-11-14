@@ -144,6 +144,7 @@ export default {
 }
 .canvas-wrapper{
     width: 50vw; 
+    margin: 20px 0;
 }
 .solution{
     font-family: Roboto;
