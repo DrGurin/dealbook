@@ -178,7 +178,6 @@
                 <path id="line4" ref="fourthLinePath" :d="directionForPathOfRightToLeftLine2" stroke="#ffffff" stroke-width="2" />
             </svg>
             <!--LINES svg-images that must be animated-->
-            
         </div>
         <div class="warning_block">
             <img src="../assets/common/warning.svg" class="warning_icon" alt="Warning icon">
@@ -221,6 +220,7 @@
                 directionForPathOfRightToLeftLine: String,
                 directionForPathOfRightToLeftLine2: String,
                 directionForPathOfBlueLine: String,
+                test: Number,
                 linesData: [
                     {
                         id: 'line1',
@@ -287,8 +287,9 @@
                 // heights of lines
                 this.heightOfTheLine = this.exitTopPositionOfTheSecondIcon - (this.heightOfIcon / 2) - this
                     .exitTopPositionOfTheFirstIcon;
-                this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this
-                .exitTopPositionOfTheSecondIcon;
+                this.heightOfTheSecondLine = this.$refs.stepWrapperThird.offsetTop - this.exitTopPositionOfTheSecondIcon;
+                    this.test = this.$refs.stepWrapperThird.offsetTop;
+           
                 this.heightOfTheThirdLine = this.$refs.stepWrapperFourth.offsetTop - this.exitTopPositionOfTheThirdIcon;
                 this.heightOfTheFourthLine = this.$refs.stepWrapperFivth.offsetTop - this.exitTopPositionOfTheFourthIcon + 19;
                 // 
@@ -347,14 +348,16 @@
         },
         mounted: function () {
             this.$nextTick(function () {
-                this.getPosition();
-                document.getElementById("line1").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheLine}`);
-                document.getElementById("line2").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheSecondLine}`);
-                document.getElementById("line2Blue").setAttribute("d", `M ${this.widthOfBlueLine} 1 H -${this.widthOfBlueLine} 1`);
-                document.getElementById("line3").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheThirdLine}`);
-                document.getElementById("line4").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51V ${this.heightOfTheFourthLine}`);
+                setTimeout(() => {
+                    this.getPosition();
+                    document.getElementById("line1").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51 V ${this.heightOfTheLine}`);
+                    document.getElementById("line2").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51 V ${this.heightOfTheSecondLine}`);
+                    document.getElementById("line2Blue").setAttribute("d", `M ${this.widthOfBlueLine} 1 H -${this.widthOfBlueLine} 1`);
+                    document.getElementById("line3").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51 V ${this.heightOfTheThirdLine}`);
+                    document.getElementById("line4").setAttribute("d", `M ${this.widthOfTheLine} 1H51C23.3858 1 1 23.3858 1 51 V ${this.heightOfTheFourthLine}`);
+                }, 100);
                 // document.getElementById("line1")[0].setAttribute("d", "democlass");
-            })
+            });
         },
         computed: {
             collectDashOffset: function () {
