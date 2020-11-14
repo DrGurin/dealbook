@@ -1,7 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-useless-escape */
 <template>
   <div class="block block-subscribe">
     <div class="block-content">
@@ -31,6 +27,7 @@
               class="emailField"
               v-model="email"
               v-if="!answer"
+              name="email"
             />
           </div>
         </div>
@@ -44,7 +41,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import mainImage from '../assets/subscribe/mainImage.svg';
 import mainImage2 from '../assets/subscribe/mainImage2.svg';
 import cross from '../assets/subscribe/cross.svg';
@@ -62,20 +59,19 @@ export default {
     };
   },
 	methods: {
-		sendEmail() {
+		async sendEmail() {
       if (this.validateEmail(this.email)) {
-        // const email = this.email
-        // const url = 'http://localhost:3000/user'
-        // axios.post(url, {
-        //   email,
-        // eslint-disable-next-line no-mixed-spaces-and-tabs
-        // }).then(res => {
-        //   this.answer = res
-        // }).catch(e => {
-        //   console.log(e)
-        // }) 
+        const data = {"newEmail":  this.email};
+        const url = '/create'
+        await axios.post(url, data).then(res => {
+          console.log(res);
+        })
+        .catch(e => {
+          console.log(e)
+        }) 
         console.log('vso normalno')
-      } else {
+        } 
+      else {
         console.log('enter normal email')
       }
     },
