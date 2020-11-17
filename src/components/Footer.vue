@@ -4,13 +4,13 @@
           <a class="social-item-button">
               <img src="../assets/footer/twitter.svg" alt="Twitter icon" class="Twitter-icon">
           </a>
-          <a class="social-item-button">
+          <a class="social-item-button" href="https://www.linkedin.com/company/deal-book">
               <img src="../assets/footer/ld.svg" alt="Linkedin icon" class="Linkedin-icon">
           </a>
-          <a class="social-item-button">
+          <a class="social-item-button" href="https://www.facebook.com/groups/dealbook">
               <img src="../assets/footer/fb.svg" alt="Facebook icon" class="Facebook-icon">
           </a>
-          <a class="social-item-button">
+          <a class="social-item-button" href="https://t.me/dealbookproject">
               <img src="../assets/footer/tg.svg" alt="Telegram icon" class="Telegram-icon">
           </a>
       </div>
