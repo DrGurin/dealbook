@@ -46,6 +46,7 @@ export const i18n = new VueI18n({
             subscribe_enterEmail : "Enter your email",
             subscribe_button: "Subscribe",
             subscribe_incorrectEmail: "Enter correct e-mail",
+            subscribe_repeatEmail: "This email has been already subscribed",
 
             donate_title : "Donate",
             donate_description : "Donations are completely free-will and are non-obligatory, but they will help us to develop further and faster.",
@@ -118,6 +119,7 @@ export const i18n = new VueI18n({
             subscribe_enterEmail : "введите Ваш email",
             subscribe_button: "Подписаться",
             subscribe_incorrectEmail: "Введите корректный e-mail",
+            subscribe_repeatEmail: "На данный адрес уже была оформлена подписка",
 
             donate_title : "Донат",
             donate_description : "Донат является совершенно добровольным и необязательным, но он поможет нам развиваться дальше и быстрее.",
@@ -190,6 +192,7 @@ export const i18n = new VueI18n({
             subscribe_enterEmail : "Введіть Ваш email",
             subscribe_button: "Підписатись",
             subscribe_incorrectEmail: "Введіть коректну e-mail",
+            subscribe_repeatEmail: "На дану адресу вже була оформлена підписка",
 
             donate_title : "Донат",
             donate_description : "Донати є абсолютно вільними та необов’язковими, але вони допоможуть нам розвиватися далі та швидше.",

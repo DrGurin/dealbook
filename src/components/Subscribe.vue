@@ -30,7 +30,7 @@
             />
             <div v-if="failed" class="error-m-block">
               <img src="../assets/subscribe/er-mail.svg" alt="Icon" class="er-mail">
-              <p class="errorMessage">{{$t('subscribe_incorrectEmail')}}</p>
+              <p class="errorMessage">{{repeatEmail ? $t('subscribe_repeatEmail') : $t('subscribe_incorrectEmail')}}</p>
             </div>
           </div>
 
@@ -57,6 +57,7 @@ export default {
       mainImage2,
       cross,
       email: '',
+      repeatEmail: null,
       failed: null,
       answer: null,
       heightBig: null,
@@ -66,7 +67,6 @@ export default {
 	methods: {
 		async sendEmail() {
       if (this.validateEmail(this.email)) {
-        console.log('v if')
         const data = {"newEmail":  this.email};
         const url = '/create'
         await axios.post(url, data).then(res => {
@@ -76,7 +76,7 @@ export default {
         })
         .catch(e => {
           this.failed = true
-          console.log(e)
+          e.response.status == 401 ? this.repeatEmail = true : this.repeatEmail = false
         }) 
       } else {
         this.failed = true
@@ -103,7 +103,6 @@ export default {
   },
   beforeUpdate() {
     localStorage.setItem('subscribe_email', this.email)
-    // this.failed = false
   }
 };
 </script>

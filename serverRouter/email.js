@@ -30,7 +30,7 @@ router.post('/create', async (req, res) => {
     if(VALIDATOR.validate(req.body.newEmail)) {
         newEmail.findOne({ email: req.body.newEmail }).then(email => {
             if (email) {
-                return res.status(400).json({ email: "Email already exists" });
+                return res.status(401).json({ email: "Email already exists" });
             } else {
                 const myEmail = new newEmail({
                   email: req.body.newEmail,

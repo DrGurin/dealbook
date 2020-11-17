@@ -110,6 +110,7 @@ export default {
     },
 		sendDonate() {
       if(this.step0 == true) {
+        this.topInput = localStorage.getItem('subscribe_email') || ''
         this.step0 = !this.step0
         this.step1 = !this.step1
         this.copyBtn = false
@@ -118,7 +119,9 @@ export default {
       } else {
         if (this.validateEmail(this.topInput)) {
           this.failed = false
-          this.sendData()
+          if (this.anonimus == false) {
+            this.sendData()
+          }
           this.step1 = !this.step1
           this.step2 = !this.step2
           this.copyBtn = false
@@ -190,7 +193,6 @@ export default {
       let a = document.getElementById('containerDonate')
       this.heightForSecondBlock = a.getBoundingClientRect().height * 0.6
     }
-    this.topInput = localStorage.getItem('donate_email') || ''
   },
   beforeUpdate() {
     localStorage.setItem('donate_email', this.topInput)
