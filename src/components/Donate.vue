@@ -2,19 +2,40 @@
   <div class="block block-donate">
     <div class="block-content">
 			<div class="container-donate" id="containerDonate">
-				<h2 class="block-name" data-i18n="[html]content.body">{{$t('donate_title')}}</h2>
+				<h2 class="block-name" id="donate-block-name" data-i18n="[html]content.body">{{$t('donate_title')}}</h2>
         <button  @click="close()" class="closeButton" v-if="step2">
           <img :src="cross" alt="Close" class="cross">
         </button>
 
-        <div class="changesBlock" v-if="step1" id="firstBlock">
+
+
+        <div class="changesBlock" v-if="step0" id="firstBlock">
           <img src="../assets/donate/donate.svg" alt="Donate icon" class="logo" />
           <p class="underDonate">{{$t('donate_description')}}</p>
         </div>
 
+        <div v-if="step1" class="changesBlock" :style="`height: ${heightForSecondBlock}px`">
+          <p class="underDonate underDonateStep2">{{$t('donate_select')}}</p>
+
+          <div :class="topInput ? 'input-group w-t-input' : 'input-group'" v-if="!anonimus">
+            <input type="text" v-model="topInput" :class="failed ? 'failed a-c-input' : 'a-c-input'" placeholder="" id="emailInput">
+            <label for="emailInput">{{$t('donate_post')}}</label>
+          </div>
+
+          <div :class="bottomInput ? 'input-group w-t-input' : 'input-group'" v-if="!anonimus">
+            <input type="text" v-model="bottomInput" class="a-c-input" placeholder="" id="walletInput">
+            <label for="walletInput">{{$t('donate_accnumber')}}</label>
+          </div>
+
+          <div class="checkbox">
+            <input type="checkbox" class="checkbox_anonimus" v-model="anonimus" id="checkbox_anonimus_id">
+            <label for="checkbox_anonimus_id" class="text_anonimus" id="text_anonimus">{{$t('donate_anonimus')}}</label>
+          </div>
+        </div>
+
         <div class="changesBlock" v-if="step2" :style="`height: ${heightForSecondBlock}px`">
           <p class="underDonate underDonateStep2">{{$t('donate_select')}}</p>
-          <img :src="qr" alt="QR code" class="qr" v-if="copyBtn">
+          <img src="../assets/donate/qr.svg" alt="QR code" class="qr" v-if="copyBtn">
           <div :class="active ? 'customInput activeCustomInput' : 'customInput'">
 
             <div :class="active ? 'active-border-bottom list-first-block' : 'list-first-block'">
@@ -44,7 +65,7 @@
             </div>
           </div>
         </div>
-				<button v-if="step1" class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
+				<button v-if="step0 || step1" class="sub-btn" @click="sendDonate()">{{$t('donate_button')}}</button>
 			</div>
       <button class="arrowButton" v-scroll-to="'#home'">
         <img src="../assets/common/arrowUp.svg" alt="Arrow" class="arrow" />
@@ -60,11 +81,13 @@ import activeArrow from '../assets/donate/activeArrow.svg';
 import eth from '../assets/donate/ETH.png';
 import usd from '../assets/donate/USD.png';
 import ephir from '../assets/donate/ephir.svg';
+import axios from 'axios';
 
 export default {
 	data() {
 		return {
-      step1: true,
+      step0: true,
+      step1: false,
       step2: false,
       active: false,
       cross,
@@ -76,19 +99,52 @@ export default {
       copyBtn: false,
       heightForSecondBlock: null,
       mywidthbool: null,
-      copied: false
+      copied: false,
+      topInput: '',
+      bottomInput: '',
+      anonimus: false,
+      failed: false
 		};
 	},
 	methods: {
+    validateEmail(email) {
+      var re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
 		sendDonate() {
-			this.step1 = !this.step1
-      this.step2 = !this.step2
-      this.copyBtn = false
-      this.donateTextMethods = null;
-      this.copied = false
+      if(this.step0 == true) {
+        this.step0 = !this.step0
+        this.step1 = !this.step1
+        this.copyBtn = false
+        this.donateTextMethods = null;
+        this.copied = false
+      } else {
+        if (this.validateEmail(this.topInput)) {
+          this.failed = false
+          this.sendData()
+          this.step1 = !this.step1
+          this.step2 = !this.step2
+          this.copyBtn = false
+          this.donateTextMethods = null;
+          this.copied = false
+        } else {
+          this.failed = true
+        }
+      }
+    },
+    async sendData() {
+      const data = {"donateEmail":  this.topInput, "donateWallet": this.bottomInput};
+      const url = '/donate';
+      await axios.post(url, data).then(res => {
+          console.log(res);
+        })
+        .catch(e => {
+          console.log(e)
+        }) 
     },
     close() {
-      this.step1 = true;
+      this.step0 = true;
+      this.step1 = false;
       this.step2 = false;
       this.copied = false
       this.active = false;
@@ -123,12 +179,12 @@ export default {
       let mytext = document.getElementById('currencyChange').innerHTML
       navigator.clipboard.writeText(mytext)
         .then(() => {
-          // console.log('ok')
+          this.copied = true
         })
         .catch(err => {
           console.log('Something went wrong', err);
         });
-        this.copied = true
+        
     }
   },
   mounted() {
@@ -139,10 +195,10 @@ export default {
       let a = document.getElementById('containerDonate')
       this.heightForSecondBlock = a.getBoundingClientRect().height * 0.6
     }
-    // let b = document.getElementById('firstBlock')
-    // console.log(a.getBoundingClientRect().height)
-    // console.log(b.getBoundingClientRect().height)
-    // console.log(window.innerWidth)
+    this.topInput = localStorage.getItem('donate_email') || ''
+  },
+  beforeUpdate() {
+    localStorage.setItem('donate_email', this.topInput)
   }
 };
 </script>
@@ -150,6 +206,9 @@ export default {
 <style scoped>
 #app .arrowButton{
   margin-top: 0;
+}
+#app #donate-block-name {
+  margin-top: 2vw;
 }
 .sub-btn {
   background: #ffffff;
@@ -407,17 +466,151 @@ export default {
   transform: translateY(1px);
   opacity: 0.5;
 }
+
+.a-c-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #787878;
+  border-radius: 5px;
+  padding: 2px 10px;
+  border-collapse: collapse;
+  position: relative;
+  background: transparent;
+  outline: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #787878;
+}
+.a-c-input:focus,
+.a-c-input:active {
+  outline: none;
+  border: solid 1px #386EE6;
+}
+.w-t-input .a-c-input {
+  outline: none;
+  border: solid 1px #386EE6;
+}
+.checkbox {
+  width: 85%;
+  height: 40px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.checkbox_anonimus {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: solid 1px #C4C4C4;
+  margin-right: 15px;
+  border-radius: 5px;
+} 
+.text_anonimus {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #787878;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+.checkbox input:focus+label, 
+.checkbox input:active+label, 
+.checkbox input:checked+label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #787878;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox input[type="checkbox"]:checked + label::before {
+  content: "✓";
+}
+.qr {
+  margin-bottom: 5%;
+  width: 45%;
+  height: auto;
+  max-width: 185px;
+}
+
+.input-group {
+  width: 85%;
+  height: 40px;
+  margin-bottom: 3%;
+  position: relative;
+}
+
+.input-group label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #787878;
+  position: absolute;
+  pointer-events: none;
+  left: 30px;
+  top: 11px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.input-group input:focus+label, 
+input:active+label {
+  left: 20px;
+  top: -9px;
+  font-size: 11px;
+  background: #1E1E1E;
+  color: #386EE6;
+  display: block;
+  text-align: center;
+  padding: 0px 4px;
+  outline: none;
+}
+.w-t-input label {
+  left: 20px;
+  top: -9px;
+  font-size: 11px;
+  background: #1E1E1E;
+  color: #386EE6;
+  display: block;
+  text-align: center;
+  padding: 0px 4px;
+}
+
+.failed.a-c-input {
+  border: solid 1px red;
+}
+.failed+label {
+  color: red;
+}
+
+.input-group .failed:focus+label, 
+.input-group .failed:active+label {
+  color: red;
+}
+
 @media (max-width: 769px) {
-  /* .logo {
-    width: 50%;
-  } */
   .customInput {
     width: 95%;
   }
-  /* .copy-btn { */
-    /* width: 30%; */
-    /* padding: 2px; */
-  /* } */
   .container-donate {
     padding: 5% 5%;
   }
@@ -431,13 +624,7 @@ export default {
     display: none;
   }
 }
-.qr {
-  margin-bottom: 5%;
-  width: 45%;
-  height: auto;
-  max-width: 185px;
-  border: 1px solid #787878;
-}
+
 #currencyChange {
   overflow: hidden;
 }

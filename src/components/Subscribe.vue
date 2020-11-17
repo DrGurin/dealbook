@@ -4,16 +4,15 @@
       <div class="container-subscribe">
         <div class="topBlock">
           <img src="../assets/subscribe/logo.svg" alt="Logo" class="logo" />
-          <button  @click="toForm()" class="closeButton">
-            <img :src="cross" alt="Close" class="cross" v-if="answer">
-          </button>
         </div>
         <div class="content-subscribe">
+
           <img
             :src="answer ? mainImage2 : mainImage"
             alt="Image"
             :class="answer ? 'sp-btw mainImage' : 'mainImage'"
           />
+
           <div class="subscribe-text_block" :style="getHeightBlock">
             <h3 class="subscribe-whiteText">
               {{answer ? $t('subscribe_thanks') : $t('subscribe_letSubscribe')}}
@@ -24,12 +23,14 @@
             <input
               type="text"
               :placeholder="$t('subscribe_enterEmail')"
-              class="emailField"
+              :class="failed ? 'emailField failed' : 'emailField'"
               v-model="email"
               v-if="!answer"
               name="email"
             />
+            <p v-if="failed" class="errorMessage">{{$t('subscribe_incorrectEmail')}}</p>
           </div>
+
         </div>
         <button :class="answer ? 'na-btn sub-btn' : 'sub-btn'" @click="sendEmail()">{{$t('subscribe_button')}}</button>
       </div>
@@ -53,6 +54,7 @@ export default {
       mainImage2,
       cross,
       email: '',
+      failed: null,
       answer: null,
       heightBig: null,
       heightSmall: null
@@ -61,17 +63,20 @@ export default {
 	methods: {
 		async sendEmail() {
       if (this.validateEmail(this.email)) {
+        console.log('v if')
         const data = {"newEmail":  this.email};
         const url = '/create'
         await axios.post(url, data).then(res => {
-          console.log(res);
+          this.failed = false
+          this.answer = true
+          console.log(res.status);
         })
         .catch(e => {
+          this.failed = true
           console.log(e)
         }) 
-        } 
-      else {
-        console.log('enter normal email')
+      } else {
+        this.failed = true
       }
     },
     toForm() {
@@ -86,11 +91,16 @@ export default {
   mounted() {
     this.heightBig = document.querySelector('.content-subscribe').scrollHeight
     this.heightSmall = document.querySelector('.subscribe-text_block').scrollHeight
+    this.email = localStorage.getItem('subscribe_email') || ''
   },
   computed: {
     getHeightBlock() {
       return `height: ${Math.round(this.heightSmall/this.heightBig*100)}%`
     }
+  },
+  beforeUpdate() {
+    localStorage.setItem('subscribe_email', this.email)
+    // this.failed = false
   }
 };
 </script>
@@ -135,7 +145,6 @@ export default {
 .content-subscribe {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-content: center;
   align-items: center;
   text-align: center;
@@ -187,7 +196,7 @@ export default {
   font-size: 16px;
   line-height: 23px;
   color: #ffffff;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
 }
 .emailField::placeholder {
   font-family: Roboto;
@@ -215,7 +224,6 @@ export default {
 .sub-btn:focus,
 .sub-btn:active {
   outline: none;
-  /* border: none; */
   cursor: pointer;
 }
 .sp-btw {
@@ -225,5 +233,17 @@ export default {
 .na-btn {
   background: #787878;
   pointer-events: none;
+}
+.failed {
+  border-bottom: 1px solid red;
+}
+.errorMessage {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  color: red;
+  text-align: left;
+  padding-left: 10%;
 }
 </style>

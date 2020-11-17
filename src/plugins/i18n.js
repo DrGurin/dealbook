@@ -45,6 +45,7 @@ export const i18n = new VueI18n({
             subscribe_answer : "When the project is released, we will definitely contact you",
             subscribe_enterEmail : "Enter your email",
             subscribe_button: "Subscribe",
+            subscribe_incorrectEmail: "Enter correct e-mail",
 
             donate_title : "Donate",
             donate_description : "Donations are completely free-will and are non-obligatory, but they will help us to develop further and faster.",
@@ -53,6 +54,9 @@ export const i18n = new VueI18n({
             donate_copy : "Copy",
             donate_button : "Donate",
             donate_copied: "Copied",
+            donate_post: "Email",
+            donate_accnumber: "Your wallet number",
+            donate_anonimus: "I want to remain anonymous",
 
             team_teammate1 : "Yevhenii Hryshchuk",
             team_teammate2 : "Andrii Fedunin",
@@ -113,6 +117,7 @@ export const i18n = new VueI18n({
             subscribe_answer : "Когда проект будет запущен, мы обязательно с вами свяжемся",
             subscribe_enterEmail : "введите Ваш email",
             subscribe_button: "Подписаться",
+            subscribe_incorrectEmail: "Введите корректный e-mail",
 
             donate_title : "Донат",
             donate_description : "Донат является совершенно добровольным и необязательным, но он поможет нам развиваться дальше и быстрее.",
@@ -121,6 +126,9 @@ export const i18n = new VueI18n({
             donate_copy : "Скопировать",
             donate_button : "Донат",
             donate_copied: "Скопировано",
+            donate_post: "Ваш email",
+            donate_accnumber: "Номер вашего кошелька",
+            donate_anonimus: "Хочу остаться анонимным",
 
             team_teammate1 : "Yevhenii Hryshchuk",
             team_teammate2 : "Andrii Fedunin",
@@ -181,6 +189,7 @@ export const i18n = new VueI18n({
             subscribe_answer : "Коли проект вийде, ми обов’язково зв’яжемося з вами",
             subscribe_enterEmail : "Введіть Ваш email",
             subscribe_button: "Підписатись",
+            subscribe_incorrectEmail: "Введіть коректну e-mail",
 
             donate_title : "Донат",
             donate_description : "Донати є абсолютно вільними та необов’язковими, але вони допоможуть нам розвиватися далі та швидше.",
@@ -189,6 +198,9 @@ export const i18n = new VueI18n({
             donate_copy : "Скопіювати",
             donate_button : "Донат",
             donate_copied: "Скопійовано",
+            donate_post: "Ваш email",
+            donate_accnumber: "Номер вашого гаманця",
+            donate_anonimus: "Хочу залишитись анонімним",
 
             team_teammate1 : "Yevhenii Hryshchuk",
             team_teammate2 : "Andrii Fedunin",
