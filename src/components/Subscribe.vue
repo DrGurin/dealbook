@@ -28,7 +28,10 @@
               v-if="!answer"
               name="email"
             />
-            <p v-if="failed" class="errorMessage">{{$t('subscribe_incorrectEmail')}}</p>
+            <div v-if="failed" class="error-m-block">
+              <img src="../assets/subscribe/er-mail.svg" alt="Icon" class="er-mail">
+              <p class="errorMessage">{{$t('subscribe_incorrectEmail')}}</p>
+            </div>
           </div>
 
         </div>
@@ -235,15 +238,25 @@ export default {
   pointer-events: none;
 }
 .failed {
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid #FE2932;
 }
 .errorMessage {
   font-family: Roboto;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
-  color: red;
+  color: #FE2932;
   text-align: left;
-  padding-left: 10%;
+}
+.error-m-block {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+}
+.er-mail {
+  width: 15px;
+  height: auto;
+  margin-right: 15px;
 }
 </style>

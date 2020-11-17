@@ -78,8 +78,6 @@
 import cross from '../assets/donate/cross.svg';
 import arrow from '../assets/donate/arrow.svg';
 import activeArrow from '../assets/donate/activeArrow.svg';
-import eth from '../assets/donate/ETH.png';
-import usd from '../assets/donate/USD.png';
 import ephir from '../assets/donate/ephir.svg';
 import axios from 'axios';
 
@@ -93,7 +91,6 @@ export default {
       cross,
       arrow,
       ephir,
-      qr: null,
       activeArrow,
       donateTextMethods: null,
       copyBtn: false,
@@ -165,13 +162,11 @@ export default {
         this.donateTextMethods = '0x54F3392498ff4118bA80ebA1D51dc37661AB97A9'
         this.activateChanges()
         this.copyBtn = true
-        this.qr = eth
         this.copied = false
       } else {
         this.donateTextMethods = '0x54F3392498ff4118bA80ebA1D51dc37661AB97A9'
         this.activateChanges()
         this.copyBtn = true
-        this.qr = usd
         this.copied = false
       }
     },
@@ -596,15 +591,15 @@ input:active+label {
 }
 
 .failed.a-c-input {
-  border: solid 1px red;
+  border: solid 1px #FE2932;
 }
 .failed+label {
-  color: red;
+  color: #FE2932;
 }
 
 .input-group .failed:focus+label, 
 .input-group .failed:active+label {
-  color: red;
+  color: #FE2932;
 }
 
 @media (max-width: 769px) {
