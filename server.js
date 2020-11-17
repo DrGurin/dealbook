@@ -5,10 +5,10 @@ const emailRouter = require('./serverRouter/email.js')
 const PORT = process.env.PORT || 3000; 
 const bodyParser = require('body-parser');
 
-const lgn = process.env.DBPassword || require('./credentials/login.js');
-const dbpsw = process.env.DBLogin || require('./credentials/password.js');
+// const lgn = process.env.DBPassword || require('./credentials/login.js');
+// const dbpsw = process.env.DBLogin || require('./credentials/password.js');
 
-const uri = `mongodb+srv://${lgn}:${dbpsw}@cluster0.kgpfh.mongodb.net/<dbname>?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://drgurin:1q2w3e4r@cluster0.kgpfh.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 const app = express();
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'client')));
