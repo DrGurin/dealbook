@@ -11,7 +11,7 @@ const dbpsw = process.env.DBLogin || require('./credentials/password.js');
 const uri = `mongodb+srv://${lgn}:${dbpsw}@cluster0.kgpfh.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 const app = express();
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(emailRouter); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
