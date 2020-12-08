@@ -98,11 +98,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     width: 25%;
     margin-bottom: 5%;
+    padding: 0 10px;
   }
   .foto {
     width: 80%;
@@ -115,6 +116,7 @@ export default {
     border: 1px solid #FFFFFF;
     background-position: center;
     background-size: cover;
+    margin-bottom: 10px;
   }
   .name {
     font-family: Roboto;
@@ -124,6 +126,8 @@ export default {
     line-height: 23px;
     text-align: center;
     color: #FFFFFF;
+    line-height: 1.0;
+    margin-bottom: 10px;
   }
   .position {
     font-family: Roboto;
@@ -133,6 +137,7 @@ export default {
     line-height: 23px;
     text-align: center;
     color: #abb4bd;
+    line-height: 1.2;
   }
   .aboutTeam {
     border: 1px solid #888888;

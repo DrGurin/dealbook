@@ -396,6 +396,12 @@
             .block-roadmap{
                 padding-bottom: 10px;
             }
+            #app .step_title_text {
+                font-size: 13px;
+            }
+            #app .step_description {
+                font-size: 11px;
+            }
         }
 
     .roadmap_wrapper {
@@ -426,6 +432,7 @@
         text-align: center;
         margin-bottom: 50px;
         width: 195px;
+        height: 144px;
     }
 
     .step:last-child {
