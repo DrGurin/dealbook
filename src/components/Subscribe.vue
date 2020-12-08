@@ -185,13 +185,16 @@ export default {
   margin-bottom: 10%;
 }
 .emailField {
-  width: 100%;
   background: transparent;
   outline: none;
   border: none;
+  border-radius: none !important;
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
   border-bottom: 1px solid;
   border-color: #9e9e9e;
-  width: 90%;
+  width: 100%;
   padding: 2% 10%;
   position: relative;
   font-family: Roboto;
@@ -202,6 +205,7 @@ export default {
   color: #ffffff;
   margin-bottom: 1%;
   transition: border-color 0.2s linear;
+  border-radius: 0;
 }
 .emailField::placeholder {
   font-family: Roboto;
@@ -210,13 +214,14 @@ export default {
   font-size: 16px;
   line-height: 23px;
   color: #ffffff;
-  transition: opacity 0.2s linear;
+  transition: all 0.2s linear;
 }
 .emailField:focus {
   border-color: #386EE6;
 }
 .emailField:focus::placeholder{
   opacity: 0.1;
+  color: #386EE6;
 }
 .sub-btn {
   background: #ffffff;
