@@ -28,9 +28,18 @@
               v-if="!answer"
               name="email"
             />
-            <div v-if="failed" class="error-m-block">
+            <div v-if="failed && !tooManyEmails" class="error-m-block">
               <img src="../assets/subscribe/er-mail.svg" alt="Icon" class="er-mail">
-              <p class="errorMessage">{{repeatEmail ? $t('subscribe_repeatEmail') : $t('subscribe_incorrectEmail')}}</p>
+              <p class="errorMessage">
+                {{repeatEmail ? $t('subscribe_repeatEmail') : $t('subscribe_incorrectEmail')}}</p>
+            </div>
+
+            <div v-if="failed && tooManyEmails" class="error-m-block">
+              <img src="../assets/subscribe/er-mail.svg" alt="Icon" class="er-mail">
+              <p class="errorMessage">
+                {{
+                  tooManyEmails ? $t('subscribe_tooManyEmails') : $t('subscribe_incorrectEmail')
+                }}</p>
             </div>
           </div>
 
@@ -45,7 +54,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import mainImage from '../assets/subscribe/mainImage.svg';
 import mainImage2 from '../assets/subscribe/mainImage2.svg';
 import cross from '../assets/subscribe/cross.svg';
@@ -59,6 +67,7 @@ export default {
       email: '',
       repeatEmail: null,
       failed: null,
+      tooManyEmails: null, 
       answer: null,
       heightBig: null,
       heightSmall: null
@@ -67,16 +76,28 @@ export default {
 	methods: {
 		async sendEmail() {
       if (this.validateEmail(this.email)) {
-        const data = {"newEmail":  this.email};
-        const url = '/create'
-        await axios.post(url, data).then(res => {
-          this.failed = false
-          this.answer = true
-          console.log(res.status);
+        const data = {"email":  this.email};
+        const url = 'https://api-land.adealbook.com/api/subscribe'
+        await this.$http.post(url, data).then(res => {
+          if ( res.data.message === "Too many requests from this ip" ) {
+            this.failed = true
+            this.tooManyEmails = true;
+          } else {
+            this.failed = false
+            this.answer = true
+          }
         })
         .catch(e => {
           this.failed = true
-          e.response.status == 401 ? this.repeatEmail = true : this.repeatEmail = false
+          if ( e.response.data.email[0] === "The email must be a valid email address." ) { 
+            this.failed = true
+            this.repeatEmail = false
+          }
+          if ( e.response.data.email[0] === "The email has already been taken." ) { 
+            this.failed = true
+            this.repeatEmail = true 
+          }
+          console.log("Something go wrong. ", e.response.data.email[0]);
         }) 
       } else {
         this.failed = true
