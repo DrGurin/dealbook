@@ -117,16 +117,21 @@ export default {
         this.donateTextMethods = null;
         this.copied = false
       } else {
-        if (this.validateEmail(this.topInput)) {
+        this.validateEmail(this.topInput)
+        if (!this.anonimus && this.validateEmail(this.topInput)) {
           this.failed = false
-          if (this.anonimus == false) {
-            this.sendData()
-          }
+          this.sendData()
+          // if (this.anonimus == false) {
+          //   this.sendData()
+          // }
           this.step1 = !this.step1
           this.step2 = !this.step2
           this.copyBtn = false
           this.donateTextMethods = null;
           this.copied = false
+        } else if (this.anonimus) {
+          this.step1 = !this.step1
+          this.step2 = !this.step2
         } else {
           this.failed = true
         }
