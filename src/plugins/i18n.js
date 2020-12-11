@@ -82,7 +82,7 @@ export const i18n = new VueI18n({
     }, 
     РУ: {
       navbar_home: "Главная",
-      navbar_about: "О нас",
+      navbar_about: "О\xa0нас",
       navbar_problem: "Актуальность",
       navbar_roadmap: "Roadmap",
       navbar_subscribe: "Подписаться",
@@ -156,7 +156,7 @@ export const i18n = new VueI18n({
     },
     УКР: {
       navbar_home: "Головна", 
-      navbar_about: "Про нас", 
+      navbar_about: "Про\xa0нас", 
       navbar_problem: "Актуальність", 
       navbar_roadmap: "Roadmap", 
       navbar_subscribe: "Підписатись", 
