@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import ph1 from '../assets/team/1.jpg';
-import ph2 from '../assets/team/2.jpg';
-import ph3 from '../assets/team/3.jpg';
-import ph4 from '../assets/team/4.jpg';
-import ph5 from '../assets/team/5.jpg';
-import ph6 from '../assets/team/6.jpg';
-import ph7 from '../assets/team/7.jpg';
-import ph8 from '../assets/team/8.jpg';
+import ph1 from '../assets/team/1.webp';
+import ph2 from '../assets/team/2.webp';
+import ph3 from '../assets/team/3.webp';
+import ph4 from '../assets/team/4.webp';
+import ph5 from '../assets/team/5.webp';
+import ph6 from '../assets/team/6.webp';
+import ph7 from '../assets/team/7.webp';
+import ph8 from '../assets/team/8.webp';
 
 export default {
   data() {

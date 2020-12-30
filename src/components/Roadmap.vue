@@ -435,7 +435,7 @@
         height: 144px;
     }
 
-    .step:last-child {
+    .step:last-of-type {
         margin-bottom: 0;
     }
 
